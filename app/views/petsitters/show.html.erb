@@ -24,8 +24,6 @@
                 <g id="XMLID_4_" class="st2">
                   <!-- Set your 650px X 850px image below -->
                   <%= image_tag "" %>
-                  <image style="overflow:visible;" width="650" height="850" id="XMLID_16_" xlink:href="assets/images/service/10.jpg"  transform="matrix(0.9999 0 0 0.9999 174.9682 17.8254)">
-                  </image>
                 </g>
               </g>
             </svg>
@@ -34,37 +32,23 @@
 
       <!-- banner Content -->
       <div class="col-md-7 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
-        <h6>— Welcome to my world</h6>
+        <h3><strong>— Bienvenu sur ma page !</strong></h3>
         <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
-          <span class="pt-0">Howdy, I am Maria</span><br>
-          <span class="pt-0">A,</span>
+          <span class="pt-0 h5">
+            <p><strong>Nom :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
+            <p><strong>Email :</strong><%= @petsitter.email%></p>
+            <p><strong>Numéro de téléphone :</strong><%= @petsitter.phone_number%></p>
+          </span>
+          <span class="pt-0">Je vous propose de garder</span><br>
+          <span class="pt-0">vos :</span>
           <span class="cd-words-wrapper pt-0 text-primary">
-            <b class="is-visible">Blogger</b>
-            <b>Traveler</b>
-            <b>Photographer</b>
+            <b class="is-visible">Chiens</b>
+            <b>Chats</b>
+            <b>Tarentules</b>
           </span>
           </h5>
-        <p class="h6 text-light-gray mb-4 font-weight-normal">I’ve found a way to get paid for my favorite hobby, and do so while following my dream of traveling the world.</p>
-        <a class="btn btn-grad mr-4 mb-3 mb-sm-0" href="#">Know more about me!</a>
-      </div>
-
-      <!-- banner right objects -->
-      <div class="col-md-2 d-none d-lg-block p-0 position-absolute right-0 top-0 z-index-n9">
-        <figure class="w-100 ie-height-900">
-          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 326 800" enable-background="new 0 0 326 800" xml:space="preserve">
-              <defs>
-              <linearGradient id="BgGradientRight">
-                <stop class="fill-grad-start" offset="0%"/>
-                <stop class="fill-grad-end" offset="100%"/>
-              </linearGradient>
-              </defs>
-              <polygon fill="url(#BgGradientRight)" points="0,0 -60,0 60.3,49.9 -56.2,49.9 "/>
-                <rect x="120" y="350" fill="#f0f2f9" width="100" height="10"/>
-                <rect x="120" y="330" fill="#f0f2f9" width="100" height="10"/>
-                <rect x="120" y="310" fill="#f0f2f9" width="100" height="10"/>
-                <circle fill="none" stroke="url(#BgGradientRight)" stroke-width="8" stroke-miterlimit="10" cx="147.5" cy="700" r="32"/>
-              </svg>
-        </figure>
+        <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petsitter.describe %></p>
+        <a class="btn btn-grad mr-4 mb-3 mb-sm-0 float-right" href="#">Réserver ici !</a>
       </div>
     </div>
   </div>
