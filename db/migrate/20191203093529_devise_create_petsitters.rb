@@ -38,7 +38,7 @@ class DeviseCreatePetsitters < ActiveRecord::Migration[5.2]
       t.integer :age
       t.string :email
       t.string :phone_number
-      t.string :garden_boolean
+      t.boolean :garden
       t.integer :living_space
       t.boolean :account_validate?
 
