@@ -27,14 +27,18 @@ ActiveRecord::Schema.define(version: 2019_12_03_093529) do
   end
 
   create_table "districts", force: :cascade do |t|
-    t.string "distric_name"
+    t.string "district_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "petdistricts", force: :cascade do |t|
+    t.bigint "district_id"
+    t.bigint "petsitter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["district_id"], name: "index_petdistricts_on_district_id"
+    t.index ["petsitter_id"], name: "index_petdistricts_on_petsitter_id"
   end
 
   create_table "petowners", force: :cascade do |t|
@@ -48,8 +52,10 @@ ActiveRecord::Schema.define(version: 2019_12_03_093529) do
     t.text "describe"
     t.integer "age"
     t.string "phone_number"
+    t.bigint "district_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["district_id"], name: "index_petowners_on_district_id"
     t.index ["email"], name: "index_petowners_on_email", unique: true
     t.index ["reset_password_token"], name: "index_petowners_on_reset_password_token", unique: true
   end
@@ -59,8 +65,10 @@ ActiveRecord::Schema.define(version: 2019_12_03_093529) do
     t.string "birthday"
     t.string "type"
     t.boolean "sterilized"
+    t.bigint "petowner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["petowner_id"], name: "index_pets_on_petowner_id"
   end
 
   create_table "petsitters", force: :cascade do |t|
@@ -74,8 +82,9 @@ ActiveRecord::Schema.define(version: 2019_12_03_093529) do
     t.text "describe"
     t.integer "age"
     t.string "phone_number"
-    t.string "garden_boolean"
-    t.string "living_space"
+    t.boolean "garden"
+    t.integer "living_space"
+    t.decimal "price"
     t.boolean "account_validate?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,8 +95,12 @@ ActiveRecord::Schema.define(version: 2019_12_03_093529) do
   create_table "petsittings", force: :cascade do |t|
     t.boolean "validate_petsitter"
     t.boolean "validate_petowner"
+    t.bigint "petowner_id"
+    t.bigint "petsitter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["petowner_id"], name: "index_petsittings_on_petowner_id"
+    t.index ["petsitter_id"], name: "index_petsittings_on_petsitter_id"
   end
 
 end

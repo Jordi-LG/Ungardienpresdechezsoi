@@ -6,6 +6,8 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.string :type
       t.boolean :sterilized
 
+      t.belongs_to :petowner, index: true
+
       t.timestamps
     end
   end
