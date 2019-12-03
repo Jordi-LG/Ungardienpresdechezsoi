@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'petsitters/index'
-  get 'petsitters/show'
-
   get 'staticpages/team'
   get 'staticpages/contact'
 
