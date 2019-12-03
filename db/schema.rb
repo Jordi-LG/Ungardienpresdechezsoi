@@ -82,8 +82,9 @@ ActiveRecord::Schema.define(version: 2019_12_03_093529) do
     t.text "describe"
     t.integer "age"
     t.string "phone_number"
-    t.string "garden_boolean"
+    t.boolean "garden"
     t.integer "living_space"
+    t.decimal "price"
     t.boolean "account_validate?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

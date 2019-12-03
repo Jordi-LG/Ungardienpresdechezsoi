@@ -21,3 +21,5 @@
 //= require swiper
 //= require wow
 //= require functions
+//= require owl.carousel.min
+//= require jarallax.min

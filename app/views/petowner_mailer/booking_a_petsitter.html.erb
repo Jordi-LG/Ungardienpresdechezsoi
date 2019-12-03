@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @petowner.last_name %></h1>
+    <p>
+      Ta demande auprès du petsitter <%=@petsitter.last_name %> lui a bien été envoyé.
+    </p>
+    <p> 
+      Lorsqu'il aura répondu a ta demande, nous t'enverrons par email sa réponse.
+    </p>
+    <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+    </p>
+    <p> 
+      À très vite sur ungardienpresdechezsoi.herokuapp.com !
+    </p>
+  </body>
+</html>
