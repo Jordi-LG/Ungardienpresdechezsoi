@@ -10,4 +10,11 @@ class Petowner < ApplicationRecord
   has_many :petsitters, through: :petsittings
 
   belongs_to :district
+
+  after_create :welcome_send
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
+
 end
