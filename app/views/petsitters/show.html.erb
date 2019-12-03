@@ -1,1 +1,20 @@
 
+<br><br><br>
+<div class="container">
+  <center>
+    <span class="m-4"> <h1>Son profil</h1></span>
+  </center>
+  <div class="d-flex border flex-column border-primary">
+  <div class="d-flex justify-content-around mb-4">
+    <span><%= image_tag "" %>coucou</span>
+    <span>
+      <p>Nom :<%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
+      <p>Email :<%= @petsitter.email%></p>
+      <p>Nom :<%= @petsitter.phone_number%></p>
+    </span>
+  </div>
+  <div class="d-flex justify-content-around">
+    <span>ahem</span>
+    <span>bref</span>
+  </div>
+</div>
