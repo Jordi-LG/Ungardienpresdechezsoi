@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 2019_12_03_093529) do
 
   create_table "districts", force: :cascade do |t|
     t.string "distric_name"
-    t.bigint "petowner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["petowner_id"], name: "index_districts_on_petowner_id"
   end
 
   create_table "petdistricts", force: :cascade do |t|
@@ -54,8 +52,10 @@ ActiveRecord::Schema.define(version: 2019_12_03_093529) do
     t.text "describe"
     t.integer "age"
     t.string "phone_number"
+    t.bigint "district_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["district_id"], name: "index_petowners_on_district_id"
     t.index ["email"], name: "index_petowners_on_email", unique: true
     t.index ["reset_password_token"], name: "index_petowners_on_reset_password_token", unique: true
   end
