@@ -39,6 +39,8 @@ class DeviseCreatePetowners < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :phone_number
 
+      t.belongs_to :district, index: true
+
       t.timestamps null: false
     end
 
