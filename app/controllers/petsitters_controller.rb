@@ -4,6 +4,6 @@ class PetsittersController < ApplicationController
   end
 
   def show
-    @petsitters = Petsitter.find(params[:id])
+    @petsitter = Petsitter.find(params[:id])
   end
 end

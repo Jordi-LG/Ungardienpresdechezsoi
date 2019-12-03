@@ -1,2 +1,38 @@
-<h1>Petsitters#index</h1>
-<p>Find me in app/views/petsitters/index.html.erb</p>
+<br><br><br>
+<div class="container mt-4" >
+  <center>
+  <span class="m-4"> <h1>Choisissez le Pet Sitter qui vous convient !</h1></span>
+  </center>
+      <% @petsitters.each do |petsitter| %>
+  <div class="card shadow-lg animated zoomIn m-2">
+    <div class="row banniere">
+      <div class="col-3">
+        <img  src="" style="height: auto;width: 100%;">
+      </div>
+      <div class="col-9 d-flex row flex-column">
+        <div class="container mt-4">
+          <h1><%= petsitter.first_name %> <%= petsitter.last_name %> </h1>
+          <h4><%= petsitter.describe %></h4>
+        </div>
+
+        <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
+          <span class="badge badge-pill badge-warning  pt-2"><h5><%= petsitter.price %> €/jours</h5></span>
+          <%= form_with(url: petsitter_path(petsitter.id)) do %>
+            <%= button_tag(type: "submit", class: "btn btn-default") do %>
+              <span class="btn btn-button btn-info"><i class="fas fa-cart-arrow-down pr-2"></i> Son profil !</span>
+            <% end %>
+          <% end %>
+          <%= form_with(url: petsitter_path(petsitter.id)) do %>
+            <%= button_tag(type: "submit", class: "btn btn-default") do %>
+              <span class="btn btn-button btn-secondary"><i class="fas fa-cart-arrow-down pr-2"></i> Contacter</span>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+          <% end %>
+</div>
