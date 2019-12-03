@@ -26,6 +26,5 @@ class PetownerMailer < ApplicationMailer
     @petsitter = petsitter
     @url  = 'https://ungardienpresdechezsoi.herokuapp.com' 
     mail(to: @petowner.email, subject: 'Demande auprès du petsitter refusée')
-  	
   end
 end
