@@ -15,6 +15,7 @@
  *= require animate
  *= require jquery.fancybox
  *= require swiper
+ *= require owl.carousel
  *= require style
  *= require themify-icons
  */
