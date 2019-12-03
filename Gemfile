@@ -71,3 +71,5 @@ gem 'jquery-rails'
 gem "faker", "~> 2.8"
 
 gem 'letter_opener'
+
+gem "table_print", "~> 1.5"
