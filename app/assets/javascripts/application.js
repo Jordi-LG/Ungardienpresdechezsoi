@@ -12,5 +12,11 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+//= require jquery.min
+//= require popper.min
+//= require bootstrap.min
+//= require jquery.easing
+//= require jquery.fancybox
+//= require swiper
+//= require wow
+//= require functions
