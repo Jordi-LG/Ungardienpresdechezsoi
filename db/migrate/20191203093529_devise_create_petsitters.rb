@@ -40,6 +40,7 @@ class DeviseCreatePetsitters < ActiveRecord::Migration[5.2]
       t.string :phone_number
       t.boolean :garden
       t.integer :living_space
+      t.decimal :price
       t.boolean :account_validate?
 
       t.timestamps null: false
