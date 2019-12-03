@@ -23,3 +23,6 @@
 //= require functions
 //= require owl.carousel.min
 //= require jarallax.min
+//= require main
+//= require imagesloaded.pkgd
+//= require isotope.pkgd
