@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
   get 'petsitters/index'
   get 'petsitters/show'
+
+  get 'staticpages/team'
+  get 'staticpages/contact'
+
   devise_for :petsitters
   devise_for :petowners
   resources :petsitters, only: [:show, :index]
