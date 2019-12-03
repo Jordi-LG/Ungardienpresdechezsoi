@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">The Kitten Project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto"id='number'>
+        <li class="nav-item active mr-4 pr-4" >
+
+        </li>
+      </ul>
+
+
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S'inscrire / Se connecter</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <center>
+                <div class="dropdown-item"> <%= link_to "Inscription", new_petsitter_registration_path %></div>
+                <div class="dropdown-item"> <%= link_to "Se connecter", new_petsitter_session_path %></div>
+              </center>
+            </div>
+          </div>
+      </div>
+    </div>
+ </nav>
