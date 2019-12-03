@@ -7,7 +7,7 @@
   <div class="card shadow-lg animated zoomIn m-2">
     <div class="row banniere">
       <div class="col-3">
-        <img  src="" style="height: auto;width: 100%;">
+       <% # image_tag "votre_image.png" %>
       </div>
       <div class="col-9 d-flex row flex-column">
         <div class="container mt-4">
@@ -35,4 +35,10 @@
 
   </div>
           <% end %>
+<div class="d-flex justify-content-center">
+
+  <%= button_tag(type: "submit", class: "btn btn-default") do %>
+    <span class="btn btn-button btn-primary"><i class="fas fa-cart-arrow-down pr-2"></i> RETOUR </span>
+  <% end %>
+</div>
 </div>
