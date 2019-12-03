@@ -4,6 +4,9 @@ class CreatePetsittings < ActiveRecord::Migration[5.2]
       t.boolean :validate_petsitter
       t.boolean :validate_petowner
 
+      t.belongs_to :petowner, index: true
+      t.belongs_to :petsitter, index: true
+      
       t.timestamps
     end
   end
