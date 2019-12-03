@@ -69,3 +69,5 @@ gem "devise", "~> 4.7"
 gem 'jquery-rails'
 
 gem "faker", "~> 2.8"
+
+gem 'letter_opener'
