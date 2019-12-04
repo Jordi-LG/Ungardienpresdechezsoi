@@ -12653,6 +12653,10 @@ a.primary-hover:hover {
   border-radius: 3px !important;
 }
 
+.border-radius-5 {
+  border-radius: 5px !important;
+}
+
 .border-radius-0 {
   border-radius: 0px !important;
 }

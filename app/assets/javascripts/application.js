@@ -18,10 +18,10 @@
 //= require bootstrap.min
 //= require jquery.easing
 //= require jquery.fancybox
+//= require owl.carousel.min
 //= require swiper
 //= require wow
 //= require functions
-//= require owl.carousel.min
 //= require jarallax.min
 //= require main
 //= require imagesloaded.pkgd
