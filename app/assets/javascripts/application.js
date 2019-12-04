@@ -21,6 +21,7 @@
 //= require owl.carousel.min
 //= require swiper
 //= require wow
+//= require map
 //= require functions
 //= require jarallax.min
 //= require main
