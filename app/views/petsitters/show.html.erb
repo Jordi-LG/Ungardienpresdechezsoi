@@ -4,8 +4,8 @@
   <div class="container-fluid d-flex h-100 w-100">
     <div class="row justify-content-between align-items-center w-100">
       <!-- banner image -->
-      <div class="col-md-5 d-none d-md-block p-0 ">
-        <figure class="w-100 ie-height-900">
+      <div class="col-md-5 d-none d-md-block p-0">
+        <figure class="w-100 ie-height-900 position-absolute">
           <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 881.8 917.9" style="enable-background:new 0 0 881.8 917.9;" xml:space="preserve">
             <path id="XMLID_6_" fill="url(#BgGradient)" d="M0,39.6c0,0,171-121.5,264,64.5s508.5,178.5,508.5,178.5s240-6-6,228S816,755.1,657,830.1
               s-309,106.5-445.5,76.5C75,876.6,0,717.6,0,717.6V39.6z"/>
@@ -22,12 +22,15 @@
                 <use xlink:href="#XMLID_11_"  style="overflow:visible;"/>
                 </clipPath>
                 <g id="XMLID_4_" class="st2">
-                  <!-- Set your 650px X 850px image below -->
-                  <%= image_tag "" %>
                 </g>
               </g>
             </svg>
         </figure>
+        <span class="position-relative " style="margin-left:10%">
+          <%if @petsitter.avatar.attached?%>
+            <%= image_tag @petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
+          <%else%>
+          <%end%></span>
       </div>
 
       <!-- banner Content -->
@@ -49,44 +52,16 @@
           </h5>
         <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petsitter.describe %></p>
         <a class="btn btn-grad mr-4 mb-3 mb-sm-0 float-right" href="#">Réserver ici !</a>
+        <span>
+          <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
+          <%= form_tag petsitter_avatars_path(@petsitter), multipart: true do %>
+            <%= file_field_tag :avatar %>
+            <%= submit_tag "mettre à jour" %>
+          <% end %>
+        </span>
       </div>
     </div>
+
   </div>
+
 </section>
-<!--
-<div class="container">
-  <center>
-    <span class="m-4"> <h1>Son profil</h1></span>
-  </center>
-  <div class="d-flex border flex-column border-primary">
-  <div class="d-flex justify-content-around mb-4">
-    <span><%= image_tag "" %><h1>PHOTO</h1></span>
-    <span>
-      <p>Nom :<%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
-      <p>Email :<%= @petsitter.email%></p>
-      <p>Numéro de téléphone :<%= @petsitter.phone_number%></p>
-      <span class= ""> <%= @petsitter.describe %></span>
-    </span>
-  </div>
-  <div class="d-flex justify-content-around">
-    <span><h1>PORTFOLIO</h1></span>
-    <span>
-
-      <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
-        <span class="badge badge-pill badge-warning  pt-2"><h5><%= @petsitter.price %> €/jours</h5></span>
-          <%= button_tag(type: "submit", class: "btn btn-default") do %>
-            <span class="btn btn-button btn-info"><i class="fas fa-cart-arrow-down pr-2"></i>Réserver</span>
-          <% end %>
-          <%= button_tag(type: "submit", class: "btn btn-default") do %>
-            <span class="btn btn-button btn-secondary"><i class="fas fa-cart-arrow-down pr-2"></i> Contacter</span>
-        <% end %>
-      </div>
-
-    </span>
-  </div>
-
-  <%= button_tag(type: "submit", class: "btn btn-default") do %>
-    <span class="btn btn-button btn-primary"><i class="fas fa-cart-arrow-down pr-2"></i> RETOUR </span>
-<% end %>
-</div>
--->

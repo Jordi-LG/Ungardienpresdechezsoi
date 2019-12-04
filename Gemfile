@@ -73,3 +73,5 @@ gem "faker", "~> 2.8"
 gem 'letter_opener'
 
 gem "table_print", "~> 1.5"
+
+gem "aws-sdk-s3", require: false
