@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  root to: 'staticpages#index'
   get 'team', to: 'staticpages#team'
   get 'contact', to: 'staticpages#contact'
+
 
 
   devise_for :petsitters,  path: 'petsitters', controllers: { registrations: "petsitters/registrations"}
