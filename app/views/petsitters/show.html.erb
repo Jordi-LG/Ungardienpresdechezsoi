@@ -54,9 +54,9 @@
         <a class="btn btn-grad mr-4 mb-3 mb-sm-0 float-right" href="#">Réserver ici !</a>
         <span>
           <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
-          <%= form_tag do %>
+          <%= form_tag petsitter_avatars(@petsitter), multipart: true do %>
             <%= file_field_tag :avatar %>
-            <%= submit_tag "uploader l'avatar" %>
+            <%= submit_tag "mettre à jour" %>
           <% end %>
         </span>
       </div>
