@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'staticpages/team'
   get 'staticpages/contact'
+  get 'staticpages/index'
 
   devise_for :petsitters
   devise_for :petowners
