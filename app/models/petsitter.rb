@@ -12,4 +12,17 @@ class Petsitter < ApplicationRecord
 
   has_many :petsittings
   has_many :petowners, through: :petsittings
+  
+  after_create :account_validate_false, :demand_creation
+
+  def account_validate_false
+  	@petsitter = Petsitter.last
+  	@petsitter.account_validate = false
+	@petsitter.save  	
+  end
+
+  def demand_creation
+  	PetsitterMailer.demand_creation(self).deliver_now
+  end
+
 end

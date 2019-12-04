@@ -1,0 +1,189 @@
+<body>
+<!-- =======================
+	Index Banner -->
+	<section class="p-0">
+		<div class="swiper-container height-700-responsive swiper-arrow-hover swiper-slider-fade">
+			<div class="swiper-wrapper">
+				<!-- slide 1-->
+        <div class="swiper-slide bg-overlay-dark-2" style="background-image:url(https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); background-position: center top; background-size: cover;">
+					<div class="container h-100">
+						<div class="row d-flex h-100">
+							<div class="col-md-8 justify-content-center align-self-center align-items-start mx-auto">
+								<div class="slider-content text-center slider-content">
+                  <h2 class="animated fadeInUp dealy-500 display-8 display-md-7 text-white alt-font font-italic">Vous partez en vacances ? <br> Vous cherchez un <span class="text-primary">gardien</span> pour vos animaux sur Montpellier ?</h2>
+									<h2 class="animated fadeInUp dealy-1000 display-6 display-md-4 display-lg-3  text-white">Découvrez&nbsples&nbspPet&nbspsitters <br> près de chez vous !</h2>
+									<div class="animated fadeInUp mt-3 dealy-1500">
+                    <%= link_to petsitters_path do %>
+                      <span class="btn btn-grad btn-lg">Trouver un Pet Sitter !</span>
+                    <%end%>
+								  </div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+		    <!-- slide 2-->
+        <div class="swiper-slide bg-overlay-dark-2" style="background-image:url(https://images.unsplash.com/photo-1470390356535-d19bbf47bacb?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80); background-position: center center; background-size: cover;">
+          <div class="container h-100">
+            <div class="row d-flex h-100">
+              <div class="col-lg-8 col-xl-6 mr-auto slider-content justify-content-center align-self-center align-items-start text-left">
+                <h4 class="animated fadeInUp dealy-1000 text-white display-8 display-md-7 alt-font font-italic mb-2 my-md-4">Vous aimez les animaux ? <br> Vous habitez à Montpellier ?</h4>
+                <h3 class="animated fadeInUp dealy-500 display-6 display-md-4 display-lg-3 text-white">Devenez&nbspPet&nbspsitter&nbsp!</h3>
+                <div class="animated fadeInUp mt-3 dealy-1500">
+                  <%= link_to new_petsitter_registration_path do %>
+                    <span class="btn btn-grad btn-lg">Déposer une demande</span>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  			<!-- Slider buttons -->
+  			<div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+  			<div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+  			<div class="swiper-pagination"></div>
+  		</div>
+    </div>
+	</section>
+<!-- =======================
+	Index banner -->
+
+<!-- =======================
+  Presentation-->
+  <section class="mt-lg-n9 mt-sm-0 pb-0 z-index-9">
+  	<div class="container ">
+  		<div class="row bg-white shadow m-0 p-2 p-lg-5 border-radius-3">
+        <div class="row col-md-12 ">
+          <h2 class="col-md-12 mb-5 cd-headline zoom text-center">
+					<span>Faire garder votre animal devient</span>
+					<span class="cd-words-wrapper font-weight-bold text-grad">
+						<b class="is-visible">Simple</b>
+						<b>Rapide</b>
+						<b>Sécurisé</b>
+					</span>
+					</h2>
+        </div>
+        <div class="row">
+    			<div class="col-md-4">
+    				<div class="feature-box h-100 text-center">
+    					<div class="feature-box-icon  icon-grad">
+                <i class="fa fa-home fa-2x"></i>
+              </div>
+    					<h3 class="feature-box-title">Cherchez un Pet sitter <br>près de chez vous</h3>
+    					<h6 class="feature-box-desc text-muted">Recherchez parmis les quartiers de Montpellier, un gardien pour vos animaux de compagnie.</h6>
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="feature-box h-100 text-center">
+    					<div class="feature-box-icon  icon-grad">
+                <i class="fa fa-comment fa-2x"></i>
+              </div>
+    					<h3 class="feature-box-title">Contacter et échanger <br> avec un Pet sitter</h3>
+    					<h6 class="feature-box-desc text-muted">Une fois inscrit, échangez avec le gardien afin de définir les modalités de gardiennage.</h6>
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="feature-box h-100 text-center">
+    					<div class="feature-box-icon  icon-grad" style="color: Tomato;">
+                <i class="fa fa-heart-o fa-2x"></i>
+              </div>
+    					<h3 class="feature-box-title">Vous pouvez partir <br>l'esprit tranquile !</h3>
+    					<h6 class="feature-box-desc text-muted">Nos Pet sitters sont sélectionnés pour vous garantir un service de qualité ! </h6>
+    				</div>
+    			</div>
+        </div>
+  		</div>
+  	</div>
+  </section>
+  <!-- =======================
+  Presentation -->
+
+<!-- =======================
+	Petsitters qualification -->
+	<section>
+		<div class="container">
+			<div class="row class">
+				<div class="col-sm-6 d-none d-lg-block">
+          <%= image_tag "index/trusted.jpeg", class: 'border-radius-5 shadow' %>
+				</div>
+				<div class="col-lg-6 pl-3 pl-md-5">
+					<h2 class="mb-4 h1">Pourquoi choisir nos Petsitters ? <br> Un gage de confiance ! </h2>
+					<h3 class="lead text-muted">Attentif au bien-être de vos animaux, nos Pet sitters sont sélectionnés pour vous assurer...
+            Garchomp lugia kyurem weepinbell eelektrik charizard lilligant banette houndoom doduo!
+            Hoothoot delcatty machamp graveler kyurem moltres conkeldurr gabite phione roselia?
+          </h3>
+					<!-- feature -->
+					<div class="mt-5">
+						<div class="feature-box mt-3 f-style-4 h-100 icon-grad">
+							<div class="feature-box-icon"><i class="fa fa-check-circle-o"></i></div>
+							<h3 class="feature-box-title mb-0">Garantie d'une garde en toute sécurité</h3>
+							<h4 class="feature-box-desc text-muted">A travers un dossier très complet, nos Pet sitters doivent nous garantir leur qualifications pour la garde d'animaux. Nous vérifions également l'identité de nos Pet sitters ainsi que les conditions d'hébergement. </h4>
+						</div>
+						<div class="feature-box mt-3 f-style-4 h-100 icon-grad">
+							<div class="feature-box-icon"><i class="fa fa-paw"></i></div>
+							<h3 class="feature-box-title mb-0">Plus de culpabilité !</h3>
+							<h4 class="feature-box-desc text-muted">Partez en vacances ou en week-end l'esprit tranquile, une personne de confiance s'occupe de vos animaux !</h4>
+						</div>
+						<div class="feature-box mt-3 f-style-4 h-100 icon-grad">
+							<div class="feature-box-icon"><i class="fa fa-smile-o"></i></div>
+							<h3 class="feature-box-title mb-0">Votre animal sera heureux !</h3>
+							<h4 class="feature-box-desc text-muted">Durant vos abscences, votre animal aura toujours une personne bienveillante pour s'occuper de lui !</h4>
+						</div>
+          </div >
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- =======================
+	Petsitters qualification-->
+
+<!-- =======================
+	Call to action-->
+	<section class="bg-dark pricing pricing-dark pricing-center all-text-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 mx-auto">
+					<h2 class="h1">Trouvez un gardien pour vos animaux <br> dès maintenant !</h2>
+				</div>
+        <div class=" d-flex float-right">
+          <%= link_to petsitters_path do %>
+            <span class="btn btn-grad btn-lg text-white mb-0 mt-3">Voir les annonces !</span>
+          <%end%>
+        </div>
+			</div>
+		</div>
+	</section>
+	<!-- =======================
+		Call to action-->
+
+
+<!-- =======================
+	Associations -->
+	<section class="parallax-bg bg-overlay-dark-2" style="background:url(https://images.pexels.com/photos/757457/pexels-photo-757457.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat center center; background-size:cover;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 mt-30">
+					<div class=" bg-dark feature-box f-style-2 h-100 icon-grad rounded">
+						<div class="feature-box-icon"><i class="fa fa-paw"></i></div>
+						<h3 class="feature-box-title text-white">Pas encore d'animaux à vous ? <br> Vous pouvez adopter !</h3>
+						<h5 class="feature-box-desc text-white">De nombreuses associations sur Montpellier vous permettrons .... <br>Blabla d'intro sur les assos !</h5>
+            <div class=" d-flex float-right">
+              <%= link_to nil do %>
+                <span class="btn btn-primary mb-0 mt-3">Plus d'infos</span>
+              <%end%>
+            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- =======================
+	Associations -->
+</body>
+<footer>
+  <section>
+    <div class="container">
+      FOOTER ICI
+    </div>
+  </section>
+</footer>
