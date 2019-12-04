@@ -63,8 +63,8 @@
                     <%= f.select :garden,[["Yes", true], ["No", false]]%>
                   </div> 
                     <div class="form-group">
-                    <%= f.label :living_space, "De combien d'espace disposez vous ?" %>
-                    <%= f.number_field :living_space, in: 25...1000, autofocus: true, autocomplete: "living_space", class: "form-control", placeholder: "Donner votre surface en m3" %>
+                    <%= f.label :living_space, "De combien d'espace habitable disposez vous ?" %>
+                    <%= f.number_field :living_space, in: 25...1000, autofocus: true, autocomplete: "living_space", class: "form-control", placeholder: "Donner votre surface en m2" %>
                   </div>
                     <div class="form-group">
                     <%= f.label :price, "Quel est votre prix ?" %>
