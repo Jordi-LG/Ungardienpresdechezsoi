@@ -6,8 +6,8 @@
       <% @petsitters.each do |petsitter| %>
   <div class="card shadow-lg animated zoomIn m-2">
     <div class="row banniere">
-      <div class="col-3">
-       <% # image_tag "votre_image.png" %>
+      <div class="col-3 m-2">
+       <%= image_tag petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
       </div>
       <div class="col-9 d-flex row flex-column">
         <div class="container mt-4">
@@ -36,7 +36,7 @@
 <div class="d-flex justify-content-center mt-3">
 
   <%= link_to petsitters_path do%>
-    <span class="btn btn-button btn-primary"><i class="fa fa-angle-double-left"></i> RETOUR </span>
+    <span class="btn btn-button btn-dark"><i class="fa fa-angle-double-left"></i> RETOUR ACCUEIL</span>
   <% end %>
 </div>
 
