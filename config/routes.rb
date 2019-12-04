@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'avatars/create'
-  get 'staticpages/team'
-  get 'staticpages/contact'
+  get 'team', to: 'staticpages#team'
+  get 'contact', to: 'staticpages#contact'
+
 
   devise_for :petsitters
   devise_for :petowners

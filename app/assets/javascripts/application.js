@@ -20,6 +20,7 @@
 //= require jquery.fancybox
 //= require swiper
 //= require wow
+//= require map
 //= require functions
 //= require owl.carousel.min
 //= require jarallax.min
