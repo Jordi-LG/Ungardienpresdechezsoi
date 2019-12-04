@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'staticpages#contact'
 
 
-  devise_for :petsitters
+  devise_for :petsitters,  path: 'petsitters', controllers: { registrations: "petsitters/registrations"}
   devise_for :petowners
   resources :petsitters, only: [:show, :index] do
     resources :avatars, only: [:create]

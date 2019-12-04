@@ -47,6 +47,30 @@
                     <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "Entrer votre prénom" %>
                   </div>
                   <div class="form-group">
+                    <%= f.label :describe, "Description" %>
+                    <%= f.text_field :describe, autofocus: true, autocomplete: "descrition", class: "form-control", placeholder: "Entrer votre description" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :age, "Age" %>
+                    <%= f.number_field :age, in: 15...100, autofocus: true, autocomplete: "age", class: "form-control", placeholder: "Entrer votre age" %>
+                  </div>    
+                  <div class="form-group">
+                    <%= f.label :phone_number, "Numéro de téléphone" %>
+                    <%= f.phone_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", placeholder: "Entrer votre numéro de téléphone" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :garden, "Avez-vous un jardin" %><br/>
+                    <%= f.select :garden,[["Yes", true], ["No", false]]%>
+                  </div> 
+                    <div class="form-group">
+                    <%= f.label :living_space, "De combien d'espace disposez vous ?" %>
+                    <%= f.number_field :living_space, in: 25...1000, autofocus: true, autocomplete: "living_space", class: "form-control", placeholder: "Donner votre surface en m3" %>
+                  </div>
+                    <div class="form-group">
+                    <%= f.label :price, "Quel est votre prix ?" %>
+                    <%= f.number_field :price, in: 1...1000, autofocus: true, autocomplete: "price", class: "form-control", placeholder: "Entrer le prix de votre prestation" %>
+                  </div>
+                  <div class="form-group">
                     <%= f.label :email, "Email" %>
                     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" , placeholder: "Entrer votre email" %>
                   </div>

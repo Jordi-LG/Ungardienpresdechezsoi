@@ -26,7 +26,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="docMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vous cherchez une garde ?</a>
               <ul class="dropdown-menu" aria-labelledby="docMenu">
                 <li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
-                <li class="dropdown-item"><%= link_to "Se connecter", new_petsitter_session_path %> </li>
+                <li class="dropdown-item"><%= link_to "Se connecter", new_petowner_session_path %> </li>
                 <li class="dropdown-divider"></li>
                 <li> <a class="dropdown-item" href="http://support.webestica.com/" target="_blank">Support</a> </li>
               </ul>
@@ -35,10 +35,11 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="docMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Petsitter</a>
 							<ul class="dropdown-menu" aria-labelledby="docMenu">
-								<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petowner_registration_path %> </li>
+								<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petsitter_registration_path %> </li>
 								<li class="dropdown-item"><%= link_to "Se connecter", new_petsitter_session_path %> </li>
 								<li class="dropdown-divider"></li>
 								<li> <a class="dropdown-item" href="http://support.webestica.com/" target="_blank">Support</a> </li>
+								<li class="dropdown-item"> <%= link_to "Se déconnecter", destroy_petsitter_session_path, method: :delete %></li>
 							</ul>
 						</li>
 					</ul>
