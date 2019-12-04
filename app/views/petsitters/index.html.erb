@@ -17,11 +17,9 @@
 
         <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
           <span class="badge badge-pill badge-warning  pt-2"><h5><%= petsitter.price %> €/jours</h5></span>
-          <%= form_with(url: petsitter_path(petsitter.id)) do %>
-            <%= button_tag(type: "submit", class: "btn btn-default") do %>
+          <%= link_to petsitter_path(petsitter.id) do %>
               <span class="btn btn-button btn-info"><i class="fas fa-cart-arrow-down pr-2"></i> Son profil !</span>
             <% end %>
-          <% end %>
           <%= form_with(url: petsitter_path(petsitter.id)) do %>
             <%= button_tag(type: "submit", class: "btn btn-default") do %>
               <span class="btn btn-button btn-secondary"><i class="fas fa-cart-arrow-down pr-2"></i> Contacter</span>
@@ -35,10 +33,11 @@
 
   </div>
           <% end %>
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mt-3">
 
-  <%= button_tag(type: "submit", class: "btn btn-default") do %>
-    <span class="btn btn-button btn-primary"><i class="fas fa-cart-arrow-down pr-2"></i> RETOUR </span>
+  <%= link_to petsitters_path do%>
+    <span class="btn btn-button btn-primary"><i class="fa fa-angle-double-left"></i> RETOUR </span>
   <% end %>
 </div>
+
 </div>
