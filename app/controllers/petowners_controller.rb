@@ -1,7 +1,6 @@
 class PetownersController < ApplicationController
-  def index
-  end
 
   def show
+        @petowner = Petowner.find(params[:id])
   end
 end
