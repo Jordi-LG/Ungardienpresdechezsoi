@@ -1,8 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-dark">
+<header class="header-static navbar-sticky navbar-light">
+
+		<!-- Logo Nav Start -->
+		<nav class="navbar navbar-expand-lg">
 			<div class="container">
 				<!-- Logo -->
-				<a class="navbar-brand" href="index.html">
-					Un gardien près de chez soi
+				<%= link_to petsitters_path do %>
+					<!-- SVG Logo Start -->
+					<svg class="navbar-brand-item" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMid" width="325.656" height="100" viewBox="0 0 325.656 100">
 					  <defs>
 					  	<linearGradient id="LogoGradient">
 								<stop class="fill-grad-start" offset="0%"/>
@@ -13,7 +17,9 @@
 					    <circle cx="50.047" cy="50" r="50.047" fill="url(#LogoGradient)"/>
 					    <path d="M86.607,38.585 L55.868,69.317 C53.678,71.508 50.126,71.508 47.936,69.317 C45.745,67.127 45.745,63.577 47.936,61.387 L78.674,30.654 C80.865,28.464 84.416,28.464 86.607,30.654 C88.797,32.844 88.797,36.395 86.607,38.585 ZM26.806,69.317 C25.679,70.444 24.193,70.981 22.716,70.948 C22.636,70.953 22.560,70.972 22.478,70.972 L20.552,70.972 C18.108,70.972 16.128,68.992 16.128,66.548 L16.128,33.452 C16.128,31.008 18.108,29.028 20.552,29.028 L22.478,29.028 C24.922,29.028 26.902,31.008 26.902,33.452 L26.902,53.359 L49.612,30.654 C51.802,28.464 55.354,28.464 57.544,30.654 C59.735,32.844 59.735,36.395 57.544,38.585 L26.806,69.317 Z" class="fill-white"/>
 					  </g>
-				</a>
+					</svg>
+					<!-- SVG Logo End -->
+				<% end %>
 				<!-- Menu opener button -->
 				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"> </span>
@@ -21,26 +27,28 @@
 				<!-- Main Menu Start -->
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav ml-auto">
-            <!-- Menu PetOwner-->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="docMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vous cherchez une garde ?</a>
-              <ul class="dropdown-menu" aria-labelledby="docMenu">
-                <li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
-                <li class="dropdown-item"><%= link_to "Se connecter", new_petsitter_session_path %> </li>
-                <li class="dropdown-divider"></li>
-                <li> <a class="dropdown-item" href="http://support.webestica.com/" target="_blank">Support</a> </li>
-              </ul>
-            </li>
-						<!-- Menu PetSitter-->
+						<!-- Menu item 4 Portfolio-->
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="docMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Petsitter</a>
-							<ul class="dropdown-menu" aria-labelledby="docMenu">
-								<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petowner_registration_path %> </li>
+							<a class="nav-link dropdown-toggle" href="#" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pet sitters</a>
+							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
+								<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petsitter_registration_path %> </li>
 								<li class="dropdown-item"><%= link_to "Se connecter", new_petsitter_session_path %> </li>
 								<li class="dropdown-divider"></li>
-								<li> <a class="dropdown-item" href="http://support.webestica.com/" target="_blank">Support</a> </li>
+								<li class="dropdown-item"><%= link_to "Support", new_petowner_session_path %></li>
+								<li class="dropdown-item"> <%= link_to "Se déconnecter", destroy_petsitter_session_path, method: :delete %></li>								
+
 							</ul>
 						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vous cherchez un gardien ?</a>
+							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
+								<li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
+								<li class="dropdown-item"><%= link_to "Se connecter", new_petowner_session_path %> </li>
+								<li class="dropdown-divider"></li>
+								<li class="dropdown-item"><%= link_to "Support", new_petowner_session_path %></li>
+								</ul>
+						</li>
+
 					</ul>
 				</div>
 				<!-- Main Menu End -->
@@ -48,9 +56,28 @@
 				<div class="navbar-nav">
 					<!-- extra item Search-->
 					<div class="nav-item search border-0 pl-3 pr-0 px-lg-2" id="search">
-						<a class="nav-link" data-toggle="collapse" href="#search-open"><i class="ti-search"> </i></a>
+						<a class="nav-link" data-toggle="collapse" href="#search-open"><i class="fa fa-search"> </i></a>
 					</div>
 				</div>
 				<!-- Header Extras End-->
 			</div>
 		</nav>
+		<!-- Search -->
+		<div class="top-search collapse bg-light" id="search-open" data-parent="#search">
+			<div class="container">
+				<div class="row position-relative">
+					<div class="col-md-8 mx-auto py-5">
+						<form>
+							<div class="input-group">
+								<input class="form-control border-radius-right-0 border-right-0" type="text" name="search" autofocus placeholder="What are you looking for?">
+								<button type="button" class="btn btn-grad border-radius-left-0 mb-0">Search</button>
+							</div>
+						</form>
+						<p class="small mt-2 mb-0"><strong>e.g.</strong>Discrict, Members </p>
+					</div>
+					<a class="position-absolute top-0 right-0 mt-3 mr-3" data-toggle="collapse" href="#search-open"><i class="fa fa-window-close"></i></a>
+				</div>
+			</div>
+		</div>
+		<!-- End Search -->
+	</header>
