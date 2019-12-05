@@ -27,3 +27,4 @@
 //= require main
 //= require imagesloaded.pkgd
 //= require isotope.pkgd
+//= require turbolinks
