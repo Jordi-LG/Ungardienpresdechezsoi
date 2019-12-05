@@ -1,5 +1,15 @@
 
-<br><br><br>
+<br><br>
+<% if current_petsitter.id == @petsitter.id %>
+  <% if current_petsitter.account_validate == false %>
+  	<div class="col-sm-12">
+      <div class="alert alert-warning" role="alert">
+        Votre compte est en attente de validation. Veuillez patienter le temps qu'un modérateur accède à votre demande.
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<br>
 <section class="p-0 position-relative ">
   <div class="container-fluid d-flex h-100 w-100">
     <div class="row justify-content-between align-items-center w-100">
@@ -30,10 +40,9 @@
           <%if @petsitter.avatar.attached?%>
             <%= image_tag @petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
           <%else%>
-          <%end%></span>
+        <%end%></span>
       </div>
 
-      <!-- banner Content -->
       <div class="col-md-7 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
         <h3><strong>— Bienvenu sur ma page !</strong></h3>
         <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
@@ -59,7 +68,7 @@
             <%= submit_tag "mettre à jour" %>
           <% end %>
         </span>
-     
+
           <%= link_to edit_petsitter_registration_path do %>
           <button type="button" class="btn btn-grad mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
           <% end %>
@@ -67,12 +76,10 @@
     </div>
 
   </div>
-
+  <div class="d-flex justify-content-center mt-3">
+    <%= link_to petsitters_path do%>
+      <span class="btn btn-button btn-dark"><i class="fa fa-angle-double-left"></i> RETOUR</span>
+    <% end %>
+  </div>
 </section>
-<br><br>
-<div class="d-flex justify-content-center mt-3">
-
-  <%= link_to petsitters_path do%>
-    <span class="btn btn-button btn-dark"><i class="fa fa-angle-double-left"></i> RETOUR</span>
-  <% end %>
-</div>
+<br><br><br><br><br><br>
