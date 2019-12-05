@@ -5,14 +5,7 @@ class PetsittersController < ApplicationController
 
   def show
     @petsitter = Petsitter.find(params[:id])
-    @bookings = Petsitting.where(petsitter_id: params[:id])
-
-    @booking_petowners = []
-
-    @bookings.each do |petowner|
-      @booking_petowners << Petowner.find_by(id: petowner.petowner_id)
-    end
-    
+    @bookings = Petsitting.where(petsitter_id: current_petsitter.id)
   end
 
 end
