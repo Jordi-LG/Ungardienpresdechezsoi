@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :petowners, only: [:show]
+  resources :petowners, only: [:show] do
+  end
   resources :associations, only: [:show]
   resources :petsittings, only: [:new, :create, :show]
 end
