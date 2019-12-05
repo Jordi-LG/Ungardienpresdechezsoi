@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'petsittings/new'
-  get 'petsittings/create'
   root to: 'staticpages#index'
   get 'team', to: 'staticpages#team'
   get 'contact', to: 'staticpages#contact'
@@ -16,4 +13,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :petowners, only: [:show]
   resources :associations, only: [:show]
+  resources :petsittings, only: [:new, :create, :show]
 end
