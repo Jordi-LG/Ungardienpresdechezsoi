@@ -4,7 +4,7 @@
 		<nav class="navbar navbar-expand-lg">
 			<div class="container">
 				<!-- Logo -->
-				<%= link_to petsitters_path do %>
+				<%= link_to root_path do %>
 					<!-- SVG Logo Start -->
 					<svg class="navbar-brand-item" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMid" width="325.656" height="100" viewBox="0 0 325.656 100">
 					  <defs>
@@ -29,62 +29,36 @@
 					<ul class="navbar-nav ml-auto">
 						<!-- Menu item 4 Portfolio-->
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pet sitters</a>
+							<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pet sitters</span>
 							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
 								<% if current_petsitter == nil%>
-								<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petsitter_registration_path %> </li>
-								<li class="dropdown-item"><%= link_to "Se connecter", new_petsitter_session_path %> </li>
-								<li class="dropdown-divider"></li>
+									<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petsitter_registration_path %> </li>
+									<li class="dropdown-divider"></li>
+									<li class="dropdown-item"><%= link_to "Se connecter", new_petsitter_session_path %> </li>
+								<%else%>
+									<li class="dropdown-item"><%= link_to "Mon profil", petsitter_path(current_petsitter.id) %></li>
+									<li class="dropdown-divider"></li>
+									<li class="dropdown-item"> <%= link_to "Se déconnecter", destroy_petsitter_session_path, method: :delete %></li>
 								<%end%>
-								<% if current_petsitter %>
-								<li class="dropdown-item"><%= link_to "Mon profil", petsitter_path(current_petsitter.id) %></li>
-								<li class="dropdown-item"> <%= link_to "Se déconnecter", destroy_petsitter_session_path, method: :delete %></li>
-								<%end%>	
-								<li class="dropdown-divider"></li>
-								<li class="dropdown-item"><%= link_to "Support", new_petowner_session_path %></li>	
-														
-
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vous cherchez un gardien ?</a>
+							<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vous cherchez un gardien ?</span>
 							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
-								<li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
-								<li class="dropdown-item"><%= link_to "Se connecter", new_petowner_session_path %> </li>
-								<li class="dropdown-divider"></li>
-								<li class="dropdown-item"><%= link_to "Support", new_petowner_session_path %></li>
+								<% if current_petowner == nil %>
+									<li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
+									<li class="dropdown-divider"></li>
+									<li class="dropdown-item"><%= link_to "Se connecter", new_petowner_session_path %> </li>
+								<% else %>
+									<li class="dropdown-item"><%= link_to "Mon profil", petowner_path(current_petowner.id) %> </li>
+									<li class="dropdown-divider"></li>
+									<li class="dropdown-item"><%= link_to "Se connecter", destroy_petsitter__session_path, method: :delete%> </li>
+								<% end %>
 								</ul>
 						</li>
 
 					</ul>
 				</div>
-				<!-- Main Menu End -->
-				<!-- Header Extras Start-->
-				<div class="navbar-nav">
-					<!-- extra item Search-->
-					<div class="nav-item search border-0 pl-3 pr-0 px-lg-2" id="search">
-						<a class="nav-link" data-toggle="collapse" href="#search-open"><i class="fa fa-search"> </i></a>
-					</div>
-				</div>
-				<!-- Header Extras End-->
 			</div>
 		</nav>
-		<!-- Search -->
-		<div class="top-search collapse bg-light" id="search-open" data-parent="#search">
-			<div class="container">
-				<div class="row position-relative">
-					<div class="col-md-8 mx-auto py-5">
-						<form>
-							<div class="input-group">
-								<input class="form-control border-radius-right-0 border-right-0" type="text" name="search" autofocus placeholder="What are you looking for?">
-								<button type="button" class="btn btn-grad border-radius-left-0 mb-0">Search</button>
-							</div>
-						</form>
-						<p class="small mt-2 mb-0"><strong>e.g.</strong>Discrict, Members </p>
-					</div>
-					<a class="position-absolute top-0 right-0 mt-3 mr-3" data-toggle="collapse" href="#search-open"><i class="fa fa-window-close"></i></a>
-				</div>
-			</div>
-		</div>
-		<!-- End Search -->
 	</header>
