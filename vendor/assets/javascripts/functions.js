@@ -35,6 +35,7 @@
             var $preloader = $('.preloader');
             $preloader.delay(200).fadeOut(600);
         }
+        $(document).on("turbolinks:load", preLoader);
     };
     // END: Preloader
 
@@ -235,7 +236,7 @@
                         $(".sticky-space").css({'height': sticky.height() + 'px'});
                     }
                     sticky.addClass('navbar-sticky-on');
-                } 
+                }
                 else {
                     $(".sticky-space").remove();
                     sticky.removeClass('navbar-sticky-on');
