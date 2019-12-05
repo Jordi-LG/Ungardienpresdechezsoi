@@ -1,2 +1,0 @@
-module PetsittingsHelper
-end
