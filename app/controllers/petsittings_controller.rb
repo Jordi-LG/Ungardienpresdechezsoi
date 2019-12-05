@@ -3,15 +3,12 @@ class PetsittingsController < ApplicationController
   end
 
   def create
-    @petsitting = Petsittings.new
-    puts "ù"*60
-    @petsitting.petowner_id = current_petowner.id
-    @petsitting.petsitter_id = params[:id]
-    @petsitting.save
-    puts "save"
+    Petsitting.create(petowner_id: current_petowner.id, petsitter_id: petsitter_choosen_id)
+  end
 
-    if @petsitters.save
-      redirect_to root_path
-    end
+
+  private
+  def petsitter_choosen_id
+    params.require(:id)
   end
 end
