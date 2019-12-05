@@ -5,45 +5,45 @@
 		<div class="swiper-container height-700-responsive swiper-arrow-hover swiper-slider-fade">
 			<div class="swiper-wrapper">
 				<!-- slide 1-->
-        <div class="swiper-slide bg-overlay-dark-2" style="background-image:url(https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); background-position: center top; background-size: cover;">
+				<div class="swiper-slide bg-overlay-dark-2" style="background-image:url(https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); background-position: center center; background-size: cover;">
+					<div class="container h-100">
+						<div class="row d-flex h-100">
+							<div class="col-lg-8 col-xl-6 mr-auto slider-content justify-content-center align-self-center align-items-start text-left">
+								<h3 class="animated fadeInUp dealy-1000 text-white display-8 display-md-7 alt-font font-italic mb-2 my-md-4">Vous partez en vacances ? <br> Vous cherchez un gardien pour vos animaux sur Montpellier ?</h3>
+								<h2 class="animated fadeInUp dealy-500 display-6 display-md-4 display-lg-3 font-weight-bold text-white">Découvrez&nbsples&nbspPet&nbspsitters <br> près de chez vous !</h2>
+								<div class="animated fadeInUp mt-3 dealy-1500">
+									<%= link_to petsitters_path do %>
+                    <span class="btn btn-grad btn-lg">Trouver un Pet Sitter !</span>
+                  <%end%>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- slide 2-->
+				<div class="swiper-slide bg-overlay-dark-2" style="background-image:url(https://images.unsplash.com/photo-1470390356535-d19bbf47bacb?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80); background-position: center center; background-size: cover;">
 					<div class="container h-100">
 						<div class="row d-flex h-100">
 							<div class="col-md-8 justify-content-center align-self-center align-items-start mx-auto">
-								<div class="slider-content text-center slider-content">
-                  <h2 class="animated fadeInUp dealy-500 display-8 display-md-7 text-white alt-font font-italic">Vous partez en vacances ? <br> Vous cherchez un <span class="text-primary">gardien</span> pour vos animaux sur Montpellier ?</h2>
-									<h2 class="animated fadeInUp dealy-1000 display-6 display-md-4 display-lg-3  text-white">Découvrez&nbsples&nbspPet&nbspsitters <br> près de chez vous !</h2>
+								<div class="slider-content text-center ">
+									<h3 class="animated fadeInUp dealy-500 display-8 display-md-7 text-white alt-font font-italic">Vous aimez les animaux ? <br> Vous habitez à Montpellier ?</h3>
+									<h2 class="animated fadeInUp dealy-1000 display-6 display-md-4 display-lg-3 font-weight-bold text-white">Devenez&nbspPet&nbspsitter&nbsp!</h2>
 									<div class="animated fadeInUp mt-3 dealy-1500">
-                    <%= link_to petsitters_path do %>
-                      <span class="btn btn-grad btn-lg">Trouver un Pet Sitter !</span>
-                    <%end%>
-								  </div>
-  							</div>
-  						</div>
-  					</div>
-  				</div>
-  			</div>
-		    <!-- slide 2-->
-        <div class="swiper-slide bg-overlay-dark-2" style="background-image:url(https://images.unsplash.com/photo-1470390356535-d19bbf47bacb?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80); background-position: center center; background-size: cover;">
-          <div class="container h-100">
-            <div class="row d-flex h-100">
-              <div class="col-lg-8 col-xl-6 mr-auto slider-content justify-content-center align-self-center align-items-start text-left">
-                <h4 class="animated fadeInUp dealy-1000 text-white display-8 display-md-7 alt-font font-italic mb-2 my-md-4">Vous aimez les animaux ? <br> Vous habitez à Montpellier ?</h4>
-                <h3 class="animated fadeInUp dealy-500 display-6 display-md-4 display-lg-3 text-white">Devenez&nbspPet&nbspsitter&nbsp!</h3>
-                <div class="animated fadeInUp mt-3 dealy-1500">
-                  <%= link_to new_petsitter_registration_path do %>
-                    <span class="btn btn-grad btn-lg">Déposer une demande</span>
-                  <%end%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-  			<!-- Slider buttons -->
-  			<div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
-  			<div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
-  			<div class="swiper-pagination"></div>
-  		</div>
-    </div>
+										<%= link_to new_petsitter_registration_path do %>
+                    	<span class="btn btn-grad btn-lg">Déposer une demande</span>
+                  	<%end%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Slider buttons -->
+			<div class="swiper-button-next"><i class="ti-angle-right"></i></div>
+			<div class="swiper-button-prev"><i class="ti-angle-left"></i></div>
+			<div class="swiper-pagination"></div>
+		</div>
 	</section>
 <!-- =======================
 	Index banner -->
@@ -54,12 +54,11 @@
   	<div class="container ">
   		<div class="row bg-white shadow m-0 p-2 p-lg-5 border-radius-3">
         <div class="row col-md-12 ">
-          <h2 class="col-md-12 mb-5 cd-headline zoom text-center">
+          <h2 class="col-md-12 mb-5 cd-headline zoom text-center ">
 					<span>Faire garder votre animal devient</span>
-					<span class="cd-words-wrapper pt-0 text-primary">
+					<span class="cd-words-wrapper pt-0">
 						<b class="is-visible">Simple</b>
 						<b>Rapide</b>
-						<b>Sécurisé</b>
 					</span>
 					</h2>
         </div>
