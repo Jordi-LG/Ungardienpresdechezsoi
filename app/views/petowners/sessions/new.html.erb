@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Un gardien pret de chez soi | Log in</title>
+  <title>Un gardien pret de chez soi | Connexion</title>
   <meta charset="utf-8">
 </head>
 
@@ -37,7 +37,7 @@
                 <div class="bdi">
                     <%= form_for resource, as: resource_name, url: session_path(resource_name),  html: { class: "form-signin mt-3" } do |f| %>
                       <h1 class="h3 mb-3 font-weight-normal text-center">Connexion</h1>
-
+                      <%= devise_error_messages! %>
                       <div class="form-group">
                         <%= f.label :email %><br />
                         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" , placeholder: "Entrer votre email"%>
