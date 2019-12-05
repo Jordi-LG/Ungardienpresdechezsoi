@@ -18,6 +18,7 @@
 
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav ml-auto">
+
 						<% if current_petowner == nil && current_petsitter == nil %>
 							<li class="nav-item dropdown">
 								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pet sitters</span>
@@ -44,13 +45,13 @@
 									<li class="dropdown-item"> <%= link_to "Se déconnecter", destroy_petsitter_session_path, method: :delete %></li>
 								</ul>
 							</li>
-						<% else %>
+						<% elsif current_petowner %>
 							<li class="nav-item dropdown">
 								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vous cherchez un gardien ?</span>
 								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
 									<li class="dropdown-item"><%= link_to "Mon profil", petowner_path(current_petowner.id) %> </li>
 									<li class="dropdown-divider"></li>
-									<li class="dropdown-item"><%= link_to "Se connecter", destroy_petsitter__session_path, method: :delete%> </li>
+									<li class="dropdown-item"><%= link_to "Se déconnecter", destroy_petowner_session_path, method: :delete%> </li>
 								</ul>
 							</li>
 						<% end %>
