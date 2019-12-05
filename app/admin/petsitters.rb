@@ -15,7 +15,7 @@ ActiveAdmin.register Petsitter do
     petsitter = Petsitter.find(params[:id])
     petsitter.update(account_validate: true)
     PetsitterMailer.validation_request(petsitter).deliver_now
-    redirect_to admin_petsitters_path
+    redirect_to admin_root_path
   end
 
   action_item :unvalidate, only: :show do
@@ -25,7 +25,7 @@ ActiveAdmin.register Petsitter do
     member_action :unvalidate, method: :put do
     petsitter = Petsitter.find(params[:id])
     petsitter.update(account_validate: false)
-    redirect_to admin_petsitters_path
+    redirect_to admin_root_path
   end
 
   index do
