@@ -1,5 +1,5 @@
 
-<br><br><br><br><br>
+<br><br>
 <% if current_petsitter.id == @petsitter.id %>
   <% if current_petsitter.account_validate == false %>
   	<div class="col-sm-12">
@@ -42,6 +42,7 @@
           <%else%>
         <%end%></span>
       </div>
+
       <div class="col-md-7 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
         <h3><strong>— Bienvenu sur ma page !</strong></h3>
         <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
@@ -57,13 +58,9 @@
             <b>Chats</b>
             <b>Tarentules</b>
           </span>
-        </h5>
+          </h5>
         <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petsitter.describe %></p>
-        <% if current_petsitter == nil %>
-          <%= link_to root_path do %>
-            <button class="btn btn-grad mr-4 mb-3 mb-sm-0 float-right"><i class="fa fa-address-book"></i>Réservez ici !</button>
-            <% end %>
-          <% end %>
+        <a class="btn btn-grad mr-4 mb-3 mb-sm-0 float-right" href="#">Réserver ici !</a>
         <span>
           <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
           <%= form_tag petsitter_avatars_path(@petsitter), multipart: true do %>
@@ -71,21 +68,18 @@
             <%= submit_tag "mettre à jour" %>
           <% end %>
         </span>
-          <% if current_petsitter.id == @petsitter.id %>
-            <%= link_to edit_petsitter_registration_path do %>
-              <button type="button" class="btn btn-grad mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
-            <% end %>
+
+          <%= link_to edit_petsitter_registration_path do %>
+          <button type="button" class="btn btn-grad mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
           <% end %>
       </div>
     </div>
 
   </div>
   <div class="d-flex justify-content-center mt-3">
-
     <%= link_to petsitters_path do%>
       <span class="btn btn-button btn-dark"><i class="fa fa-angle-double-left"></i> RETOUR</span>
     <% end %>
   </div>
 </section>
-<br><br>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
