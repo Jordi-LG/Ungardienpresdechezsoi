@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'petsittings/new'
+  get 'petsittings/create'
   root to: 'staticpages#index'
   get 'team', to: 'staticpages#team'
   get 'contact', to: 'staticpages#contact'
