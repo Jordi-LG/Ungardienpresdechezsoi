@@ -52,6 +52,7 @@
 								<li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
 								<li class="dropdown-item"><%= link_to "Se connecter", new_petowner_session_path %> </li>
 								<li class="dropdown-divider"></li>
+								<li class="dropdown-item"> <%= link_to "Se déconnecter", destroy_petowner_session_path, method: :delete %></li>
 								<li class="dropdown-item"><%= link_to "Support", new_petowner_session_path %></li>
 								</ul>
 						</li>

@@ -1,3 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Un gardien pres de chez soi | Inscription</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <!-- =======================
+    Sign up -->
+  <section class="p-0 d-flex align-items-center">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left -->
+        <div class="col-12 col-md-5 col-lg-4 d-md-flex align-items-center bg-grad h-sm-110-vh">
+          <div class="w-100 p-3 p-lg-5 all-text-white">
+            <div class="justify-content-center align-self-center">
+              <div class="logo-auth; mb-4">
+              <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
+              <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+              </div>
+            </div>
+            <h3 class="font-weight-light">Connectez-vous pour gérer votre profil de membre</h3>
+            <ul class="list-group list-group-borderless mt-4">
+              <li class="list-group-item text-white"><i class="fa fa-check"></i>Gérer votre profil</li>
+              <li class="list-group-item text-white"><i class="fa fa-check"></i>Voir les profils des pet sitters</li>
+              <li class="list-group-item text-white"><i class="fa fa-check"></i>Et voir vos demandes de garde pour vos animaux</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Right -->
+        <div class="col-12 col-md-7 col-xl-8 mx-auto my-5">
+          <div class="row h-100">
+            <div class="col-12 col-md-10 col-lg-5 text-left mx-auto d-flex align-items-center">
+              <div class="w-100">
+                <div class="bdi">
+                <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+                  <h1 class="h3 mb-3 font-weight-normal text-center">Inscription</h1>
+                  <%= devise_error_messages! %>
+                  <div class="form-group">
+                    <%= f.label :first_name, "Nom de famille" %>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "Entrer votre nom" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :last_name, "Prénom" %>
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "Entrer votre prénom" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :describe, "Description" %>
+                    <%= f.text_field :describe, autofocus: true, autocomplete: "descrition", class: "form-control", placeholder: "Entrer votre description" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :age, "Age" %>
+                    <%= f.number_field :age, in: 15...100, autofocus: true, autocomplete: "age", class: "form-control", placeholder: "Entrer votre age" %>
+                  </div>    
+                  <div class="form-group">
+                    <%= f.label :phone_number, "Numéro de téléphone" %>
+                    <%= f.phone_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", placeholder: "Entrer votre numéro de téléphone" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :district_id, "Avez-vous un jardin" %><br/>
+                    <%= f.select :district_id,[["Aiguelongues", 1], ['Arceaux', 2], ['Boutonnet', 3], ['Croix-d argent', 4], ['Ecusson', 5], ['Euromédecine', 6], ['Figuerolles', 7], ['Gambetta', 8], ['Hauts de Massane', 9], ['Hopitaux Facultés', 10], ['Malbosc', 11],['Nouveau Saint-Roch', 12], ['Odysseum', 13], ['Port Marianne', 14], ['Tournezy', 15]]%>
+                  </div> 
+                  <div class="form-group">
+                    <%= f.label :email, "Email" %>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" , placeholder: "Entrer votre email" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> caractères minimum)</em>
+                    <% end %>
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" , placeholder: "Entrer votre mot de passe"%>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :password_confirmation %>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" , placeholder: "Confirmer votre mot de passe" %>
+                  </div>
+                  <div class="actions mt-5">
+                    <%= f.submit "Inscription", class: "btn btn-lg btn-primary btn-block" %>
+                  </div>
+                <% end %>
+                <%= render "petowners/shared/links" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
+
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -26,4 +123,4 @@
   </div>
 <% end %>
 
-<%= render "petowners/shared/links" %>
+
