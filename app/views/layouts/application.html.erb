@@ -13,9 +13,12 @@
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <% if show_navbar %>
+      <%= render "layouts/navbar" %>
+    <% end %>
     <%= yield %>
   </body>
-  <%= render "layouts/footer" %>
-
+  <% if show_footer %>
+    <%= render "layouts/footer" %>
+  <% end %>
 </html>
