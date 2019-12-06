@@ -40,10 +40,12 @@
               <%= link_to petsitter_path(petsitter.id) do %>
                 <span class="btn btn-button btn-info"><i class="fa fa-bullseye"></i>Son profil !</span>
               <% end %>
-              <%= form_with(url: petsittings_path, method: 'post') do%>
-                <%= hidden_field_tag(name='id', petsitter.id) %>
-                <%= button_tag(type: "submit", class: "btn btn-default") do %>
-                  <span class="btn btn-info"><i class="fa fa-envelope-o"></i>Contacter</span>
+              <% if current_petsitter == nil %>
+                <%= form_with(url: petsittings_path, method: 'post') do%>
+                  <%= hidden_field_tag(name='id', petsitter.id) %>
+                  <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                    <span class="btn btn-info"><i class="fa fa-envelope-o"></i>Contacter</span>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>

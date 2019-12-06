@@ -9,7 +9,9 @@ Banner innerpage -->
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item active">
-              <a href="#"><i class="fa fa-5x fa-list "></i> Retour Index </a>
+              <%= link_to root_path do %>
+                <i class="fa fa-5x fa-list "></i> Retour Index
+              <% end %>
             </li>
           </ol>
         </nav>
@@ -143,10 +145,10 @@ CONTACT-->
           <div class="col-12 col-sm-4 text-center text-sm-right">
             <ul class="social-icons si-colored-bg light">
               <%= link_to  @association.facebook_url do %>
-                <li class="social-icons-item social-facebook mb-0"><span class="social-icons-link"><i class="fab fa-facebook-f"></i></span></li>
+                <li class="social-icons-item social-facebook mb-0"><span class="social-icons-link"><i class="fa fa-facebook-f fa-lg"></i></span></li>
               <%end%>
               <%= mail_to @association.email do %>
-                <li class="social-icons-item social-youtube mb-0"><span class="social-icons-link"><i class="fas fa-at"></i></span></li>
+                <li class="social-icons-item social-youtube mb-0"><span class="social-icons-link"><i class="fa fa-at fa-lg"></i></span></li>
               <%end%>
             </ul>
           </div>
