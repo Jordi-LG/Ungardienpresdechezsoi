@@ -83,73 +83,74 @@
   </div>
 </section>
 
-
-<section class="mt-6">
-  <div class="container bg-primary mt-6 pt-4">
-    <div class="row">
-			<div class="col-sm-12 col-md-12 ">
-				<ul class="nav nav-tabs tab-with-center-icon justify-content-center nav-justified">
-					<li class="nav-item">
-						<a class="nav-link active" data-toggle="tab" href="#tab-8-1"> <i class="ti-panel"></i> Mes infos personelles </a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-palette"></i> Mes reservations </a>
-					</li>
-				</ul>
-				<div class="tab-content">
-					<div class="tab-pane show active" id="tab-8-1">
-            <h3>blabla bla bla</h3>
-            <span class="pt-0 h5">
-              <p><strong>Nom :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
-              <p><strong>Email :</strong><%= @petsitter.email%></p>
-              <p><strong>Numéro de téléphone :</strong><%= @petsitter.phone_number%></p>
-            </span>
-            <div>
-              <%= link_to edit_petsitter_registration_path do %>
-              <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
-              <% end %>
-            </div>
-					</div>
-					<div class="tab-pane" id="tab-8-2">
-            <div class="col-sm-12 mb-5">
-    					<div class="table-responsive-sm">
-    						<table class="table table-hover">
-    							<thead>
-    								<tr class="text-white">
-    									<th scope="col">#</th>
-    									<th scope="col">Nom</th>
-    									<th scope="col">Prénom</th>
-                      <th scope="col">Mail</th>
-    									<th scope="col">Réservation</th>
-                      <th scope="col"> </th>
-    								</tr>
-    							</thead>
-    							<tbody>
-                    <!-- methode my_petowners => helper -->
-                    <% @bookings.each do |booking|%>
-        								<tr>
-        									<th scope="row"> <%= booking.petowner_id%> </th>
-        									<td>Pout ! <%= my_petowners(booking.petowner_id).first_name%> </td>
-        									<td>Poutout ! <%= my_petowners(booking.petowner_id).last_name%> </td>
-        									<td><%= my_petowners(booking.petowner_id).email%> </td>
-                          <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-                          <td>
-                            <%= link_to nil do %>
-                              <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
-                            <%end%>
-                          </td>
-        								</tr>
-                    <% end %>
-    							</tbody>
-    						</table>
-    					</div>
-    				</div>
-					</div>
-				</div>
-			</div>
+<% if current_petsitter.id == @petsitter.id %>
+  <section class="mt-6">
+    <div class="container bg-primary mt-6 pt-4">
+      <div class="row">
+  			<div class="col-sm-12 col-md-12 ">
+  				<ul class="nav nav-tabs tab-with-center-icon justify-content-center nav-justified">
+  					<li class="nav-item">
+  						<a class="nav-link active" data-toggle="tab" href="#tab-8-1"> <i class="ti-panel"></i> Mes infos personelles </a>
+  					</li>
+  					<li class="nav-item">
+  						<a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-palette"></i> Mes reservations </a>
+  					</li>
+  				</ul>
+  				<div class="tab-content">
+  					<div class="tab-pane show active" id="tab-8-1">
+              <h3>blabla bla bla</h3>
+              <span class="pt-0 h5">
+                <p><strong>Nom :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
+                <p><strong>Email :</strong><%= @petsitter.email%></p>
+                <p><strong>Numéro de téléphone :</strong><%= @petsitter.phone_number%></p>
+              </span>
+              <div>
+                <%= link_to edit_petsitter_registration_path do %>
+                <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
+                <% end %>
+              </div>
+  					</div>
+  					<div class="tab-pane" id="tab-8-2">
+              <div class="col-sm-12 mb-5">
+      					<div class="table-responsive-sm">
+      						<table class="table table-hover">
+      							<thead>
+      								<tr class="text-white">
+      									<th scope="col">#</th>
+      									<th scope="col">Nom</th>
+      									<th scope="col">Prénom</th>
+                        <th scope="col">Mail</th>
+      									<th scope="col">Réservation</th>
+                        <th scope="col"> </th>
+      								</tr>
+      							</thead>
+      							<tbody>
+                      <!-- methode my_petowners => helper -->
+                      <% @bookings.each do |booking|%>
+          								<tr>
+          									<th scope="row"> <%= booking.petowner_id%> </th>
+          									<td>Pout ! <%= my_petowners(booking.petowner_id).first_name%> </td>
+          									<td>Poutout ! <%= my_petowners(booking.petowner_id).last_name%> </td>
+          									<td><%= my_petowners(booking.petowner_id).email%> </td>
+                            <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+                            <td>
+                              <%= link_to nil do %>
+                                <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
+                              <%end%>
+                            </td>
+          								</tr>
+                      <% end %>
+      							</tbody>
+      						</table>
+      					</div>
+      				</div>
+  					</div>
+  				</div>
+  			</div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+<%end%>
 
 <section>
   <div class="d-flex justify-content-center mt-3">
