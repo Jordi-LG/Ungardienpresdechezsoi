@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ungardienpretdechezsoi</title>
+    <title>Ungardienpresdechezsoi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CPlayfair+Display:400,400i,700,700i%7CRoboto:400,400i,500,700" rel="stylesheet">
+        <link rel="icon" type="image/png" href="https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/cat(1).png" />
   </head>
 
   <body>
+    <% if show_navbar %>
+      <%= render "layouts/navbar" %>
+    <% end %>
     <%= yield %>
   </body>
+  <% if show_footer %>
+    <%= render "layouts/footer" %>
+  <% end %>
 </html>

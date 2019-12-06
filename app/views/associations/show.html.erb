@@ -1,0 +1,165 @@
+<body>
+<!-- =======================
+Banner innerpage -->
+<div class="innerpage-banner center bg-overlay-dark-7 py-7" style="background:url(https://images.pexels.com/photos/787876/pexels-photo-787876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat; background-size:cover; background-position: center center;">
+  <div class="container">
+    <div class="row all-text-white">
+      <div class="col-md-12 align-self-center">
+        <h1 class="innerpage-title">Les associations</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active">
+              <%= link_to root_path do %>
+                <i class="fa fa-5x fa-list "></i> Retour Index
+              <% end %>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- =======================
+Banner innerpage -->
+
+<!-- =======================
+NAME ASSOCIATION -->
+<div class="left pt-7">
+  <div class="container">
+    <div class="row all-text-white">
+      <div class="col-md-12 align-self-center">
+        <h1 class="text-dark display-3 font-weight-bold">Les Pattounes du Coeur <%= @association.name %></h1>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- =======================
+NAME ASSOCIATION -->
+
+<!-- =======================
+ABOUT  -->
+<section>
+  <div class="container h-100">
+    <div class="row">
+      <div class="col-md-12 col-lg-6 align-self-center ">
+        <%= image_tag "associations/logo_pattounes.jpg", class: 'rounded', style: 'height:50%;width:50%;'  %>
+      </div>
+      <div class="col-md-10 col-lg-6 mx-md-auto align-self-center ">
+        <div class="title text-left">
+          <h2>Nous sommes une <span class="text-primary">Association à but non lucratif</span> qui s'occupe de chats errants à Montpellier.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =======================
+ABOUT -->
+
+<!-- =======================
+PRESENTATION -->
+<section>
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h2>Notre association a été créée en
+          <span class="text-primary">
+            <%= @association.date_of_birth %>
+          </span></h2>
+        <h4 class="lead"> TEST ici describe de l'asso : <%= @association.describe %>
+          </h4>
+        <h4 class="lead">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam vitae justo semper commodo. Donec interdum lorem felis, et vestibulum nisi sodales a. Suspendisse bibendum tortor ut libero pulvinar porta. Proin magna turpis, dignissim vel nisl nec, cursus placerat mauris. In hac habitasse platea dictumst. Aenean luctus dignissim felis et finibus. Morbi consectetur tristique luctus. Integer ultricies luctus accumsan. Sed pellentesque varius facilisis. Proin arcu velit, hendrerit vitae tempor ut, sollicitudin nec arcu. Quisque quis nibh sit amet mauris sagittis pulvinar. Ut et neque quis quam molestie mollis.
+        </h4>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =======================
+PRESENTATION -->
+
+
+<!-- =======================
+OBJECTIVES & PARTICIPATION  -->
+<section>
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <!-- left side -->
+      <div class="col-md-6">
+        <div class="row mt-4 mt-md-0">
+          <div class="col-5 offset-1 px-2 mb-3 align-self-end">
+            <div data-wow-duration="0.8s" data-wow-delay="0.4s">
+              <%= image_tag "associations/cat1.jpeg", class: 'border-radius-3 wow fadeInUp', style: 'height:80%;width:70%;'  %>
+            </div>
+          </div>
+          <div class="col-6 px-2 mb-3">
+            <div class="border-radius-3 wow fadeInLeft bg-grad p-2 p-sm-3 p-lg-4 p-xl-5 all-text-white" data-wow-duration="0.8s" data-wow-delay="0s">
+              <h4 class="font-weight-bold"> Stérilisation, identification et nourrissage des chats dits "errants"</h4>
+            </div>
+          </div>
+          <div class="col-7 px-2 mb-3">
+            <div class="border-radius-3 wow fadeInLeft bg-grad p-2 p-sm-3 p-lg-4 p-xl-5 all-text-white" data-wow-duration="0.8s" data-wow-delay="0s">
+              <h3 class="font-weight-bold"> Placement en famille d'accueil des chats recceuillis dans la rue</h3>
+            </div>
+          </div>
+          <div class="col-5 align-self-start pl-2 mb-3">
+            <div data-wow-duration="0.8s" data-wow-delay="0.4s">
+              <%= image_tag "associations/cat2.jpeg", class: 'border-radius-3 wow fadeInUp', style: 'height:80%;width:80%;'  %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- right side -->
+      <div class="col-md-6 pl-lg-5">
+        <blockquote class="blockquote primary-line">
+          <h3 class="mb-2 "> "On n'a pas deux coeurs, l'un pour l'homme, l'autre pour l'animal. On a un coeur ou on n'en a pas."</h3>
+          <cite>– Alphonse De Lamartine</cite>
+        </blockquote>
+        <div class="d-flex float-right m-4">
+          <h2>Vous voulez <span class="text-primary"> participer</span> à notre action ? </h2>
+        </div>
+        <div class="d-flex float-right">
+          <%= link_to @association.donation_url do %>
+            <span class="btn btn-grad btn-lg">Aidez l'association !</span>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =======================
+OBJECTIVES & PARTICIPATION  -->
+
+
+<!-- =======================
+CONTACT-->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- tag and share -->
+        <div class="divider mb-4"></div>
+        <div class="row">
+          <div class="tags col-12 col-sm-8 text-center text-sm-left">
+              <h3 class="text-muted">Nous contacter </h3>
+          </div>
+          <div class="col-12 col-sm-4 text-center text-sm-right">
+            <ul class="social-icons si-colored-bg light">
+              <%= link_to  @association.facebook_url do %>
+                <li class="social-icons-item social-facebook mb-0"><span class="social-icons-link"><i class="fa fa-facebook-f fa-lg"></i></span></li>
+              <%end%>
+              <%= mail_to @association.email do %>
+                <li class="social-icons-item social-youtube mb-0"><span class="social-icons-link"><i class="fa fa-at fa-lg"></i></span></li>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+        <div class="divider mt-4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =======================
+CONTACT -->
+
+
+</body>
