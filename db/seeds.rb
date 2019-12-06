@@ -15,7 +15,7 @@ Petowner.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('petowners')
 
 1.times do
-  Association.create(name: Faker::Beer.name, describe: Faker::Lorem.sentence(word_count: 20), date_of_birth: Faker::Date.in_date_period(year: 2016), email: Faker::Internet.email, facebook_url: 'google.com', donation_url: 'leetchi.com')
+  Association.create(name: Faker::Beer.name, describe: Faker::Lorem.sentence(word_count: 20), date_of_birth: Faker::Date.in_date_period(year: 2016), email: Faker::Internet.email, facebook_url: 'https://www.google.com/', donation_url: 'https://www.leetchi.com/')
 end
 
 puts "Association created"
