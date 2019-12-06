@@ -13,6 +13,13 @@ class Petowner < ApplicationRecord
 
   after_create :welcome_send
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :describe, presence: true, length: { in: 20..1000 }
+  validates :age, presence: true
+  validates :phone_number, presence: true
+
+
   def welcome_send
     PetownerMailer.welcome_email(self).deliver_now
   end

@@ -17,11 +17,10 @@ class Petsitter < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :describe, presence: true
+  validates :describe, presence: true, length: { in: 20..1000 }
   validates :age, presence: true
   validates :phone_number, presence: true
   validates :living_space, presence: true
-  validates :price, presence: true
 
   def account_validate_false
   	@petsitter = Petsitter.last
