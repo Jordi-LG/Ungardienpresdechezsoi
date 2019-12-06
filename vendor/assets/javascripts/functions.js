@@ -187,6 +187,8 @@
                 }
             });
         }
+        $(document).on("turbolinks:load", swiperSlider);
+
     };
     // END: Swiper Slider
 
