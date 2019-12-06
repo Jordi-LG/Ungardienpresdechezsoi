@@ -6,9 +6,8 @@
 </head>
 
 <body>
-
-  <!-- =======================
-    Sign up -->
+  <div class="preloader">
+  </div>
   <section class="p-0 d-flex align-items-center">
     <div class="container-fluid">
       <div class="row">
@@ -16,10 +15,12 @@
         <div class="col-12 col-md-5 col-lg-4 d-md-flex align-items-center bg-grad h-sm-110-vh">
           <div class="w-100 p-3 p-lg-5 all-text-white">
             <div class="justify-content-center align-self-center">
-              <div class="logo-auth; mb-4">
-              <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
-              <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+            <%= link_to root_path do %>
+              <div class="logo-auth; m-4">
+                <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
+                <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
               </div>
+              <%end%>
             </div>
             <h3 class="font-weight-light">Connectez-vous pour gérer votre profil de membre</h3>
             <ul class="list-group list-group-borderless mt-4">
@@ -27,6 +28,7 @@
               <li class="list-group-item text-white"><i class="fa fa-check"></i>Voir les profils des pet sitters</li>
               <li class="list-group-item text-white"><i class="fa fa-check"></i>Et voir vos demandes de garde pour vos animaux</li>
             </ul>
+
           </div>
         </div>
         <!-- Right -->
@@ -59,9 +61,9 @@
                     <%= f.phone_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", placeholder: "Entrer votre numéro de téléphone" %>
                   </div>
                   <div class="form-group">
-                    <%= f.label :district_id, "Dans quel quartier habitez-vous ?" %><br/>
-                    <%= f.select :district_id,[["Aiguelongues", 1], ['Arceaux', 2], ['Boutonnet', 3], ['Croix-d argent', 4], ['Ecusson', 5], ['Euromédecine', 6], ['Figuerolles', 7], ['Gambetta', 8], ['Hauts de Massane', 9], ['Hopitaux Facultés', 10], ['Malbosc', 11],['Nouveau Saint-Roch', 12], ['Odysseum', 13], ['Port Marianne', 14], ['Tournezy', 15]]%>
-                  </div>
+                    <%= f.label :district_id, "Quel est votre quartier ?" %><br/>
+                    <%= f.select :district_id,[["Aiguelongues", 1], ['Arceaux', 2], ['Boutonnet', 3], ['Croix-d argent', 4], ['Ecusson', 5], ['Euromédecine', 6], ['Figuerolles', 7], ['Gambetta', 8], ['Hauts de Massane', 9], ['Hopitaux Facultés', 10], ['Malbosc', 11],['Nouveau Saint-Roch', 12], ['Odysseum', 13], ['Port Marianne', 14], ['Tournezy', 15]], {}, { :class => 'form-control form-control-lg' }%>
+                  </div> 
                   <div class="form-group">
                     <%= f.label :email, "Email" %>
                     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" , placeholder: "Entrer votre email" %>
@@ -82,7 +84,8 @@
                   </div>
                 <% end %>
                 <%= render "petowners/shared/links" %>
-                <%= link_to "Back", :back %>
+                <%= link_to "Page précédente", :back %> <br/>
+                <%= link_to "Page d'accueil", root_path %>
                 </div>
               </div>
             </div>
