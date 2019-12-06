@@ -16,10 +16,12 @@
         <div class="col-12 col-md-5 col-lg-4 d-md-flex align-items-center bg-grad h-sm-110-vh">
           <div class="w-100 p-3 p-lg-5 all-text-white">
             <div class="justify-content-center align-self-center">
-              <div class="logo-auth; mb-4">
-              <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
-              <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+              <%= link_to root_path do %>
+              <div class="logo-auth; m-4">
+                <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
+                <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
               </div>
+              <%end%>
             </div>
             <h3 class="font-weight-light">Connectez-vous pour gérer votre profil de pet sitter</h3>
             <ul class="list-group list-group-borderless mt-4">
@@ -101,7 +103,8 @@
 
                 <center><p>Vous souhaitez nous quitter? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete, class: "btn btn-lg btn-danger btn-block" %></p></center>
 
-                <%= link_to "Back", :back %>
+                <%= link_to "Page précédente", :back %> <br/>
+                <%= link_to "Page d'accueil", root_path %>
                 </div>
               </div>
             </div>
