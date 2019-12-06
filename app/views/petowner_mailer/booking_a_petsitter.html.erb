@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @petowner.last_name %></h1>
+    <h1>Salut <%= @petsitting.petowner.last_name %></h1>
     <p>
-      Ta demande auprès du petsitter <%=@petsitter.last_name %> lui a bien été envoyé.
+      Ta demande auprès du petsitter <%=@petsitting.petsitter.last_name %> lui a bien été envoyé.
     </p>
     <p> 
       Lorsqu'il aura répondu a ta demande, nous t'enverrons par email sa réponse.
