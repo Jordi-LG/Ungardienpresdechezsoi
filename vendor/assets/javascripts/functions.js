@@ -263,6 +263,8 @@
 	            speed: 0.5
 	        });
 	    }
+      $(document).on("turbolinks:load", jarallax);
+
     };
     // END: Parallax
 
