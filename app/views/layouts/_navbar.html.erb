@@ -1,4 +1,4 @@
-	<header class="navbar-transparent navbar-sticky navbar-primary">
+	<header class="header-static navbar-sticky navbar-light">
 		<!-- Logo Nav Start -->
 		<nav class="navbar navbar-expand-lg">
 			<div class="container">
@@ -6,7 +6,7 @@
 				<%= link_to root_path do %>
 				<div class="logo-auth; m-4">
 				<%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
-				<%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+				<%= image_tag "logos/TitreGardienNoir.png", :style => "height: 55px;"%>
 				</div>
 					<!-- SVG Logo End -->
 				<% end %>
@@ -21,7 +21,7 @@
 
 						<% if current_petowner == nil && current_petsitter == nil %>
 							<li class="nav-item dropdown">
-								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pet sitters</span>
+								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style ="color:black;"><strong>Pet sitters</strong></span>
 								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
 									<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petsitter_registration_path %> </li>
 									<li class="dropdown-divider"></li>
@@ -29,8 +29,10 @@
 								</ul>
 							</li>
 							<li class="nav-item dropdown">
-								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vous cherchez un gardien ?</span>
+								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style ="color:black;"><strong>Vous cherchez un gardien ?</strong></span>
 								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
+									<li class="dropdown-item"><%= link_to "Faire une recherche", petsitters_path %> </li>
+									<li class="dropdown-divider"></li>
 									<li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
 									<li class="dropdown-divider"></li>
 									<li class="dropdown-item"><%= link_to "Se connecter", new_petowner_session_path %> </li>
@@ -38,7 +40,7 @@
 							</li>
 						<% elsif current_petsitter%>
 							<li class="nav-item dropdown">
-								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Mon compte</strong></span>
+								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style ="color:black;"><strong>Mon compte</strong></span>
 								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
 									<li class="dropdown-item"><%= link_to "Mon profil", petsitter_path(current_petsitter.id) %></li>
 									<li class="dropdown-divider"></li>
@@ -46,8 +48,9 @@
 								</ul>
 							</li>
 						<% elsif current_petowner %>
+							<li class="nav-link"> <%= link_to "Faire une recherche", petsitters_path %> </li>
 							<li class="nav-item dropdown">
-								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vous cherchez un gardien ?</span>
+								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style ="color:black;"><strong>Mon compte</strong></span>
 								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
 									<li class="dropdown-item"><%= link_to "Mon profil", petowner_path(current_petowner.id) %> </li>
 									<li class="dropdown-divider"></li>
