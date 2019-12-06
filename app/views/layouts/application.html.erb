@@ -16,9 +16,6 @@
     <% if show_navbar %>
       <%= render "layouts/navbar" %>
     <% end %>
-    <% flash.each do |key, value| %>
-       <div class="alert alert-danger" role="alert"<%= key %>"><%= value %></div>
-     <% end %>
     <%= yield %>
   </body>
   <% if show_footer %>
