@@ -53,15 +53,15 @@
                   <div class="form-group">
                     <%= f.label :age, "Age" %>
                     <%= f.number_field :age, in: 15...100, autofocus: true, autocomplete: "age", class: "form-control", placeholder: "Entrer votre age" %>
-                  </div>    
+                  </div>
                   <div class="form-group">
                     <%= f.label :phone_number, "Numéro de téléphone" %>
                     <%= f.phone_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", placeholder: "Entrer votre numéro de téléphone" %>
                   </div>
                   <div class="form-group">
-                    <%= f.label :district_id, "Quel est votre quartier ?" %><br/>
+                    <%= f.label :district_id, "Dans quel quartier habitez-vous ?" %><br/>
                     <%= f.select :district_id,[["Aiguelongues", 1], ['Arceaux', 2], ['Boutonnet', 3], ['Croix-d argent', 4], ['Ecusson', 5], ['Euromédecine', 6], ['Figuerolles', 7], ['Gambetta', 8], ['Hauts de Massane', 9], ['Hopitaux Facultés', 10], ['Malbosc', 11],['Nouveau Saint-Roch', 12], ['Odysseum', 13], ['Port Marianne', 14], ['Tournezy', 15]]%>
-                  </div> 
+                  </div>
                   <div class="form-group">
                     <%= f.label :email, "Email" %>
                     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" , placeholder: "Entrer votre email" %>
