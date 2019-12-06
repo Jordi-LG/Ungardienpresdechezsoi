@@ -9,7 +9,7 @@ class Petsitting < ApplicationRecord
     @petsitting.validate_petsitter = false
     @petsitting.validate_petowner = false
     PetownerMailer.booking_a_petsitter(@petsitting).deliver_now
-    PetsitterMailer.reservation_request(@petsitting).deliver_now
+    PetsitterMailer.booking_request(@petsitting).deliver_now
     @petsitting.save
   end
 end
