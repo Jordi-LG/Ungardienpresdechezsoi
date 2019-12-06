@@ -10,7 +10,7 @@ class PetsitterMailer < ApplicationMailer
   def validation_request(petsitter)
     @petsitter = petsitter
     @url  = 'https://ungardienpresdechezsoi.herokuapp.com'
-    mail(to: @petsitting.petsitter.email, subject: 'Validation de votre demande de création')
+    mail(to: @petsitter.email, subject: 'Validation de votre demande de création')
   end
 
   def booking_request(petsitting)
