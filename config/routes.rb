@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
 
 
-  devise_for :petsitters,  path: 'petsitters', controllers: { registrations: "petsitters/registrations", passwords: "petsitters/passwords"}
-  devise_for :petowners, path: 'petowners', controllers: { registrations: "petowners/registrations", passwords: "petowners/passwords"}
+  devise_for :petsitters,  path: 'petsitters', controllers: { sessions: "petsitters/sessions", registrations: "petsitters/registrations", passwords: "petsitters/passwords"}
+  devise_for :petowners, path: 'petowners', controllers: { sessions: "petowners/sessions", registrations: "petowners/registrations", passwords: "petowners/passwords"}
   resources :petsitters, only: [:show, :index] do
     resources :avatars, only: [:create]
   end
