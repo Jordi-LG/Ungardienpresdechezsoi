@@ -242,6 +242,7 @@
                     sticky.removeClass('navbar-sticky-on');
             }
         });
+        $(document).on("turbolinks:load", stickyHeader);
     };
     // END: Sticky Header
 
