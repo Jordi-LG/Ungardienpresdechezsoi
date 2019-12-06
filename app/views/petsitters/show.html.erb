@@ -60,7 +60,7 @@
       </h5>
       <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petsitter.describe %></p>
       <% if current_petowner %>
-        <%= form_with(url: petsittings_path, method: 'post') do%>
+        <%= form_with(url: petsittings_path, method: 'post', local: true) do%>
           <%= hidden_field_tag(name='id', @petsitter.id) %>
           <%= button_tag(type: "submit", class: "btn btn-default") do %>
             <span class="btn btn-info"><i class="fa fa-envelope-o"></i>Contacter</span>
@@ -145,7 +145,7 @@
                               <%end%>
             								</tr>
                         <% end %>
-                      <% end %>                      
+                      <% end %>
       							</tbody>
       						</table>
       					</div>
