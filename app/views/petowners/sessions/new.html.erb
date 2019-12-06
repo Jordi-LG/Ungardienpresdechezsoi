@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Un gardien pret de chez soi | Connexion</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div class="preloader">
+    <img src="<%= asset_path('logos/LogoGardien') %>" alt="Pre-loader">
+  </div>
+  <section class="p-0 d-flex align-items-center">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left -->
+        <div class="col-12 col-md-5 col-lg-4 d-md-flex align-items-center bg-grad h-sm-100-vh">
+          <div class="w-100 p-3 p-lg-5 all-text-white">
+            <div class="justify-content-center align-self-center">
+
+              <div class="logo-auth; mb-4">
+                <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
+                <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+              </div>
+
+            </div>
+            <h3 class="font-weight-light">Connectez-vous pour gérer votre profil de membre</h3>
+            <ul class="list-group list-group-borderless mt-4">
+              <li class="list-group-item text-white"><i class="fa fa-check"></i>Gérer votre profil</li>
+              <li class="list-group-item text-white"><i class="fa fa-check"></i>Voir les profils des pet sitters</li>
+              <li class="list-group-item text-white"><i class="fa fa-check"></i>Et voir vos demandes de garde pour vos animaux</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-7 col-xl-8 mx-auto my-5">
+          <div class="row h-100">
+            <div class="col-12 col-md-10 col-lg-5 text-left mx-auto d-flex align-items-center">
+              <div class="w-100">
+                <div class="bdi">
+                  <%= form_for resource, as: resource_name, url: session_path(resource_name),  html: { class: "form-signin mt-3" } do |f| %>
+                    <h1 class="h3 mb-3 font-weight-normal text-center">Connexion</h1>
+                    <div class="form-group">
+                      <%= f.label :email %><br />
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" , placeholder: "Entrer votre email"%>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :password %><br />
+                      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Entrer votre mot de passe" %>
+                    </div>
+
+                    <% if devise_mapping.rememberable? %>
+                      <div class="field">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                      </div>
+                    <% end %>
+
+                      <div class="actions mt-5">
+                        <%= f.submit "Connexion", class: "btn btn-lg btn-primary btn-block"%>
+                      </div>
+                  <% end %>
+                  <br>
+                  <%= render "petowners/shared/links" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
