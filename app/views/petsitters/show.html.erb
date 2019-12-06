@@ -125,16 +125,19 @@
                       <!-- methode my_petowners => helper -->
                       <% @bookings.each do |booking|%>
           								<tr>
-          									<th scope="row"> <%= booking.petowner_id%> </th>
-          									<td>Pout ! <%= my_petowners(booking.petowner_id).first_name%> </td>
-          									<td>Poutout ! <%= my_petowners(booking.petowner_id).last_name%> </td>
-          									<td><%= my_petowners(booking.petowner_id).email%> </td>
-                            <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-                            <td>
-                              <%= link_to nil do %>
-                                <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
-                              <%end%>
-                            </td>
+                            <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+                            <% if petsitter_exists(booking.id) == false %>
+            									<th scope="row"> <%= booking.petowner_id%> </th>
+            									<td>Pout ! <%= my_petowners(booking.petowner_id).first_name%> </td>
+            									<td>Poutout ! <%= my_petowners(booking.petowner_id).last_name%> </td>
+            									<td><%= my_petowners(booking.petowner_id).email%> </td>
+                              <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+                              <td>
+                                <%= link_to nil do %>
+                                  <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
+                                <%end%>
+                              </td>
+                            <%end%>
           								</tr>
                       <% end %>
       							</tbody>
