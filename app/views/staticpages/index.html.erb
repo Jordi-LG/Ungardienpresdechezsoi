@@ -168,7 +168,7 @@
 						<h5 class="feature-box-desc text-white">De nombreuses associations sur Montpellier vous permettrons ....</h5>
 						<h3 style="color:tomato">MVP : lien vers la page 1 associations <br> => index à venir</h3>
             <div class=" d-flex float-right">
-              <%= link_to association_path(1) do %>
+              <%= link_to association_path(1), data: { turbolinks: false } do %>
                 <span class="btn btn-primary mb-0 mt-3" style="color:tomato">PAGE 1</span> 	<!-- Plus d'infos -->
               <%end%>
             </div>
