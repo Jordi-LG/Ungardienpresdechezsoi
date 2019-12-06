@@ -1,5 +1,6 @@
 
 <section>
+  <% if current_petsitter %>
   <% if current_petsitter.id == @petsitter.id %>
     <% if current_petsitter.account_validate == false %>
     	<div class="col-sm-12">
@@ -9,6 +10,7 @@
       </div>
     <% end %>
     <% end %>
+  <% end %>
 </section>
 <section class="p-0 position-relative mb-6">
   <div class="container-fluid d-flex h-100 w-100">
@@ -67,6 +69,7 @@
           <% end %>
         <% end %>
       <% end %>
+      <% if current_petsitter %>
       <% if current_petsitter.id == @petsitter.id %>
         <span>
           <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
@@ -76,10 +79,12 @@
           <% end %>
         </span>
       <% end %>
+      <% end %>
     </div>
   </div>
 </section>
 
+<% if current_petsitter %>
 <% if current_petsitter.id == @petsitter.id %>
   <section class="mt-6">
     <div class="container bg-primary mt-6 pt-4">
@@ -151,7 +156,7 @@
     </div>
   </section>
 <%end%>
-
+<% end %>
 <section>
   <div class="d-flex justify-content-center mt-3">
     <%= link_to petsitters_path do%>
