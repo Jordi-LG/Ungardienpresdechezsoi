@@ -165,10 +165,11 @@
 					<div class=" bg-dark feature-box f-style-2 h-100 icon-grad rounded">
 						<div class="feature-box-icon"><i class="fa fa-paw"></i></div>
 						<h3 class="feature-box-title text-white">Pas encore d'animaux à vous ? <br> Vous pouvez adopter !</h3>
-						<h5 class="feature-box-desc text-white">De nombreuses associations sur Montpellier vous permettrons .... <br>Blabla d'intro sur les assos !</h5>
+						<h5 class="feature-box-desc text-white">De nombreuses associations sur Montpellier vous permettrons ....</h5>
+						<h3 style="color:tomato">MVP : lien vers la page 1 associations <br> => index à venir</h3>
             <div class=" d-flex float-right">
-              <%= link_to nil do %>
-                <span class="btn btn-primary mb-0 mt-3">Plus d'infos</span>
+              <%= link_to association_path(1) do %>
+                <span class="btn btn-primary mb-0 mt-3" style="color:tomato">PAGE 1</span> 	<!-- Plus d'infos -->
               <%end%>
             </div>
 					</div>
