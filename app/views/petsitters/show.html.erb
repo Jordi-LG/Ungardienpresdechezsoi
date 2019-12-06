@@ -126,6 +126,9 @@
       							</thead>
       							<tbody>
                       <!-- methode my_petowners => helper -->
+                      <% if @bookings.nil? %>
+                      <% else %>
+                      <% end %>
                       <% @bookings.each do |booking|%>
           								<tr>
                             <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
