@@ -12,7 +12,8 @@ module ApplicationHelper
     !current_page?(controller: 'petsitters/registrations', action: 'new') &&
     !current_page?(controller: 'petsitters/sessions', action: 'new') &&
     !current_page?(controller: 'petsitters/registrations', action: 'edit') &&
-    !current_page?(controller: 'petsitters/passwords', action: 'new')
+    !current_page?(controller: 'petsitters/passwords', action: 'new') 
+
 
   end
 
