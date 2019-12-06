@@ -7,7 +7,10 @@ class PetsittersController < ApplicationController
 
   def show
     @petsitter = Petsitter.find(params[:id])
-    @bookings = Petsitting.where(petsitter_id: current_petsitter.id)
+    
+    if current_petsitter
+      @bookings = Petsitting.where(petsitter_id: current_petsitter.id)
+    end
   end
 
 private
