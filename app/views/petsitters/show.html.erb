@@ -1,5 +1,6 @@
 
 <section>
+  <% if current_petsitter %>
   <% if current_petsitter.id == @petsitter.id %>
     <% if current_petsitter.account_validate == false %>
     	<div class="col-sm-12">
@@ -9,6 +10,7 @@
       </div>
     <% end %>
     <% end %>
+  <% end %>
 </section>
 <section class="p-0 position-relative mb-6">
   <div class="container-fluid d-flex h-100 w-100">
@@ -47,8 +49,6 @@
       <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
         <span class="pt-0 h5">
           <p><strong>Nom :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
-          <p><strong>Email :</strong><%= @petsitter.email%></p>
-          <p><strong>Numéro de téléphone :</strong><%= @petsitter.phone_number%></p>
         </span>
         <span class="pt-0">Je vous propose de garder</span><br>
         <span class="pt-0">vos :</span>
@@ -67,6 +67,7 @@
           <% end %>
         <% end %>
       <% end %>
+      <% if current_petsitter %>
       <% if current_petsitter.id == @petsitter.id %>
         <span>
           <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
@@ -76,10 +77,12 @@
           <% end %>
         </span>
       <% end %>
+      <% end %>
     </div>
   </div>
 </section>
 
+<% if current_petsitter %>
 <% if current_petsitter.id == @petsitter.id %>
   <section class="mt-6">
     <div class="container bg-primary mt-6 pt-4">
@@ -123,23 +126,26 @@
       							</thead>
       							<tbody>
                       <!-- methode my_petowners => helper -->
-                      <% @bookings.each do |booking|%>
-          								<tr>
-                            <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-                            <% if petsitter_exists(booking.id) == false %>
-            									<th scope="row"> <%= booking.petowner_id%> </th>
-            									<td>Pout ! <%= my_petowners(booking.petowner_id).first_name%> </td>
-            									<td>Poutout ! <%= my_petowners(booking.petowner_id).last_name%> </td>
-            									<td><%= my_petowners(booking.petowner_id).email%> </td>
-                              <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-                              <td>
-                                <%= link_to nil do %>
-                                  <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
-                                <%end%>
-                              </td>
-                            <%end%>
-          								</tr>
-                      <% end %>
+                      <% if @bookings.nil? %>
+                      <% else %>
+                        <% @bookings.each do |booking|%>
+            								<tr>
+                              <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+                              <% if petsitter_exists(booking.id) == false %>
+              									<th scope="row"> <%= booking.petowner_id%> </th>
+              									<td>Pout ! <%= my_petowners(booking.petowner_id).first_name%> </td>
+              									<td>Poutout ! <%= my_petowners(booking.petowner_id).last_name%> </td>
+              									<td><%= my_petowners(booking.petowner_id).email%> </td>
+                                <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+                                <td>
+                                  <%= link_to nil do %>
+                                    <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
+                                  <%end%>
+                                </td>
+                              <%end%>
+            								</tr>
+                        <% end %>
+                      <% end %>                      
       							</tbody>
       						</table>
       					</div>
@@ -151,7 +157,7 @@
     </div>
   </section>
 <%end%>
-
+<% end %>
 <section>
   <div class="d-flex justify-content-center mt-3">
     <%= link_to petsitters_path do%>

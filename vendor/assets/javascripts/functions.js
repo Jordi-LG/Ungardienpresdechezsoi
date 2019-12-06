@@ -187,6 +187,8 @@
                 }
             });
         }
+        $(document).on("turbolinks:load", swiperSlider);
+
     };
     // END: Swiper Slider
 
@@ -242,6 +244,7 @@
                     sticky.removeClass('navbar-sticky-on');
             }
         });
+        $(document).on("turbolinks:load", stickyHeader);
     };
     // END: Sticky Header
 
@@ -262,6 +265,8 @@
 	            speed: 0.5
 	        });
 	    }
+      $(document).on("turbolinks:load", jarallax);
+
     };
     // END: Parallax
 
