@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @petsitter.last_name %></h1>
+    <h1>Salut <%= @petsitting.petsitter.last_name %></h1>
     <p>
-      Tu as une réservation de <%= @petowner.last_name%> qui attend une réponse de ta part.
+      Tu as une réservation de <%= @petsitting.petowner.last_name%> qui attend une réponse de ta part.
     </p>
     <p>
       Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
