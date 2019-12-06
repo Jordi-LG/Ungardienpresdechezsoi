@@ -13,7 +13,6 @@
 //= require jquery3
 //= require jquery_ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery.min
 //= require popper.min
 //= require bootstrap.min

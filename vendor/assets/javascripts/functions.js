@@ -35,7 +35,6 @@
             var $preloader = $('.preloader');
             $preloader.delay(200).fadeOut(600);
         }
-        $(document).on("turbolinks:load", preLoader);
     };
     // END: Preloader
 
@@ -187,8 +186,6 @@
                 }
             });
         }
-        $(document).on("turbolinks:load", swiperSlider);
-
     };
     // END: Swiper Slider
 
@@ -244,7 +241,6 @@
                     sticky.removeClass('navbar-sticky-on');
             }
         });
-        $(document).on("turbolinks:load", stickyHeader);
     };
     // END: Sticky Header
 
@@ -265,7 +261,6 @@
 	            speed: 0.5
 	        });
 	    }
-      $(document).on("turbolinks:load", jarallax);
 
     };
     // END: Parallax

@@ -1,4 +1,4 @@
-jQuery(document).on('turbolinks:load', function(){
+jQuery(document).ready(function($){
 	//set animation timing
 	var animationDelay = 2500,
 		//loading bar effect
