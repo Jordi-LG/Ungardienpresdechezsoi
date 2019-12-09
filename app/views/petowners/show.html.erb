@@ -1,9 +1,34 @@
 <section class="p-0 position-relative mt-6">
-  <div class="container-fluid d-flex h-100 w-100">
-    <div class="row justify-content-between align-items-center w-100">
+  <div class="d-flex h-100 w-100">
+    <div class="row justify-content-around align-items-center w-100">
+
+
+      <!-- banner Content -->
+      <div class="col-md-7 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
+        <h3><strong>— Mon profil !</strong></h3>
+        <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
+          <span class="pt-0 h5">
+            <p><strong>Nom : </strong><%= @petowner.first_name %> <%= @petowner.last_name %></p>
+            <p><strong>Email : </strong><%= @petowner.email%></p>
+            <p><strong>Numéro de téléphone : </strong><%= @petowner.phone_number%></p>
+            <p><strong>Animal : </strong><%= @petowner.phone_number%></p>
+          </span>
+          </h5>
+        <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petowner.describe %></p>
+        <%= link_to petsitters_path do%>
+          <span class="btn btn-button btn-grad float-right"><i class="fa fa-address-book fa-2x"></i>Faire une réservation</span>
+        <% end %>
+        <span>
+
+          <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
+        </span>
+                      <%= link_to edit_petowner_registration_path do %>
+              <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
+              <% end %>
+      </div>
       <!-- banner image -->
       <div class="col-md-5 d-none d-md-block p-0">
-        <figure class="w-100 ie-height-900">
+        <figure class="w-100 ie-height-900" style="transform: rotate(180deg);margin-left:3%">
           <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 881.8 917.9" style="enable-background:new 0 0 881.8 917.9;" xml:space="preserve">
             <path id="XMLID_6_" fill="url(#BgGradient)" d="M0,39.6c0,0,171-121.5,264,64.5s508.5,178.5,508.5,178.5s240-6-6,228S816,755.1,657,830.1
               s-309,106.5-445.5,76.5C75,876.6,0,717.6,0,717.6V39.6z"/>
@@ -24,29 +49,6 @@
               </g>
             </svg>
         </figure>
-      </div>
-
-      <!-- banner Content -->
-      <div class="col-md-7 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
-        <h3><strong>— Mon profil !</strong></h3>
-        <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
-          <span class="pt-0 h5">
-            <p><strong>Nom : </strong><%= @petowner.first_name %> <%= @petowner.last_name %></p>
-            <p><strong>Email : </strong><%= @petowner.email%></p>
-            <p><strong>Numéro de téléphone : </strong><%= @petowner.phone_number%></p>
-            <p><strong>Animal : </strong><%= @petowner.phone_number%></p>
-          </span>
-          </h5>
-        <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petowner.describe %></p>
-        <%= link_to petsitters_path do%>
-          <span class="btn btn-button btn-grad float-right"><i class="fa fa-address-book fa-2x"></i>Faire une réservation</span>
-        <% end %>
-        <span>
-          <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
-        </span>
-                      <%= link_to edit_petowner_registration_path do %>
-              <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
-              <% end %>
       </div>
     </div>
   </div>
