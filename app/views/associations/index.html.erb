@@ -1,30 +1,27 @@
 <body>
 <!-- =======================
 Banner -->
-  <section>
-    <div class="innerpage-banner center bg-overlay-dark-7 py-7" style="background:url(https://images.pexels.com/photos/787876/pexels-photo-787876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat; background-size:cover; background-position: center center;">
-      <div class="container">
-        <div class="row all-text-white">
-          <div class="col-md-12 align-self-center">
-            <h1 class="innerpage-title">Les associations</h1>
-          </div>
+  <div class="innerpage-banner center bg-overlay-dark-7 py-7" style="background:url(https://images.pexels.com/photos/787876/pexels-photo-787876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat; background-size:cover; background-position: center center;">
+    <div class="container">
+      <div class="row all-text-white">
+        <div class="col-md-12 align-self-center">
+          <h1 class="innerpage-title">Les associations d'aide aux animaux <br> sur Montpellier</h1>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 <!-- =======================
 Banner -->
 
 <!-- =======================
 Title -->
-  <section class="service pt-0">
+  <section class="service pt-0 mt-6">
   	<div class="container">
   		<div class="row">
   			<div class="col-12 col-lg-8 mx-auto">
   				<div class="title text-center">
   					<span class="pre-title"></span>
-  					<h2>Les associations d'aide aux animaux de compagnie sur Montpellier</h2>
-  					<h4 class=" pre-title">Pour trouver des informations utiles concernant vos animaux de compagnies ou alors un nouveau compagnon à 4 pattes à adopter ! </h4>
+  					<h3 class=" pre-title">Pour trouver des informations utiles concernant vos animaux de compagnies ou alors un nouveau compagnon à 4 pattes à adopter ! </h3>
   				</div>
   			</div>
   		</div>
@@ -49,7 +46,6 @@ Title -->
                       <%= image_tag "associations/logo_pattounes.jpg", class: 'rounded'%>
                     </div>
                     <div class="portfolio-card-footer">
-                      <span class="full-screen" href="assets/images/associations/logo_pattounes.jpg" data-fancybox="portfolio" data-caption="Fly in time"><i class="ti-fullscreen"></i></span>
                       <h5 class="text-muted"> <%= asso.name%> </h5>
                     </div>
                   </div>
@@ -64,5 +60,19 @@ Title -->
   </section>
   <!-- =======================
   Portfolio -->
+
+  <!-- =======================
+  Btn back index -->
+  <section class="mb-6">
+    <div class="d-flex justify-content-center mt-3">
+      <%= link_to root_path do %>
+      <div class="btn btn-button btn-dark">
+        <i class="fa fa-angle-double-left"></i> Retour Accueil
+      </div>
+      <% end %>
+    </div>
+  </section>
+  <!-- =======================
+  Btn back index -->
 
 </body>
