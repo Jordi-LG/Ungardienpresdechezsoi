@@ -4,12 +4,15 @@ class Petowner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :avatar
+  has_many_attached :pets_album
   has_many :pets
 
   has_many :petsittings
   has_many :petsitters, through: :petsittings
 
   belongs_to :district
+  has_many :comments
 
   after_create :welcome_send
 
