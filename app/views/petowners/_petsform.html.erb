@@ -1,0 +1,28 @@
+<div class="modal-body"> 
+  <%= form_with model: Pet.create, local: true do |form| %>
+    <div class="form-group">
+      <label>Son nom :</label>
+      <%= form.text_field :name, class: "form-control", placeholder: "Son nom"%>
+    </div>
+    <div class="form-group">
+      <label>Son année de naissance :</label>
+      <%= form.number_field :birthday, class: "form-control", placeholder: "âge ?"%>
+    </div>
+    <div class="form-group">
+			<label>Avez vous un chat ou un chien ?</label>
+      <%= form.select :pet_type,[["Chat"], ['Chien']], {}, {:class => 'custom-select select-big mb-3'}%>
+		</div>
+    <div class="form-group">
+			<label>Quel est le sexe de votre animal ?</label>
+      <%= form.select :sexe,[["Mâle"], ['Femelle']], {}, {:class => 'custom-select select-big mb-3'}%>
+		</div>
+    <div class="form-group">
+      <label>Votre animal est-il stérilisé ?</label>
+      <%= form.select :sterilized,[['oui',true], ['non',false]], {}, {:class => 'custom-select select-big mb-3'}%>
+    </div>
+    <div class="modal-footer">
+      <p><button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button></p>
+      <p><%= form.submit "Sauvegarder", class: "btn btn-primary" %></p>
+    </div>
+  <% end %>
+</div>
