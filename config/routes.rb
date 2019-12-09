@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   resources :associations, only: [:show, :index]
   resources :petsittings, only: [:new, :create, :show]
   resources :pets, only: [:new, :create]
-  
+
+  resources :comments, only: [:new, :create, :index]
 end
