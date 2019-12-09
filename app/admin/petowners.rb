@@ -5,7 +5,7 @@ ActiveAdmin.register Petowner do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :first_name, :last_name, :describe, :age, :phone_number, :district_id
+  permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :first_name, :last_name, :describe, :age, :phone_number, :district_id
   #
   # or
   #

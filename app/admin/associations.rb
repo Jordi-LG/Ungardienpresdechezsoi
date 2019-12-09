@@ -5,7 +5,7 @@ ActiveAdmin.register Association do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :describe, :date_of_birth, :email, :facebook_url, :donation_url
+  permit_params :name, :describe, :date_of_birth, :email, :facebook_url, :donation_url
   #
   # or
   #

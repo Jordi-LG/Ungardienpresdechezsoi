@@ -5,7 +5,7 @@ ActiveAdmin.register Petsitting do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :validate_petsitter, :validate_petowner, :petowner_id, :petsitter_id
+  permit_params :validate_petsitter, :validate_petowner, :petowner_id, :petsitter_id
   #
   # or
   #
