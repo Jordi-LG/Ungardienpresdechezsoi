@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   get 'team', to: 'staticpages#team'
   get 'contact', to: 'staticpages#contact'
 
-
-
   devise_for :petsitters,  path: 'petsitters', controllers: { sessions: "petsitters/sessions", registrations: "petsitters/registrations", passwords: "petsitters/passwords"}
   devise_for :petowners, path: 'petowners', controllers: { sessions: "petowners/sessions", registrations: "petowners/registrations", passwords: "petowners/passwords"}
   resources :petsitters, only: [:show, :index] do
@@ -18,4 +16,5 @@ Rails.application.routes.draw do
   end
   resources :associations, only: [:show, :index]
   resources :petsittings, only: [:new, :create, :show]
+  resources :pets, only: [:new, :create]
 end
