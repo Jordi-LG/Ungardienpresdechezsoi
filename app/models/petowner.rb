@@ -10,6 +10,7 @@ class Petowner < ApplicationRecord
   has_many :petsitters, through: :petsittings
 
   belongs_to :district
+  belongs_to :comment
 
   after_create :welcome_send
 
