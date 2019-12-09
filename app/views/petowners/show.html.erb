@@ -1,10 +1,28 @@
+<% if flash[:alert] %>
+<div class="row">
+	<div class="col-sm-12">
+    <div class="alert alert-primary" role="alert">
+      <h4><strong>Féficitations ! </strong> <%= flash[:alert]%></h4>
+		</div>
+  </div>
+</div>
+<%end%>
+
 <section class="p-0 position-relative mt-6">
   <div class="d-flex h-100 w-100">
     <div class="row justify-content-around align-items-center w-100">
 
       <!-- banner Content -->
       <div class="col-md-7 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
-        <h3><strong>— Mon profil !</strong></h3>
+        <div class="left pt-2">
+          <div class="container">
+            <div class="row all-text-white">
+              <div class="col-md-12 align-self-center">
+                <h3 class="text-dark display-3 font-weight-bold">Mon Profil</h3>
+              </div>
+            </div>
+          </div>
+        </div>
         <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
           <span class="pt-0 h5">
             <p><strong>Nom : </strong><%= @petowner.first_name %> <%= @petowner.last_name %></p>
@@ -73,53 +91,80 @@
 
 <!-- ===========
 pets section -->
-<section>
-  <% if current_petowner %>
-    <div class="row mt-7">
-			<div class="col-md-6 align-self-center text-center">
-				<!-- Button of modal -->
-				<button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
-					Ajouter un animal à votre profil
-				</button>
-				<!-- Modal -->
-				<div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concenrant votre animal.</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-                <%= form_with model: Pet.new do |form| %>
-                  <%= form.text_field :name %>
-                  <%= form.submit "Sauvegarder"%>
-                <% end %>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-								<button type="button" class="btn btn-primary">Sauvegarder</button>
-							</div>
-						</div>
-					</div>
-				</div>
-  		</div>
-  	</div>
-  <%end%>
-</section>
+<section class="p-0 position-relative mt-6" >
+  <div class="d-flex">
+    <div class="row justify-content-around align-items-center w-100">
+      <div class="col-md-12 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
+        <div class="left pt-2">
+          <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+              <h3 class="text-dark display-3 font-weight-bold">Mes animaux</h3>
+            </div>
+          </div>
+        </div>
 
-<section>
-  <% if current_petowner %>
-    <div class="container p-2" style="border:8px dotted green">
-      <p>=== Ajoutez des photos de vos animaux ! ===</p>
-      <h6>Elles seront visible par les petsitters que vous contactez </h6>
-      <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-        <%= file_field_tag :pets_album %>
-        <%= submit_tag "Mettre à jour" %>
-      <%end%>
+        <% if current_petowner %>
+    			<div class="col-md-12 align-self-center text-center" >
+    				<!-- Button of modal -->
+    				<button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
+    					Ajouter le profil d'un animal
+    				</button>
+    				<div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+    					<div class="modal-dialog modal-dialog-centered" role="document">
+    						<div class="modal-content">
+    							<div class="modal-header">
+    								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concenrant votre animal.</h5>
+    								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    								<span aria-hidden="true">&times;</span>
+    								</button>
+    							</div>
+    							<%= render "petowners/petsform"%>
+    						</div>
+    					</div>
+    				</div>
+      		</div>
+          <div class="col-md-12 p-2" style="border:4px dotted green">
+            <p>=== Ajoutez des photos de vos animaux ! ===</p>
+            <h6>Elles seront visible par les petsitters que vous contactez </h6>
+            <h2 style="color : tomato;">Ici FORM - TAG</h2>
+            <div class="col">
+              <h2 style="color : tomato;">Ici "if macin.attached?"</h2>
+            </div>
+          </div>
+        <% end %>
+
+        <!-- =======================
+        Portfolio -->
+        <div class="col-md-12 align-self-center text-center">
+          <div class="portfolio-wrap grid items-4 items-padding">
+            <% @pets.each do |pet| %>
+              <!-- pets-card -->
+              <div class="portfolio-card isotope-item">
+                <div class="portfolio-card-body">
+                  <div class="portfolio-card-header">
+                    <%= image_tag "associations/logo_pattounes.jpg", class: 'rounded'%>
+										<p style="color : tomato;">Ici "if macin.attached?"</p>
+                  </div>
+                  <div class="portfolio-card-footer">
+                    <span class="full-screen" href="assets/images/associations/logo_pattounes.jpg" data-fancybox="portfolio" data-caption="Fly in time"><i class="ti-fullscreen"></i></span>
+                    <h5 class="text-muted"> <%= pet.name%> (<%= pet.birth_year%> ans),</h5>
+                    <p>est un <%= pet.pet_type%> <%= pet.sex%> et
+                      <% if pet.sterilized == true %>
+                        stérélisé(e)
+                      <%else%>
+                      <%end%>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          </div>
+        </div>
+        <!-- =======================
+        Portfolio -->
+      </div>
     </div>
-  <% end %>
+  </div>
 </section>
   <!-- ===========
   pets section -->
