@@ -7,6 +7,9 @@ class PetsittersController < ApplicationController
 
   def show
     @petsitter = Petsitter.find(params[:id])
+    #METHODE DANS LE MODEL COMMENTS
+    @comments = Comment.all_comments_petsitter(params[:id])
+    
     rescue ActiveRecord::RecordNotFound
       redirect_to root_url
       flash[:success] = "La page que vous avez demandé n'existe pas !"
@@ -22,5 +25,5 @@ private
     if current_petsitter.nil? & current_petowner.nil?
       redirect_to new_petowner_session_path
     end
-  end  
+  end
 end

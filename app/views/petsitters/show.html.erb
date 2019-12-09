@@ -180,7 +180,7 @@
   <%= render 'comments/form_comments' %>
 </div>
 <%= render 'layouts/flash_alert' %>
-<%= render 'comments/index_comments' %>
+<%= render partial: 'comments/index_comments', object: @comments %>
 
 <section>
   <div class="d-flex justify-content-center mt-3">
