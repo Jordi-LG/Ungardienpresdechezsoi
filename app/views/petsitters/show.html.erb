@@ -64,6 +64,22 @@
           <%= hidden_field_tag(name='id', @petsitter.id) %>
           <%= button_tag(type: "submit", class: "btn btn-default") do %>
             <span class="btn btn-info"><i class="fa fa-envelope-o"></i>Contacter</span>
+            <span>
+              <%= form_with(url: charges_path) do %>
+                <% if flash[:error].present? %>
+                  <div id="error_explanation">
+                    <p><%= flash[:error] %></p>
+                  </div>
+                <% end %>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="Validez votre achat de <%= %> 5 € !"
+                    data-amount= 500
+                    data-locale="auto"
+                    data-label="Commander">
+                </script>
+              <% end %>
+            </span>
           <% end %>
         <% end %>
       <% end %>
@@ -80,6 +96,7 @@
       <% end %>
     </div>
   </div>
+
 </section>
 
 <% if current_petsitter %>
