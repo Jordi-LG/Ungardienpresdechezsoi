@@ -77,3 +77,5 @@ gem "table_print", "~> 1.5"
 gem "aws-sdk-s3", require: false
 
 gem 'activeadmin'
+
+gem 'stripe'
