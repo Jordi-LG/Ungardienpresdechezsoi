@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_162455) do
     t.bigint "petowner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "sexe"
+    t.string "sex"
     t.index ["petowner_id"], name: "index_pets_on_petowner_id"
   end
 
