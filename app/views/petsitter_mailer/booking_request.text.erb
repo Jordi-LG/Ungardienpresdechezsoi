@@ -3,6 +3,8 @@ Salut <%= @petsitting.petsitter.last_name %>
 
 Tu as une réservation de <%= @petsitting.petowner.last_name%> qui attend une réponse de ta part.
 
-Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+Tu devrais recevoir prochainement un email de sa part avec sa ou ses dates de reservation.
 
-À très vite sur ungardienpresdechezsoi.herokuapp.com ! 
+Pour accéder à ton espace client, connecte-toi via : <%= link_to "Mon compte", petsitter_url(@petsitting.petsitter.id) %>
+
+À très vite sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %> ! 

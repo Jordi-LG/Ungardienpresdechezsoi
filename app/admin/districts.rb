@@ -5,7 +5,7 @@ ActiveAdmin.register District do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :district_name
+  permit_params :district_name
   #
   # or
   #

@@ -5,12 +5,12 @@ Banner innerpage -->
   <div class="container">
     <div class="row all-text-white">
       <div class="col-md-12 align-self-center">
-        <h1 class="innerpage-title">Les associations</h1>
+        <h1 class="innerpage-title">Fiches associations</h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item active">
-              <%= link_to root_path do %>
-                <i class="fa fa-5x fa-list "></i> Retour Index
+              <%= link_to associations_path do %>
+                <i class="fa fa-5x fa-list "></i> Retour Associations
               <% end %>
             </li>
           </ol>
@@ -132,7 +132,7 @@ OBJECTIVES & PARTICIPATION  -->
 
 <!-- =======================
 CONTACT-->
-<section>
+<section class="mb-6">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -161,5 +161,18 @@ CONTACT-->
 <!-- =======================
 CONTACT -->
 
+<!-- =======================
+Btn back index -->
+<section class="mb-6">
+  <div class="d-flex justify-content-center mt-3">
+    <%= link_to root_path do %>
+    <div class="btn btn-button btn-dark">
+      <i class="fa fa-angle-double-left"></i> Retour Accueil
+    </div>
+    <% end %>
+  </div>
+</section>
+<!-- =======================
+Btn back index -->
 
 </body>

@@ -5,7 +5,7 @@ ActiveAdmin.register Pet do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :birthday, :type, :sterilized, :petowner_id
+  permit_params :name, :birthday, :type, :sterilized, :petowner_id
   #
   # or
   #
