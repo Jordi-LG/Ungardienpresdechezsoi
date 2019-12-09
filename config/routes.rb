@@ -17,5 +17,5 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
   resources :associations, only: [:show, :index]
-  resources :petsittings, only: [:new, :create, :show]
+  resources :petsittings, only: [:new, :create, :show, :update]
 end
