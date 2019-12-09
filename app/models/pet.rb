@@ -5,4 +5,6 @@ class Pet < ApplicationRecord
   validates :pet_type, presence: true
   validates :sterilized, presence: true
   validates :sex, presence: true
+
+  has_one_attached :avatar
 end
