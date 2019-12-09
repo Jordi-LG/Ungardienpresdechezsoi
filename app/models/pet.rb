@@ -4,5 +4,5 @@ class Pet < ApplicationRecord
   validates :name, presence: true
   validates :pet_type, presence: true
   validates :sterilized, presence: true
-  validates :sexe, presence: true
+  validates :sex, presence: true
 end
