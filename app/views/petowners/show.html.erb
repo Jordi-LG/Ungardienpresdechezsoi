@@ -2,7 +2,6 @@
   <div class="d-flex h-100 w-100">
     <div class="row justify-content-around align-items-center w-100">
 
-
       <!-- banner Content -->
       <div class="col-md-7 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
         <h3><strong>— Mon profil !</strong></h3>
@@ -33,20 +32,12 @@
                     <%= submit_tag "Mettre à jour" %>
                   <%end%>
                 <%end%>
-            <% end %>
-            <div class="container p-2" style="border:8px dotted green">
-              <p>=== Ajoutez des photos de vos animaux ! ===</p>
-              <h6>Elles seront visible par les petsitters que vous contactez </h6>
-              <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-                <%= file_field_tag :pets_album %>
-                <%= submit_tag "Mettre à jour" %>
-              <%end%>
-            </div>
-          </span>
-        <% end %>
-                      <%= link_to edit_petowner_registration_path do %>
-              <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
-              <% end %>
+                <% end %>
+              </span>
+          <% end %>
+          <%= link_to edit_petowner_registration_path do %>
+            <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
+          <% end %>
       </div>
       <!-- banner image -->
       <div class="col-md-5 d-none d-md-block p-0 ">
@@ -79,6 +70,59 @@
     </div>
   </div>
 </section>
+
+<!-- ===========
+pets section -->
+<section>
+  <% if current_petowner %>
+    <div class="row mt-7">
+			<div class="col-md-6 align-self-center text-center">
+				<!-- Button of modal -->
+				<button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
+					Ajouter un animal à votre profil
+				</button>
+				<!-- Modal -->
+				<div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concenrant votre animal.</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+                <%= form_with model: Pet.new do |form| %>
+                  <%= form.text_field :name %>
+                  <%= form.submit "Sauvegarder"%>
+                <% end %>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+								<button type="button" class="btn btn-primary">Sauvegarder</button>
+							</div>
+						</div>
+					</div>
+				</div>
+  		</div>
+  	</div>
+  <%end%>
+</section>
+
+<section>
+  <% if current_petowner %>
+    <div class="container p-2" style="border:8px dotted green">
+      <p>=== Ajoutez des photos de vos animaux ! ===</p>
+      <h6>Elles seront visible par les petsitters que vous contactez </h6>
+      <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
+        <%= file_field_tag :pets_album %>
+        <%= submit_tag "Mettre à jour" %>
+      <%end%>
+    </div>
+  <% end %>
+</section>
+  <!-- ===========
+  pets section -->
 
 <% if current_petowner.id == @petowner.id %>
   <section>
