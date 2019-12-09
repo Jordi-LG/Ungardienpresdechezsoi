@@ -1,8 +1,8 @@
 Salut <%= @petowner.last_name %> et bienvenue chez nous !
 ==========================================================
 
-Tu t'es inscrit sur ungardienpresdechezsoi.herokuapp.com en utilisant l'e-mail suivant : <%= @petowner.email %>.
+Tu t'es inscrit sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %> en utilisant l'e-mail suivant : <%= @petowner.email %>.
 
-Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+Pour accéder à ton espace client, connecte-toi via : <%= link_to "Mon compte", petowner_url(@petowner.id) %>
 
-À très vite sur ungardienpresdechezsoi.herokuapp.com !
+À très vite sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %> !
