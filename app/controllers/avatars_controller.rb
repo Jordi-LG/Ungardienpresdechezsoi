@@ -8,10 +8,11 @@ class AvatarsController < ApplicationController
     else
       @petowner = Petowner.find(params[:petowner_id])
       @petowner.avatar.attach(params[:avatar])
+      # @pet.avatar.attach(params[:avatar])
       redirect_to(petowner_path(@petowner))
     end
 
   end
 
-  
+
 end

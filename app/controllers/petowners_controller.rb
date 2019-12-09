@@ -3,6 +3,7 @@ class PetownersController < ApplicationController
 
   def show
     @petowner = Petowner.find(params[:id])
+    @pets = pets_of_current_petowner
 
     if current_petowner
       @bookings_petowner = Petsitting.where(petowner_id: current_petowner.id)
@@ -11,6 +12,10 @@ class PetownersController < ApplicationController
   end
 
 private
+
+  def pets_of_current_petowner
+    Pet.where(petowner_id: current_petowner.id)
+  end
 
   def signed_in
     if current_petsitter.nil? & current_petsitter

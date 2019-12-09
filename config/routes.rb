@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   end
   resources :associations, only: [:show, :index]
   resources :petsittings, only: [:new, :create, :show]
+  resources :pets, only: [:new, :create]
+  
 end
