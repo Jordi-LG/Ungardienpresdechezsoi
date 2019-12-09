@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'team', to: 'staticpages#team'
   get 'contact', to: 'staticpages#contact'
 
-
+  resources :charges
 
   devise_for :petsitters,  path: 'petsitters', controllers: { sessions: "petsitters/sessions", registrations: "petsitters/registrations", passwords: "petsitters/passwords"}
   devise_for :petowners, path: 'petowners', controllers: { sessions: "petowners/sessions", registrations: "petowners/registrations", passwords: "petowners/passwords"}
