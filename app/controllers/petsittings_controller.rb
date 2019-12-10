@@ -17,11 +17,27 @@ class PetsittingsController < ApplicationController
 
   end
 
+  def update
+    @booking = Petsitting.find_by(petsitter_id: current_petsitter,petowner_id: petowner_choosen_id)
+    @booking.validate_petsitter = true
+      respond_to do |format|
+        if     @booking.save
+        format.js
+      end
+    end
+  end
 
   private
   def petsitter_choosen_id
     params.require(:id)
   end
+  def petowner_choosen_id
+    @petowner = Petsitting.find(params.require(:id))
+
+    @petowner.petowner_id
+  end
+
+
 
   def already_contacted?
     Petsitting.find_by(petowner_id: current_petowner.id, petsitter_id: petsitter_choosen_id)
