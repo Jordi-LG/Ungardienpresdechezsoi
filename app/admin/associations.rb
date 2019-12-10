@@ -14,7 +14,7 @@ ActiveAdmin.register Association do
   member_action :validate, method: :put do
     association = Association.find(params[:id])
     association.update(validate_association: true)
-    #PetsitterMailer.validation_request(petsitter).deliver_now
+    AssociationMailer.validation_request_association(association).deliver_now
     redirect_to admin_root_path
   end
 
@@ -25,7 +25,6 @@ ActiveAdmin.register Association do
   member_action :unvalidate, method: :put do
     association = Association.find(params[:id])
     association.update(validate_association: false)
-    #PetsitterMailer.validation_request(petsitter).deliver_now
     redirect_to admin_root_path
   end
 end
