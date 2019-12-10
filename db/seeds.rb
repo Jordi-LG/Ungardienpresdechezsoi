@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Association.all.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('associations')
 District.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('districts')
 Petsitter.all.destroy_all
@@ -13,9 +15,13 @@ Petdistrict.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('petdistricts')
 Petowner.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('petowners')
+AdminUser.all.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('adminusers')
 
-1.times do
-  Association.create(name: Faker::Beer.name, describe: Faker::Lorem.sentence(word_count: 20), date_of_birth: Faker::Date.in_date_period(year: 2016), email: Faker::Internet.email, facebook_url: 'https://www.google.com/', donation_url: 'https://www.leetchi.com/')
+
+
+10.times do
+  Association.create(name: Faker::Beer.name, describe: Faker::Lorem.sentence(word_count: 20), date_of_birth: Faker::Date.in_date_period(year: 2016), email: Faker::Internet.email, facebook_url: 'https://www.google.com/', donation_url: 'https://www.leetchi.com/', validate_association: true)
 end
 
 puts "Association created"

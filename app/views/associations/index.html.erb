@@ -13,6 +13,8 @@ Banner -->
 <!-- =======================
 Banner -->
 
+  <%= render "associations/flash_alert"%>
+
 <!-- =======================
 Title -->
   <section class="service pt-0 mt-6">
@@ -37,7 +39,7 @@ Title -->
       <div class="row">
         <div class="col-md-12 p-0">
           <div class="portfolio-wrap grid items-4 items-padding">
-            <% @associations.each do |asso| %>
+            <% @associations.where(validate_association: true).each do |asso| %>
               <!-- associations-card -->
               <div class="portfolio-card isotope-item">
                 <%= link_to association_path(asso) do %>
@@ -61,18 +63,23 @@ Title -->
   <!-- =======================
   Portfolio -->
 
-  <!-- =======================
-  Btn back index -->
-  <section class="mb-6">
-    <div class="d-flex justify-content-center mt-3">
-      <%= link_to root_path do %>
-      <div class="btn btn-button btn-dark">
-        <i class="fa fa-angle-double-left"></i> Retour Accueil
-      </div>
-      <% end %>
-    </div>
-  </section>
-  <!-- =======================
-  Btn back index -->
+<!-- =======================
+  Banner contact asso -->
+  <section class="blog bg-light">
+  	 <%= render "associations/contactassobanner"%>
 
+      <!-- =======================
+      Btn back index -->
+      <div class="d-flex justify-content-center mt-6 mb-4">
+        <%= link_to root_path do %>
+        <div class="btn btn-button btn-dark">
+          <i class="fa fa-angle-double-left"></i> Retour Accueil
+        </div>
+        <% end %>
+      </div>
+      <!-- Btn back index
+      ======================= -->
+  </section>
+<!--   Banner contact asso
+======================= -->
 </body>

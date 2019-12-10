@@ -179,12 +179,12 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                         <table class="w580" width="580" cellpadding="0" cellspacing="0" border="0">
                             <tbody><tr>
                                 <td class="w580" width="580">
-                                    <p align="left" class="article-title"><singleline label="Title">Salut <%= @petsitter.last_name %>,</singleline></p>
+                                    <p align="left" class="article-title"><singleline label="Title">Bonjour !</singleline></p>
                                     <div align="left" class="article-content">
-                                        <multiline label="Description">Ta demande de création en tant que Petsitter sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %> a bien été pris en compte en utilisant l'e-mail suivant : <%= @petsitter.email %>.</multiline>
+                                        <multiline label="Description">Nous avons bien recu votre demande de création pour l'association <%=@association.name%>.</multiline>
                                     </div>
                                     <div align="left" class="article-content">
-                                        <multiline label="Description">Quand ta demande sera validé par notre service, nous t'informerons par un email la validation de compte.</multiline>
+                                        <multiline label="Description">Nous allons consulter prochainement votre demande et lorsque nous la validerons vous receverez un email de confirmation.</multiline>
                                     </div>
                                     <div align="left" class="article-content">
                                         <multiline label="Description">À très vite sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %>.</multiline>

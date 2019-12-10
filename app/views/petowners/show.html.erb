@@ -1,24 +1,25 @@
-<% if flash[:alert] %>
-<div class="row">
-	<div class="col-sm-12">
-    <div class="alert alert-primary" role="alert">
-      <h4><strong>Féficitations ! </strong> <%= flash[:alert]%></h4>
-		</div>
-  </div>
-</div>
-<%end%>
+<%= render "layouts/flash_success"%>
 
-<section class="p-0 position-relative mt-6">
+<section class="p-0 position-relative mt-3 mb-6">
   <div class="d-flex h-100 w-100">
-    <div class="row justify-content-around align-items-center w-100">
+    <div class="row justify-content-around w-100">
+      <div class="col-sm-12 col-md-6">
+  <ul class="nav nav-tabs tab-line">
+    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab-3-1"> Profil</a> </li>
+    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-2">Mes animaux</a> </li>
+    <% if current_petowner %>
+    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-3"> Mes réservations</a> </li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
 
-      <!-- banner Content -->
-      <div class="col-md-7 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
+    <!-- Profile Part ! -->
+    <div class="tab-pane show active" id="tab-3-1">
         <div class="left pt-2">
           <div class="container">
             <div class="row all-text-white">
               <div class="col-md-12 align-self-center">
-                <h3 class="text-dark display-3 font-weight-bold">Mon Profil</h3>
+                <h3 class="text-dark display-3 font-weight-bold ml-6">Mon Profil</h3>
               </div>
             </div>
           </div>
@@ -56,7 +57,256 @@
           <%= link_to edit_petowner_registration_path do %>
             <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
           <% end %>
-      </div>
+    </div>
+
+    <!-- Pets Part ! -->
+    <div class="tab-pane" id="tab-3-2">
+      <div class="d-flex">
+        <div class="row justify-content-around align-items-center w-100">
+            <div class="left pt-2">
+              <div class="row all-text-white">
+                <div class="col-md-12 align-self-center">
+                  <h3 class="text-dark display-3 font-weight-bold">Mes animaux</h3>
+                </div>
+              </div>
+            </div>
+
+            <% if current_petowner %>
+        			<div class="col-md-12 align-self-center text-center" >
+        				<!-- Button of modal -->
+        				<button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
+        					Ajouter le profil d'un animal
+        				</button>
+        				<div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+        					<div class="modal-dialog modal-dialog-centered" role="document">
+        						<div class="modal-content">
+        							<div class="modal-header">
+        								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concernant votre animal.</h5>
+        								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        								<span aria-hidden="true">&times;</span>
+        								</button>
+        							</div>
+        							<%= render "petowners/petsform"%>
+        						</div>
+        					</div>
+        				</div>
+          		</div>
+
+            <% end %>
+
+    				<div class="container">
+    				<div class="row p-3 border border-dashed shadow-lg mt-5">
+    					<% @pets.each do |pet| %>
+    					<div class="item pb-5 col-4">
+            	<div class="post">
+                <% if pet.avatar.attached? != nil %>
+                	<%= image_tag pet.avatar, alt: 'avatar' , class:'shadow-lg', style:'display:relative;background-size: cover; width: 400px;height: 300px;border-radius:10px; border:2px solid #28a745;'%>
+                	<div class="post-info ">
+                    <span class="post-tag bg-grad text-white mb-3 clearfix"><%= pet.pet_type%></span>
+      	            <div class="post-author">
+      								<% if pet.sterilized == true %>
+      									stérélisé(e)
+      								<% else %>
+      									Non stérilisé(e)
+      								<%end%>
+      							</div>
+      	            <div class="post-title text-primary">
+      								<%= pet.name%><br>
+      									Est un <%= pet.pet_type%> <%= pet.sex%> et
+      								<% if pet.sterilized == true %>
+      									stérélisé(e)
+      								<% else %>
+      									Non stérilisé(e)
+      								<%end%></div>
+                   </div>
+                 <% end %>
+               </div>
+    					 <% if current_petowner %>
+    					 	<% if pet.avatar.attached? == false %>
+    							<p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
+    							<%= form_tag pet_avatars_path(pet), multipart: true do %>
+    								<%= file_field_tag :avatar %>
+    								<%= submit_tag "Ajouter une photo" %>
+    							<% end %>
+    						<%else%>
+    							<%= form_tag pet_avatars_path(pet), multipart: true do %>
+    								<%= file_field_tag :avatar %>
+    								<%= submit_tag "Mettre à jour" %>
+    							<%end%>
+    						<%end%>
+    					<% end %>
+             </div>
+    				 <% end %>
+           </div>
+    		</div>
+    	</div>
+    	</div>
+    </div>
+
+    <!-- Reservations Part ! -->
+    <div class="tab-pane" id="tab-3-3">
+
+      <% if current_petowner %>
+      <% if current_petowner.id == @petowner.id %>
+        <section>
+          <div class="container bg-primary mt-6 pt-4 shadow-lg rounded" style="border:2px solid black">
+            <div class="row" >
+        				<div class="col-sm-12 col-md-12 ">
+        					<ul class="nav nav-tabs tab-with-center-icon justify-content-center nav-justified">
+        						<li class="nav-item">
+        							<a class="nav-link active" data-toggle="tab" href="#tab-8-1"> <i class="ti-panel"></i> Demandes de réservations </a>
+        						</li>
+        						<li class="nav-item">
+        							<a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-palette"></i> Petsittings validé</a>
+        						</li>
+      							<li class="nav-item">
+      								<a class="nav-link" data-toggle="tab" href="#tab-8-3"> <i class="ti-pencil"></i> Petsittings effectués</a>
+      							</li>
+        					</ul>
+        					<div class="tab-content">
+        						<div class="tab-pane show active" id="tab-8-1">
+      								<div class="col-sm-12 mb-5">
+      	      					<div class="table-responsive-sm">
+      	      						<table class="table table-hover">
+      	      							<thead>
+      	      								<tr class="text-white">
+      	      									<th scope="col">Petsitter</th>
+      	      									<th scope="col">Nom</th>
+      	      									<th scope="col">Prénom</th>
+      	                        <th scope="col">Mail</th>
+      	      									<th scope="col">Réservation</th>
+      	                        <th scope="col"> </th>
+      	      								</tr>
+
+      											</thead>
+      	      							<tbody>
+      	                      <!-- methode my_petsitters => helper -->
+      	                      <% @bookings_petowner.each do |booking|%>
+      													<% if booking.validate_petowner == false%>
+      													<tr id="booking-f-<%= booking.id %>">
+      	                            <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+      	                            <% if petsitter_exists(booking.id) == false %>
+      	          									  <th scope="row"> <%= booking.petsitter_id%> </th>
+      	            									<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
+      	            									<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
+      	            									<td><%= my_petsitters(booking.petsitter_id).email%> </td>
+      	                              <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+      	                              <td class=d-inline-block">
+
+      	                              	<%= link_to petsitter_path(booking.petsitter_id) do %>
+      	                                	<span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
+      	                              	<%end%>
+      																	<% if booking.validate_petsitter == true %>
+      																		<%= form_with(url: petsitting_path(booking.id), method:'patch', remote: true) do%>
+      	                                  	<%= button_tag(type: "submit", class: "btn btn-default") do %>
+      	                                    	<span class="btn btn-outline-light text-white">Confirmer la demande</span>
+      	                                  	<%end%>
+      	                                	<% end %>
+      																	<% else %>
+      																		<span class="btn btn-secondary text-white">En attentes</span>
+      																	<% end %>
+      	                              </td>
+      	                            <% end %>
+      	          								</tr>
+      													<% end %>
+      	                      <% end %>
+      	      							</tbody>
+      	      						</table>
+      	      					</div>
+      	      				</div>
+                  </div>
+      						<div class="tab-pane" id="tab-8-2">
+                    <div class="col-sm-12 mb-5">
+            					<div class="table-responsive-sm">
+            						<table class="table table-hover">
+            							<thead>
+            								<tr class="text-white">
+            									<th scope="col">Petsitter</th>
+            									<th scope="col">Nom</th>
+            									<th scope="col">Prénom</th>
+                              <th scope="col">Mail</th>
+            									<th scope="col">Réservation</th>
+                              <th scope="col"> </th>
+            								</tr>
+            							</thead>
+      										<tbody class="booking">
+                            <!-- methode my_petsitters => helper -->
+                            <% @bookings_petowner.each do |booking|%>
+      												<% if booking.validate_petowner == true %>
+                								<tr>
+                                  <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+                                  <% if petsitter_exists(booking.id) == false %>
+                									  <th scope="row"> <%= booking.petsitter_id%> </th>
+                  									<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
+                  									<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
+                  									<td><%= my_petsitters(booking.petsitter_id).email%> </td>
+                                    <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+                                    <td>
+                                      <%= link_to petsitter_path(booking.petsitter_id) do %>
+                                        <span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
+                                      <%end%>
+      																<span class="btn btn-info text-white">Validé</span>
+                                    </td>
+                                  <% end %>
+                								</tr>
+      												<% end %>
+                            <% end %>
+            							</tbody>
+            						</table>
+            					</div>
+            				</div>
+      						</div>
+      						<div class="tab-pane" id="tab-8-3">
+      							<div class="col-sm-12 mb-5">
+      								<div class="table-responsive-sm">
+      									<table class="table table-hover">
+      										<thead>
+      											<tr class="text-white">
+      												<th scope="col">Petsitter</th>
+      												<th scope="col">Nom</th>
+      												<th scope="col">Prénom</th>
+      												<th scope="col">Mail</th>
+      												<th scope="col">Réservation</th>
+      												<th scope="col"> </th>
+      											</tr>
+      										</thead>
+      										<tbody>
+      											<!-- methode my_petsitters => helper -->
+      											<% @bookings_petowner.each do |booking|%>
+      											<% if booking.petowner_id == true && booking.petsitter_id == true %>
+      													<tr>
+      														<!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+      														<% if petsitter_exists(booking.id) == false %>
+      															<th scope="row"> <%= booking.petsitter_id%> </th>
+      															<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
+      															<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
+      															<td><%= my_petsitters(booking.petsitter_id).email%> </td>
+      															<td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+      															<td>
+      																<%= link_to petsitter_path(booking.petsitter_id) do %>
+      																	<span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
+      																<%end%>
+      															</td>
+      														<% end %>
+      													</tr>
+      												<% end %>
+      											<% end %>
+      										</tbody>
+      									</table>
+      								</div>
+      							</div>
+      						</div>
+      					</div>
+      				</div>
+          </div>
+        </section>
+        <%else%>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
       <!-- banner image -->
       <div class="col-md-5 d-none d-md-block p-0 ">
           <figure class="w-100 ie-height-900 position-absolute" style="transform: scaleX(-1);margin-left:5%">
@@ -89,246 +339,5 @@
   </div>
 </section>
 
-<!-- ===========
-pets section -->
-<section class="p-0 position-relative mt-6" >
-  <div class="d-flex">
-    <div class="row justify-content-around align-items-center w-100">
-      <div class="col-md-12 offset-lg-1 col-lg-5 mt-5 mt-md-0 mr-auto">
-        <div class="left pt-2">
-          <div class="row all-text-white">
-            <div class="col-md-12 align-self-center">
-              <h3 class="text-dark display-3 font-weight-bold">Mes animaux</h3>
-            </div>
-          </div>
-        </div>
 
-        <% if current_petowner %>
-    			<div class="col-md-12 align-self-center text-center" >
-    				<!-- Button of modal -->
-    				<button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
-    					Ajouter le profil d'un animal
-    				</button>
-    				<div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-    					<div class="modal-dialog modal-dialog-centered" role="document">
-    						<div class="modal-content">
-    							<div class="modal-header">
-    								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concenrant votre animal.</h5>
-    								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    								<span aria-hidden="true">&times;</span>
-    								</button>
-    							</div>
-    							<%= render "petowners/petsform"%>
-    						</div>
-    					</div>
-    				</div>
-      		</div>
-          <div class="col-md-12 p-2" style="border:4px dotted green">
-            <p>=== Ajoutez des photos de vos animaux ! ===</p>
-            <h6>Elles seront visible par les petsitters que vous contactez </h6>
-            <h2 style="color : tomato;">Ici FORM - TAG</h2>
-            <div class="col">
-              <h2 style="color : tomato;">Ici "if macin.attached?"</h2>
-            </div>
-          </div>
-        <% end %>
-
-        <!-- =======================
-        Portfolio -->
-        <div class="col-md-12 align-self-center text-center">
-          <div class="portfolio-wrap grid items-4 items-padding">
-            <% @pets.each do |pet| %>
-              <!-- pets-card -->
-              <div class="portfolio-card isotope-item">
-                <div class="portfolio-card-body">
-                  <div class="portfolio-card-header">
-                    <%= image_tag "associations/logo_pattounes.jpg", class: 'rounded'%>
-										<p style="color : tomato;">Ici "if macin.attached?"</p>
-                  </div>
-                  <div class="portfolio-card-footer">
-                    <span class="full-screen" href="assets/images/associations/logo_pattounes.jpg" data-fancybox="portfolio" data-caption="Fly in time"><i class="ti-fullscreen"></i></span>
-                    <h5 class="text-muted"> <%= pet.name%> (<%= pet.birth_year%> ans),</h5>
-                    <p>est un <%= pet.pet_type%> <%= pet.sex%> et
-                      <% if pet.sterilized == true %>
-                        stérélisé(e)
-                      <%else%>
-                      <%end%>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            <%end%>
-          </div>
-        </div>
-        <!-- =======================
-        Portfolio -->
-      </div>
-    </div>
-  </div>
-</section>
-  <!-- ===========
-  pets section -->
-
-<% if current_petowner.id == @petowner.id %>
-  <section>
-    <div class="container bg-primary mt-6 pt-4">
-      <div class="row">
-  				<div class="col-sm-12 col-md-12 ">
-  					<ul class="nav nav-tabs tab-with-center-icon justify-content-center nav-justified">
-  						<li class="nav-item">
-  							<a class="nav-link active" data-toggle="tab" href="#tab-8-1"> <i class="ti-panel"></i> Demandes de réservations </a>
-  						</li>
-  						<li class="nav-item">
-  							<a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-palette"></i> Petsittings validé</a>
-  						</li>
-							<li class="nav-item">
-								<a class="nav-link" data-toggle="tab" href="#tab-8-3"> <i class="ti-pencil"></i> Petsittings effectués</a>
-							</li>
-  					</ul>
-  					<div class="tab-content">
-  						<div class="tab-pane show active" id="tab-8-1">
-								<div class="col-sm-12 mb-5">
-	      					<div class="table-responsive-sm">
-	      						<table class="table table-hover">
-	      							<thead>
-	      								<tr class="text-white">
-	      									<th scope="col">Petsitter</th>
-	      									<th scope="col">Nom</th>
-	      									<th scope="col">Prénom</th>
-	                        <th scope="col">Mail</th>
-	      									<th scope="col">Réservation</th>
-	                        <th scope="col"> </th>
-	      								</tr>
-
-											</thead>
-	      							<tbody>
-	                      <!-- methode my_petsitters => helper -->
-	                      <% @bookings_petowner.each do |booking|%>
-													<% if booking.validate_petowner == false%>
-													<tr id="booking-f-<%= booking.id %>">
-	                            <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-	                            <% if petsitter_exists(booking.id) == false %>
-	          									  <th scope="row"> <%= booking.petsitter_id%> </th>
-	            									<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-	            									<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-	            									<td><%= my_petsitters(booking.petsitter_id).email%> </td>
-	                              <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-	                              <td class=d-inline-block">
-
-	                              	<%= link_to petsitter_path(booking.petsitter_id) do %>
-	                                	<span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
-	                              	<%end%>
-																	<% if booking.validate_petsitter == true %>
-																		<%= form_with(url: petsitting_path(booking.id), method:'patch', remote: true) do%>
-	                                  	<%= button_tag(type: "submit", class: "btn btn-default") do %>
-	                                    	<span class="btn btn-outline-light text-white">Confirmer la demande</span>
-	                                  	<%end%>
-	                                	<% end %>
-																	<% else %>
-																		<span class="btn btn-secondary text-white">En attentes</span>
-																	<% end %>
-	                              </td>
-	                            <% end %>
-	          								</tr>
-													<% end %>
-	                      <% end %>
-	      							</tbody>
-	      						</table>
-	      					</div>
-	      				</div>
-            </div>
-						<div class="tab-pane" id="tab-8-2">
-              <div class="col-sm-12 mb-5">
-      					<div class="table-responsive-sm">
-      						<table class="table table-hover">
-      							<thead>
-      								<tr class="text-white">
-      									<th scope="col">Petsitter</th>
-      									<th scope="col">Nom</th>
-      									<th scope="col">Prénom</th>
-                        <th scope="col">Mail</th>
-      									<th scope="col">Réservation</th>
-                        <th scope="col"> </th>
-      								</tr>
-      							</thead>
-										<tbody class="booking">
-                      <!-- methode my_petsitters => helper -->
-                      <% @bookings_petowner.each do |booking|%>
-												<% if booking.validate_petowner == true %>
-          								<tr>
-                            <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-                            <% if petsitter_exists(booking.id) == false %>
-          									  <th scope="row"> <%= booking.petsitter_id%> </th>
-            									<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-            									<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-            									<td><%= my_petsitters(booking.petsitter_id).email%> </td>
-                              <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-                              <td>
-                                <%= link_to petsitter_path(booking.petsitter_id) do %>
-                                  <span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
-                                <%end%>
-																<span class="btn btn-info text-white">Validé</span>
-                              </td>
-                            <% end %>
-          								</tr>
-												<% end %>
-                      <% end %>
-      							</tbody>
-      						</table>
-      					</div>
-      				</div>
-						</div>
-						<div class="tab-pane" id="tab-8-3">
-							<div class="col-sm-12 mb-5">
-								<div class="table-responsive-sm">
-									<table class="table table-hover">
-										<thead>
-											<tr class="text-white">
-												<th scope="col">Petsitter</th>
-												<th scope="col">Nom</th>
-												<th scope="col">Prénom</th>
-												<th scope="col">Mail</th>
-												<th scope="col">Réservation</th>
-												<th scope="col"> </th>
-											</tr>
-										</thead>
-										<tbody>
-											<!-- methode my_petsitters => helper -->
-											<% @bookings_petowner.each do |booking|%>
-											<% if booking.petowner_id == true && booking.petsitter_id == true %>
-													<tr>
-														<!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-														<% if petsitter_exists(booking.id) == false %>
-															<th scope="row"> <%= booking.petsitter_id%> </th>
-															<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-															<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-															<td><%= my_petsitters(booking.petsitter_id).email%> </td>
-															<td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-															<td>
-																<%= link_to petsitter_path(booking.petsitter_id) do %>
-																	<span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
-																<%end%>
-															</td>
-														<% end %>
-													</tr>
-												<% end %>
-											<% end %>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-    </div>
-  </section>
-  <%else%>
-<% end %>
-
-<section>
-  <div class="d-flex justify-content-center mt-3">
-    <%= link_to root_path do%>
-      <span class="btn btn-button btn-dark"><i class="fa fa-angle-double-left"></i> RETOUR</span>
-    <% end %>
-  </div>
-</section>
+<%= render "layouts/button_back_index"%>
