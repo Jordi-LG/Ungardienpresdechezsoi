@@ -3,6 +3,6 @@ Salut <%= @petsitter.last_name %>
 
 Ta demande de création en tant que Petsitter sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %> a été validé par notre service pour l'e-mail suivant : <%= @petsitter.email %>.
 
-Pour accéder à ton espace client, connecte-toi via : <%= link_to "Mon compte", petsitter_url(@petsitting.petsitter.id) %>.
+Pour accéder à ton espace client, connecte-toi via : <%= link_to "Mon compte", petsitter_url(@petsitter.id) %>.
 
 À très vite sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %> !
