@@ -4,6 +4,8 @@ class PetsittersController < ApplicationController
   def index
     @petsitters = Petsitter.all
     @districts = District.all_districts
+
+    @selected_district = selected_district
   end
 
   def show
@@ -30,5 +32,9 @@ private
     if current_petsitter.nil? & current_petowner.nil?
       redirect_to new_petowner_session_path
     end
+  end
+
+  def selected_district
+    params.permit(:district_choosen)
   end
 end

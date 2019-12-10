@@ -13,13 +13,12 @@
 
 		<!-- NARBAR RECHERCHE PAR QUARTIER -->
 		<div class="form-group">
-			<label>Rechercher par quartiers:</label>
-			<select class="custom-select select-big mb-3">
-				<option selected="">Montpellier</option>
-				<% @districts.each_with_index do |district, index| %>
-				<option value="location<%= index + 1 %>"><%= district.district_name %></option>
+			<%= form_with(url: petsitters_path, method: 'get') do %>
+				<%= select_tag(:district_choosen, options_from_collection_for_select(@districts, :id, :district_name), class:"custom-select select-big mb-3")%>
+				<%= button_tag(type: "submit", class: "btn btn-default") do %>
+					<span class="btn btn-grad">Filtrer</span>
 				<% end %>
-			</select>
+			<% end %>
 		</div>
 
     <!-- CARDS -->
