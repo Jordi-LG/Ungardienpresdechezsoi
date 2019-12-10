@@ -19,13 +19,10 @@ Rails.application.routes.draw do
   resources :petowners, only: [:show] do
     resources :avatars, only: [:create]
   end
+  
   resources :associations, only: [:show, :index]
-<<<<<<< HEAD
   resources :petsittings, only: [:new, :create, :show, :update]
-=======
-  resources :petsittings, only: [:new, :create, :show]
   resources :pets, only: [:new, :create]
-
   resources :comments, only: [:new, :create, :index]
->>>>>>> development
+
 end
