@@ -39,7 +39,7 @@ Title -->
       <div class="row">
         <div class="col-md-12 p-0">
           <div class="portfolio-wrap grid items-4 items-padding">
-            <% @associations.each do |asso| %>
+            <% @associations.where(validate_association: true).each do |asso| %>
               <!-- associations-card -->
               <div class="portfolio-card isotope-item">
                 <%= link_to association_path(asso) do %>
