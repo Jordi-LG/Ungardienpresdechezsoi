@@ -15,4 +15,9 @@ class PetsitterMailer < ApplicationMailer
     @petsitting = petsitting
     mail(to: @petsitting.petsitter.email, subject: "Demande de garde d'un animal")   
   end
+
+  def accepted_booking(petsitting)
+    @petsitting = petsitting
+    mail(to: @petsitting.petsitter.email, subject: "Demande auprès du pet owner pour la garde de son animal validé") 
+  end
 end
