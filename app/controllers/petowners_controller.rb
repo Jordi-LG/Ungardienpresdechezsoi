@@ -18,7 +18,9 @@ private
   end
 
   def signed_in
-    @petsitter = Petsitting.where(petsitter_id: current_petsitter.id)
+    if current_petsitter
+      @petsitter = Petsitting.where(petsitter_id: current_petsitter.id)
+    end
     if current_petsitter.nil? & @petsitter == nil
       redirect_to new_petowner_session_path
     end
