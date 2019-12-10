@@ -20,8 +20,8 @@ end
 
 puts "Association created"
 
-districs = ['Aiguelongues', 'Arceaux', 'Boutonnet', 'Croix-d argent', 'Ecusson', 'Euromédecine', 'Figuerolles', 'Gambetta', 'Hauts de Massane', 'Hopitaux Facultés', 'Malbosc','Nouveau Saint-Roch', 'Odysseum', 'Port Marianne', 'Tournezy']
-15.times do |index|
+districs = ['Montpellier', 'Aiguelongues', 'Arceaux', 'Boutonnet', 'Croix-d argent', 'Ecusson', 'Euromédecine', 'Figuerolles', 'Gambetta', 'Hauts de Massane', 'Hopitaux Facultés', 'Malbosc','Nouveau Saint-Roch', 'Odysseum', 'Port Marianne', 'Tournezy']
+16.times do |index|
   District.create(district_name: districs[index])
 end
 
@@ -47,6 +47,8 @@ puts "Petowners created"
 15.times do
   Comment.create(title: Faker::Book.title, content: Faker::Lorem.sentence(word_count: 20), petowner_id: rand(1..2), ps_id: rand(1..2))
 end
+
+puts "Comments created"
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 

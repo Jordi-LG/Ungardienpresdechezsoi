@@ -6,6 +6,7 @@ class PetsittersController < ApplicationController
     @districts = District.all_districts
 
     if !params_district.nil?
+      @params_district = params_district
     @selected_district = Petdistrict.where(district_id: params_district)
 
     @petsitters_district = []

@@ -1,6 +1,6 @@
   <div class="row">
     <!-- ITEM -->
-    <% petsitter_district.each do |petsitter| %>
+    <% petsitter_district.shuffle.each do |petsitter| %>
       <% if petsitter.account_validate == true %>
         <div class="item pb-5 col-4">
           <div class="post">
