@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'staticpages#index'
   get 'team', to: 'staticpages#team'
-  get 'contact', to: 'staticpages#contact'
+
 
   resources :charges
 
@@ -17,9 +17,13 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
 
+  resources :pets, only: [:new, :create] do
+    resources :avatars, only: [:create]
+  end
+
   resources :associations, only: [:show, :index]
   resources :petsittings, only: [:new, :create, :show, :update]
-  resources :pets, only: [:new, :create]
+  resources :contacts, only: [:new, :create]
   resources :comments, only: [:new, :create, :index]
 
 end
