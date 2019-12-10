@@ -13,7 +13,7 @@
 
 		<!-- NARBAR RECHERCHE PAR QUARTIER -->
 		<div class="form-group">
-			<%= form_with(url: petsitters_path, method: 'get') do %>
+			<%= form_with( method: 'get') do %>
 				<%= select_tag(:district_choosen, options_from_collection_for_select(@districts, :id, :district_name), class:"custom-select select-big mb-3")%>
 				<%= button_tag(type: "submit", class: "btn btn-default") do %>
 					<span class="btn btn-grad">Filtrer</span>
@@ -22,8 +22,10 @@
 		</div>
 
     <!-- CARDS -->
-    <%= render 'card_petsitters' %>
-  </div>
+		<div class="container" id='card_petsitters'>
+    	<%= render 'card_petsitters' %>
+		</div>
+	</div>
 
 	<div class="d-flex justify-content-center mt-3">
 	  <%= link_to root_path do%>
