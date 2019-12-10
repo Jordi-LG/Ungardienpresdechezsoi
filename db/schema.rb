@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_162455) do
+ActiveRecord::Schema.define(version: 2019_12_10_165109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_162455) do
     t.string "donation_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "validate_association"
   end
 
   create_table "comments", force: :cascade do |t|
