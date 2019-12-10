@@ -110,8 +110,11 @@
   						<a class="nav-link active" data-toggle="tab" href="#tab-8-1"> <i class="ti-panel"></i> Mes infos personelles </a>
   					</li>
   					<li class="nav-item">
-  						<a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-palette"></i> Mes reservations </a>
+  						<a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-palette"></i> Mes nouvelles réservations</a>
   					</li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab-8-3"> <i class="ti-pencil"></i> Mes réservations en attentes</a>
+            </li>
   				</ul>
   				<div class="tab-content">
   					<div class="tab-pane show active" id="tab-8-1">
@@ -146,21 +149,28 @@
                       <% if @bookings.nil? %>
                       <% else %>
                         <% @bookings.each do |booking|%>
-            								<tr>
+                        <% if booking.validate_petsitter == false %>
+            								<tr id="booking-f-<%= booking.id %>">
                               <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
                               <% if petsitter_exists(booking.id) == false %>
               									<th scope="row"> <%= booking.petowner_id%> </th>
-              									<td>Pout ! <%= my_petowners(booking.petowner_id).first_name%> </td>
-              									<td>Poutout ! <%= my_petowners(booking.petowner_id).last_name%> </td>
+              									<td><%= my_petowners(booking.petowner_id).first_name%> </td>
+              									<td><%= my_petowners(booking.petowner_id).last_name%> </td>
               									<td><%= my_petowners(booking.petowner_id).email%> </td>
                                 <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-                                <td>
-                                  <%= link_to nil do %>
+                                <td class=d-inline-block">
+                                  <%= link_to petowner_path(booking.petowner_id) do %>
                                     <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
                                   <%end%>
+                                  <%= form_with(url: petsitting_path(booking.id), method:'patch', remote: true) do%>
+                                    <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                                      <span class="btn btn-outline-light text-white">Confirmer la demande</span>
+                                    <%end%>
+                                  <% end %>
                                 </td>
                               <%end%>
             								</tr>
+                          <% end %>
                         <% end %>
                       <% end %>
       							</tbody>
@@ -168,6 +178,54 @@
       					</div>
       				</div>
   					</div>
+            <div class="tab-pane" id="tab-8-3">
+              <div class="col-sm-12 mb-5">
+                <div class="table-responsive-sm">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr class="text-white">
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Mail</th>
+                        <th scope="col">Réservation</th>
+                        <th scope="col"> </th>
+                      </tr>
+                    </thead>
+                    <tbody class="booking">
+                      <!-- methode my_petowners => helper -->
+                      <% if @bookings.nil? %>
+                      <% else %>
+                        <% @bookings.each do |booking|%>
+                        <% if booking.validate_petsitter == true %>
+                            <tr id="booking-t-<%= booking.id %>">
+                              <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+                              <% if petsitter_exists(booking.id) == false %>
+                                <th scope="row"> <%= booking.petowner_id%> </th>
+                                <td><%= my_petowners(booking.petowner_id).first_name%> </td>
+                                <td><%= my_petowners(booking.petowner_id).last_name%> </td>
+                                <td><%= my_petowners(booking.petowner_id).email%> </td>
+                                <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+                                <td class=d-inline-block">
+                                  <%= link_to petowner_path(booking.petowner_id) do %>
+                                    <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
+                                  <%end%>
+                                  <% if booking.validate_petowner == false %>
+                                  <span class="btn btn-warning text-white"> Validation en cours </span>
+                                  <% else %>
+                                  <span class="btn btn-info text-white"> Validée</span>
+                                  <%end %>
+                                </td>
+                              <%end%>
+                            </tr>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
   				</div>
   			</div>
       </div>

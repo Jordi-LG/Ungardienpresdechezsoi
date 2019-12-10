@@ -9,14 +9,18 @@ class PetsittersController < ApplicationController
     @petsitter = Petsitter.find(params[:id])
     #METHODE DANS LE MODEL COMMENTS
     @comments = Comment.all_comments_petsitter(params[:id])
-    
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_url
-      flash[:success] = "La page que vous avez demandé n'existe pas !"
+
+
 
     if current_petsitter
       @bookings = Petsitting.where(petsitter_id: current_petsitter.id)
     end
+
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url
+      flash[:success] = "La page que vous avez demandé n'existe pas !"
+
+
   end
 
 private
