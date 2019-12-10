@@ -179,15 +179,18 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                         <table class="w580" width="580" cellpadding="0" cellspacing="0" border="0">
                             <tbody><tr>
                                 <td class="w580" width="580">
-                                    <p align="left" class="article-title"><singleline label="Title">Salut <%= @petsitting.petsitter.last_name %>,</singleline></p>
+                                    <p align="left" class="article-title"><singleline label="Title">Bonjour</singleline></p>
                                     <div align="left" class="article-content">
-                                        <multiline label="Description">Tu as une réservation de <%= @petsitting.petowner.last_name%> qui attend une réponse de ta part.</multiline>
+                                        <multiline label="Description">Vous avez un nouveau message de <%=@contact.name%> </multiline>
                                     </div>
                                     <div align="left" class="article-content">
-                                        <multiline label="Description">Tu devrais recevoir prochainement un email de sa part avec sa ou ses dates de reservation.</multiline>
+                                        <multiline label="Description">Il a pour sujet: <%=@contact.subject%></multiline>
                                     </div>
                                     <div align="left" class="article-content">
-                                        <multiline label="Description">Pour accéder à ton espace client, <%= link_to "clique ici", petsitter_url(@petsitting.petsitter.id)%>.</multiline>
+                                        <multiline label="Description">Il dit : <%=@contact.message%></multiline>
+                                    </div>
+                                    <div align="left" class="article-content">
+                                        <multiline label="Description">Tu peux lui repondre à cette adresse mail : <%=@contact.email%></multiline>
                                     </div>
                                     <div align="left" class="article-content">
                                         <multiline label="Description">À très vite sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %>.</multiline>
