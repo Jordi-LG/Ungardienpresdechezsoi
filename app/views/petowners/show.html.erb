@@ -163,6 +163,7 @@ pets section -->
 	</div>
 	</div>
 </section>
+<% if current_petowner %>
 <% if current_petowner.id == @petowner.id %>
   <section>
     <div class="container bg-primary mt-6 pt-4">
@@ -317,6 +318,7 @@ pets section -->
     </div>
   </section>
   <%else%>
+<% end %>
 <% end %>
 
 <%= render "layouts/button_back_index"%>
