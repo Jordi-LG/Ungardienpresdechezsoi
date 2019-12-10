@@ -1,4 +1,7 @@
 $(document).ready(function() {
-console.log("123")
+console.log("123");
+$('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
+var n = $(".booking");
+console.log(n)
+$(".booking").append("<%= j render 'verif_petsitter', booking: @booking %>");
 });
-console.log("123")

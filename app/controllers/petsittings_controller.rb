@@ -19,8 +19,6 @@ class PetsittingsController < ApplicationController
 
   def update
     @booking = Petsitting.find_by(petsitter_id: current_petsitter,petowner_id: petowner_choosen_id)
-    puts "%" * 60
-    puts @booking
     @booking.validate_petsitter = true
       respond_to do |format|
         if     @booking.save
