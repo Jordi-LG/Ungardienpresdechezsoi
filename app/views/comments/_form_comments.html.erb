@@ -5,15 +5,12 @@
       <div class="row mt-5">
   			<div class="col-md-12">
   				<h2 class="mb-2">Laisser un commentaire</h2>
-  				<p>(L'adresse mail ne sera pas affiché)</p>
+  				<p>Votre prénom apparaitra avec le commentaire</p>
   			</div>
         <%= form_with(url: comments_path, model: @comment, method: 'post', class: 'form-inline', local: true) do |f| %>
           <%= f.hidden_field(:id, :value => params[:id]) %>
   			  <div class="form-group col-md-6">
-            <%= f.text_field :title, class: "form-control", placeholder: 'Nom',  style: 'width:100%;' %>
-          </div>
-          <div class="form-group col-md-6">
-            <%= f.text_field :email, class: "form-control", placeholder: 'Mail', style: 'width:100%;' %>
+            <%= f.text_field :title, class: "form-control", placeholder: 'Title',  style: 'width:100%;' %>
           </div>
   			  <div class="col-md-12">
             <%= f.text_area :content, class: "form-control", placeholder: 'Contenu du commentaire', cols: 40, rows: 6, style: 'width:100%;' %>
