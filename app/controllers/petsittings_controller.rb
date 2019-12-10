@@ -21,9 +21,11 @@ class PetsittingsController < ApplicationController
     if current_petsitter
       @booking = Petsitting.find_by(petsitter_id: current_petsitter,petowner_id: validate)
       @booking.validate_petsitter = true
+      PetownerMailer.accepted_request(@booking).deliver_now
     else
       @booking = Petsitting.find_by(petsitter_id: validate , petowner_id: current_petowner)
       @booking.validate_petowner = true
+      PetsitterMailer.accepted_booking(@booking).deliver_now
     end
 
       respond_to do |format|
