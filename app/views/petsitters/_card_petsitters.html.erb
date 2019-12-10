@@ -11,22 +11,23 @@
               <% end %>
               <span class="post-price bg-grad text-white clearfix"><%= petsitter.price %> €/jours</span>
               <div class="post-author"><%= petsitter.first_name %> <%= petsitter.last_name %></div>
-              <div class="post-time">COMMENTAIRES</div>
-              <div class="post-title text-primary"><%= petsitter.describe %></div>
+              <!-- HELPER POUR RECHERCHE LES COMMENTAIRES D'UN PETSITTER -->
+              <div class="post-time float-right"><%= comments_petsitter(petsitter.id).count %>  <i class="fa fa-comment"></i></div>
 
-              <div class="d-flex mt-auto p-2 bd-highligh justify-content-around">
-                <%= link_to petsitter_path(petsitter.id) do %>
-                  <span class="btn btn-button btn-info"><i class="fa fa-bullseye"></i>Son profil !</span>
-                <% end %>
-                <% if current_petsitter == nil %>
-                  <%= form_with(url: petsittings_path, method: 'post', local: true) do%>
-                    <%= hidden_field_tag(name='id', petsitter.id) %>
-                    <%= button_tag(type: "submit", class: "btn btn-default") do %>
-                      <span class="btn btn-grad"><i class="fa fa-envelope-o"></i>Contacter</span>
-                    <% end %>
+              <div class="post-title text-primary"><%= petsitter.describe %></div>
+            </div>
+            <div class="d-flex justify-content-between flex-md-wrap mt-auto p-2 bd-highligh">
+              <%= link_to petsitter_path(petsitter.id) do %>
+                <span class="btn btn-info"><i class="fa fa-bullseye"></i>Son profil !</span>
+              <% end %>
+              <% if current_petsitter == nil %>
+                <%= form_with(url: petsittings_path, method: 'post', local: true) do%>
+                  <%= hidden_field_tag(name='id', petsitter.id) %>
+                  <%= button_tag(type: "submit",  class:"btn btn-grad") do %>
+                    <span><i class="fa fa-envelope-o"></i>Contacter</span>
                   <% end %>
                 <% end %>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
