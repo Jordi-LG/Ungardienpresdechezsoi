@@ -23,6 +23,8 @@
 //= require swiper
 //= require wow
 //= require map
+//= require jquery.appear
+//= require jquery.countTo
 //= require functions
 //= require main
 //= require imagesloaded.pkgd
