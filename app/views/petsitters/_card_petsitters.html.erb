@@ -1,17 +1,37 @@
 <div class="container">
   <div class="row">
     <!-- ITEM -->
-    <div class="item pb-5 col-4">
-      <div class="post">
-        <img src="assets/images/blog/04.jpg" alt="" style='height-max: 560px;width:560px;border-radius:10px;border:2px solid #28a745;'>
-        <div class="post-info">
-          <span class="post-tag bg-grad text-white mb-3 clearfix">Aiguelongue</span>
-          <div class="post-author"><a href="#!"> By Smith C</a></div>,
-          <div class="post-time"><a href="#!">2 Days ago</a></div>
-          <a class="post-title" href="#!">7 Great Lessons You Can Learn From Business</a>
-          <p class="mb-0">Ample order up in of in ready timed blind had now those ought set often which</p>
+    <% @petsitters.each do |petsitter| %>
+      <% if petsitter.account_validate == true %>
+        <div class="item pb-5 col-4">
+          <div class="post">
+            <%= image_tag petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid #28a745;'%>
+            <div class="post-info ">
+              <% petsitter.districts.each do |district| %>
+                <span class="post-tag bg-grad text-white mb-3 clearfix"><%= district.district_name %></span>
+              <% end %>
+              <span class="post-price bg-grad text-white clearfix"><%= petsitter.price %> €/jours</span>
+              <div class="post-author"><%= petsitter.first_name %> <%= petsitter.last_name %></div>
+              <div class="post-time">COMMENTAIRES</div>
+              <div class="post-title text-primary"><%= petsitter.describe %></div>
+
+              <div class="d-flex mt-auto p-2 bd-highligh justify-content-around">
+                <%= link_to petsitter_path(petsitter.id) do %>
+                  <span class="btn btn-button btn-info"><i class="fa fa-bullseye"></i>Son profil !</span>
+                <% end %>
+                <% if current_petsitter == nil %>
+                  <%= form_with(url: petsittings_path, method: 'post', local: true) do%>
+                    <%= hidden_field_tag(name='id', petsitter.id) %>
+                    <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                      <span class="btn btn-grad"><i class="fa fa-envelope-o"></i>Contacter</span>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
