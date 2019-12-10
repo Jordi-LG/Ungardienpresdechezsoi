@@ -237,8 +237,10 @@
 <div class='mr-5 d-flex justify-content-end'>
   <%= render 'comments/form_comments' %>
 </div>
+<%= render 'layouts/flash_alert' %>
+<%= render partial: 'comments/index_comments', object: @comments %>
+<%= render partial: 'comments/comments_counter', object: @comments %>
 
-<%= render 'comments/index_comments' %>
 
 <section>
   <div class="d-flex justify-content-center mt-3">
