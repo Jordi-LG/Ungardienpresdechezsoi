@@ -113,7 +113,7 @@ pets section -->
     					<div class="modal-dialog modal-dialog-centered" role="document">
     						<div class="modal-content">
     							<div class="modal-header">
-    								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concenrant votre animal.</h5>
+    								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concernant votre animal.</h5>
     								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
     								<span aria-hidden="true">&times;</span>
     								</button>
@@ -142,7 +142,7 @@ pets section -->
               <div class="portfolio-card isotope-item">
                 <div class="portfolio-card-body">
                   <div class="portfolio-card-header">
-                    <%= image_tag "associations/logo_pattounes.jpg", class: 'rounded'%>
+                    <%= image_tag pet.avatar, class: 'rounded'%>
 										<p style="color : tomato;">Ici "if macin.attached?"</p>
                   </div>
                   <div class="portfolio-card-footer">
@@ -155,6 +155,18 @@ pets section -->
                       <%end%>
                     </p>
                   </div>
+									<% if pet.avatar.attached? == false %>
+										<p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
+										<%= form_tag pet_avatars_path(pet), multipart: true do %>
+											<%= file_field_tag :avatar %>
+											<%= submit_tag "Ajouter une photo" %>
+										<% end %>
+									<%else%>
+										<%= form_tag pet_avatars_path(pet), multipart: true do %>
+											<%= file_field_tag :avatar %>
+											<%= submit_tag "Mettre à jour" %>
+										<%end%>
+									<%end%>
                 </div>
               </div>
             <%end%>
