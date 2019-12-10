@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with model: Association.create, local: true do |form| %>
+        <%= form_with model: Association.new, local: true do |form| %>
           <div class="form-group">
             <label>Nom de l'association :</label>
             <%= form.text_field :name, class: "form-control"%>

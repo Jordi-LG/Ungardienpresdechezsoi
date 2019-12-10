@@ -28,10 +28,8 @@ class AssociationsController < ApplicationController
       redirect_to associations_path
     else
       flash[:warning] = @association.errors.messages
-      render associations_path
+      redirect_to associations_path
     end
-        puts "*" * 60
-    puts @association.errors.messages
   end
 
   private
