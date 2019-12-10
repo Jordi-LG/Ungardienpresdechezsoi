@@ -1,4 +1,3 @@
-<section>
   <% if current_petsitter %>
   <% if current_petsitter.id == @petsitter.id %>
     <% if current_petsitter.account_validate == false %>
@@ -10,7 +9,6 @@
     <% end %>
     <% end %>
   <% end %>
-</section>
 <section class="p-0 position-relative mb-6">
   <div class="container-fluid d-flex h-100 w-100">
     <div class="row justify-content-between align-items-center w-100">
@@ -56,7 +54,7 @@
 
             <!-- PROFILE PART -->
             <div class="tab-pane show active" id="tab-3-1">
-              <h3><strong>— Bienvenu sur ma page !</strong></h3>
+              <h3><strong>Bienvenue sur ma page !</strong></h3>
               <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
                 <span class="pt-0 h5">
                   <p><strong>Nom :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
