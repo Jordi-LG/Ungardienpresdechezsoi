@@ -22,8 +22,11 @@ class PetsittingsController < ApplicationController
     puts "%" * 60
     puts @booking
     @booking.validate_petsitter = true
-    @booking.save
-      redirect_to root_path
+      respond_to do |format|
+        if     @booking.save
+        format.js
+      end
+    end
   end
 
   private

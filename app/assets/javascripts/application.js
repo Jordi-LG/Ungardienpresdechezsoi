@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
-//= require jquery_ujs
 //= require activestorage
 //= require jquery.min
 //= require popper.min
@@ -27,3 +25,5 @@
 //= require main
 //= require imagesloaded.pkgd
 //= require isotope.pkgd
+//= require jquery3
+//= require jquery_ujs

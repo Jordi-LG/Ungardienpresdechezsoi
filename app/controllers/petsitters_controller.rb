@@ -7,8 +7,10 @@ class PetsittersController < ApplicationController
 
   def show
     @petsitter = Petsitter.find(params[:id])
-    @bookings = Petsitting.where(petsitter_id: current_petsitter.id)
 
+    if current_petsitter
+      @bookings = Petsitting.where(petsitter_id: current_petsitter.id)
+    end
     rescue ActiveRecord::RecordNotFound
       redirect_to root_url
       flash[:success] = "La page que vous avez demandé n'existe pas !"
