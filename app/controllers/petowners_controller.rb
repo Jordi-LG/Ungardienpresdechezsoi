@@ -19,10 +19,14 @@ private
 
   def signed_in
     if current_petsitter
-      @petsitter = Petsitting.where(petsitter_id: current_petsitter.id)
-    end
-    if current_petsitter.nil? & @petsitter == nil
+      @petsitting = Petsitting.find_by(petsitter_id: current_petsitter.id)
+      @petowner = Petowner.find(params[:id])
+      if current_petsitter.nil?
       redirect_to new_petowner_session_path
+      end
+      if @petsitting.petowner_id != @petowner.id
+        redirect_to root_path
+      end
     end
 
     if current_petowner
@@ -34,5 +38,4 @@ private
       redirect_to root_url
       flash[:success] = "La page que vous avez demandé n'existe pas !"
     end
-
 end
