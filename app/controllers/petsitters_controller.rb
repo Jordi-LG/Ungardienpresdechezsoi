@@ -3,6 +3,22 @@ class PetsittersController < ApplicationController
 
   def index
     @petsitters = Petsitter.all
+    @districts = District.all_districts
+
+    if !params_district.nil?
+      @params_district = params_district
+    @selected_district = Petdistrict.where(district_id: params_district)
+
+    @petsitters_district = []
+    @selected_district.each {|petsitter| @petsitters_district << Petsitter.find(petsitter.petsitter_id)}
+
+    respond_to do |format|
+      format.html { petsitters_path }
+      format.js { }
+    end
+  end
+
+
   end
 
   def show
@@ -29,5 +45,10 @@ private
     if current_petsitter.nil? & current_petowner.nil?
       redirect_to new_petowner_session_path
     end
+  end
+
+  def params_district
+    permitted = params.permit(:district_choosen)
+    return permitted[:district_choosen]
   end
 end
