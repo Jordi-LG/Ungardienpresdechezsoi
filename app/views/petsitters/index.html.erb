@@ -3,13 +3,25 @@
     <%= render 'layouts/flash_alert' %>
     <%= render 'layouts/flash_success' %>
 		<div class="row">
-			<div class="col-12 col-lg-8 mx-auto">
+			<div class="col-12 col-lg-10 mx-auto">
 				<div class="title text-center">
-					<h2>Read our news, comments & thoughts</h2>
-					<p>Facere nam dicta quia error non debitis accusantium. Unde explicabo perferendis assumenda obcaecati ut deserunt aliquam cupiditate fugiat animi corrupti illo velit.</p>
+					<h2>Trouver et réserver le Pet sitters de votre choix. </h2>
+					<p>Mais vous pouvez également visiter son profil avant. ;)</p>
 				</div>
 			</div>
 		</div>
+
+		<!-- NARBAR RECHERCHE PAR QUARTIER -->
+		<div class="form-group">
+			<label>Rechercher par quartiers:</label>
+			<select class="custom-select select-big mb-3">
+				<option selected="">Montpellier</option>
+				<% @districts.each_with_index do |district, index| %>
+				<option value="location<%= index + 1 %>"><%= district.district_name %></option>
+				<% end %>
+			</select>
+		</div>
+
     <!-- CARDS -->
     <%= render 'card_petsitters' %>
   </div>

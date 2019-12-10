@@ -3,6 +3,7 @@ class PetsittersController < ApplicationController
 
   def index
     @petsitters = Petsitter.all
+    @districts = District.all_districts
   end
 
   def show
