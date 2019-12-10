@@ -1,25 +1,27 @@
 <!-- HELPERS VÉRIFIE SI PETOWNER A SOLLICITÉ PETSITTERS (DONC DANS TABLE PETSITTERS) -->
-<% if show_comments %>
-  <div class="col-md-5 mb-6">
-  	<div class="col-sm-12">
-      <div class="row mt-5">
-  			<div class="col-md-12">
-  				<h2 class="mb-2">Laisser un commentaire</h2>
-  				<p>Votre prénom apparaitra avec le commentaire</p>
-  			</div>
-        <%= form_with(url: comments_path, model: @comment, method: 'post', class: 'form-inline', local: true) do |f| %>
-          <%= f.hidden_field(:id, :value => params[:id]) %>
-  			  <div class="form-group col-md-6">
-            <%= f.text_field :title, class: "form-control", placeholder: 'Title',  style: 'width:100%;' %>
-          </div>
-  			  <div class="col-md-12">
-            <%= f.text_area :content, class: "form-control", placeholder: 'Contenu du commentaire', cols: 40, rows: 6, style: 'width:100%;' %>
-          </div>
-  			  <div class="col-md-12 text-center">
-            <%= f.submit "Poster le commentaire", class:"btn-block btn btn-dark" %>
-          </div>
-        <% end %>
-  		</div>
+<% if current_petowner %>
+  <% if show_comments %>
+    <div class="col-md-5 mb-6">
+    	<div class="col-sm-12">
+        <div class="row mt-5">
+    			<div class="col-md-12">
+    				<h2 class="mb-2">Laisser un commentaire</h2>
+    				<p>Votre prénom apparaitra avec le commentaire</p>
+    			</div>
+          <%= form_with(url: comments_path, model: @comment, method: 'post', class: 'form-inline', local: true) do |f| %>
+            <%= f.hidden_field(:id, :value => params[:id]) %>
+    			  <div class="form-group col-md-6">
+              <%= f.text_field :title, class: "form-control", placeholder: 'Title',  style: 'width:100%;' %>
+            </div>
+    			  <div class="col-md-12">
+              <%= f.text_area :content, class: "form-control", placeholder: 'Contenu du commentaire', cols: 40, rows: 6, style: 'width:100%;' %>
+            </div>
+    			  <div class="col-md-12 text-center">
+              <%= f.submit "Poster le commentaire", class:"btn-block btn btn-dark" %>
+            </div>
+          <% end %>
+    		</div>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
