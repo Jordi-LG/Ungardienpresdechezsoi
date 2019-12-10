@@ -61,18 +61,28 @@ Title -->
   <!-- =======================
   Portfolio -->
 
-  <!-- =======================
-  Btn back index -->
-  <section class="mb-6">
-    <div class="d-flex justify-content-center mt-3">
-      <%= link_to root_path do %>
-      <div class="btn btn-button btn-dark">
-        <i class="fa fa-angle-double-left"></i> Retour Accueil
+<!-- =======================
+  Banner contact asso -->
+  <section class="blog bg-light">
+  	 <%= render "associations/contactassobanner"%>
+
+      <!-- =======================
+      Btn back index -->
+      <div class="d-flex justify-content-center mt-6 mb-4">
+        <%= link_to root_path do %>
+        <div class="btn btn-button btn-dark">
+          <i class="fa fa-angle-double-left"></i> Retour Accueil
+        </div>
+        <% end %>
       </div>
-      <% end %>
-    </div>
+      <!-- Btn back index
+      ======================= -->
   </section>
-  <!-- =======================
-  Btn back index -->
+<!--   Banner contact asso
+======================= -->
+
+
+
+
 
 </body>
