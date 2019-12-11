@@ -119,13 +119,13 @@ OBJECTIVES & PARTICIPATION  -->
         </div>
         <%= form_tag charges_path do %>
           <div id="error_explanation">
-            <% if flash[:error].present? %>
-              <p><%= flash[:error] %></p>
+            <% if flash[:warning].present? %>
+              <p><%= flash[:warning] %></p>
             <% end %>
           </div>
           <article>
             <%= label_tag(:amount, 'Montant de votre donation:') %>
-            <%= text_field_tag(:amount, "", class: 'form-control',placeholder: "Indiquer le montant") %>
+            <%= text_field_tag(:amount, "", class: 'form-control', placeholder: "Indiquer le montant") %>
           </article>
           <article>
             <%= hidden_field_tag(:stripeToken) %>

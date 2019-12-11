@@ -5,23 +5,22 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    @amount_in_cents = params[:amount]
-
-    @amount_in_cents = @amount.gsub('$', '').gsub(',', '')
+    @amount = params[:amount]
+    @amount= @amount.gsub('$', '').gsub(',', '')
 
       begin
-    @amount_in_cents = Float(@amount).round(2)
+    @amount = Float(@amount).round(2)
   rescue
-    flash[:error] = "Montant non valide, merci d'entrée une valeur en dollar ($)."
-    redirect_to new_charge_path
+    flash[:warning] = "Montant non valide, merci d'entrée une valeur en dollar ($)."
+    redirect_to controller: "associations", action: "index"
     return
   end
 
-  @amount_in_cents = (@amount_in_cents * 100).to_i # Must be an integer!
+  @amount = (@amount * 100).to_i # Must be an integer!
 
-  if @amount_in_cents < 100
-    flash[:error] = 'Montant non valide, la donation doit etre superieur à 1$.'
-    redirect_to new_charge_path
+  if @amount < 100
+    flash[:warning] = 'Montant non valide, la donation doit etre superieur à 1$.'
+    redirect_to controller: "associations", action: "index"
     return
   end
 
@@ -32,7 +31,7 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create({
       customer: customer.id,
-      amount: @amount_in_cents,
+      amount: @amount,
       description: 'Donation',
       currency: 'EUR',
     })
@@ -41,8 +40,8 @@ class ChargesController < ApplicationController
     redirect_to controller: "associations", action: "index"
 
     rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to new_charge_path
+      flash[:warning] = e.message
+      redirect_to controller: "associations", action: "index"
   end
 
 end
