@@ -19,6 +19,7 @@
 //= require jarallax.min
 //= require owl.carousel.min
 //= require swiper
+//= require wavify
 //= require wow
 //= require map
 //= require jquery.appear
