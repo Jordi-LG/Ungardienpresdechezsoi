@@ -1,5 +1,6 @@
 <%= render "layouts/flash_success"%>
 
+
 <section class="p-0 position-relative mt-3 mb-6">
   <div class="d-flex h-100 w-100">
     <div class="row justify-content-around w-100">
@@ -329,7 +330,7 @@
                 </g>
               </svg>
           </figure>
-          <span class="position-relative " style="margin-left:10%">
+          <span class="position-relative " style="margin-left:5%">
             <%if @petowner.avatar.attached?%>
               <%= image_tag @petowner.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
             <%else%>
