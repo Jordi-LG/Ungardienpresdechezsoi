@@ -33,9 +33,9 @@
 								</g>
 							</svg>
 					</figure>
-          <span class="position-relative " style="margin-left:10%">
+          <span class="position-relative form-style">
             <%if @petsitter.avatar.attached?%>
-              <%= image_tag @petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
+              <%= image_tag @petsitter.avatar, alt: 'avatar' , class:'shadow-lg avatar-img'%>
             <%else%>
            <%end%>
          </span>

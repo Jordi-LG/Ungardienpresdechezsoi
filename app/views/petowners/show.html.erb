@@ -27,7 +27,7 @@
 
       <!-- banner image -->
       <div class="col-md-5 d-none d-md-block p-0 ">
-        <figure class="w-100 ie-height-900 position-absolute" style="transform: scaleX(-1);margin-left:5%">
+        <figure class="w-100 ie-height-900 position-absolute figure-petowner">
           <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 881.8 917.9" style="enable-background:new 0 0 881.8 917.9;" xml:space="preserve">
             <path id="XMLID_6_" fill="url(#BgGradient)" d="M0,39.6c0,0,171-121.5,264,64.5s508.5,178.5,508.5,178.5s240-6-6,228S816,755.1,657,830.1
               s-309,106.5-445.5,76.5C75,876.6,0,717.6,0,717.6V39.6z"/>
@@ -46,9 +46,9 @@
               </g>
             </svg>
         </figure>
-        <span class="position-relative " style="margin-left:10%">
+        <span class="position-relative form-style">
           <%if @petowner.avatar.attached?%>
-            <%= image_tag @petowner.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
+            <%= image_tag @petowner.avatar, alt: 'avatar' , class:'shadow-lg avatar-img'%>
           <%else%>
          <%end%>
        </span>
