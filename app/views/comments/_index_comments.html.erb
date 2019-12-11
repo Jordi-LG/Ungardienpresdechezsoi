@@ -13,7 +13,7 @@
                   <!-- VERIFIER EN BDD QUE LE PETOWNER EXISTE POUR AFFICHER SON COMMENTAIRE -->
                   <% if petowner_exists(comment.petowner_id) == false %>
           					<div class="item">
-          						<div class="testimonials-wra">
+          						<div class="testimonials-wrap">
           							<div class="testi-text">
           								<p><%= comment.content %></p>
                           <!-- HELPER POUR TROUVER LE PETOWNER A L'ORIGINE DU COMMENTAIRE -->
