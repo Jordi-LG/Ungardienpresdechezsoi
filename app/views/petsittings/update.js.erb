@@ -5,6 +5,7 @@ console.log("123");
   var n = $(".booking");
   console.log(n)
   $(".booking").append("<%= j render 'verif_petsitter', booking: @booking %>");
+  $(".ajaxnav").hide().html("<%= j render 'navbar_notif_icon_petsitter' %>").fadeIn("slow");
 <% else %>
   $('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
   var n = $(".booking");
