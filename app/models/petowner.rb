@@ -25,7 +25,7 @@ class Petowner < ApplicationRecord
 
   def welcome_send
     PetownerMailer.welcome_email(self).deliver_now
-      @petowner = Petowner.last
+      @petowner = self
       @petowner.avatar.attach(io: File.open('./app/assets/images/avatar_default/default_avatar.jpg'), filename:"avatar.jpg")
       @petowner.save
   end
