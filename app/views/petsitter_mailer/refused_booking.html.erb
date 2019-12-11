@@ -179,14 +179,12 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                         <table class="w580" width="580" cellpadding="0" cellspacing="0" border="0">
                             <tbody><tr>
                                 <td class="w580" width="580">
-                                    <p align="left" class="article-title"><singleline label="Title">Salut <%= @petsitting.petowner.last_name %>,</singleline></p>
+                                    <p align="left" class="article-title"><singleline label="Title">Salut <%= @petsitting.petsitter.last_name %>,</singleline></p>
                                     <div align="left" class="article-content">
-                                        <multiline label="Description">Ta demande auprès du Pet sitter <%=@petsitting.petsitter.last_name %> a été validé.</multiline>
+                                        <multiline label="Description">Ta demande auprès du Pet owner <%= @petsitting.petowner.last_name%> a été refusé.</multiline>
                                     </div>
-                                    <multiline label="Description">N'oublie pas de valider sur ton compte la confirmation de la garde des animaux auprès de lui.</multiline>
-                                    </div>                                    
                                     <div align="left" class="article-content">
-                                    <multiline label="Description">Pour accéder à ton espace client, <%= link_to "clique ici", petowner_url(@petsitting.petowner.id)%>.</multiline>
+                                        <multiline label="Description">Pour accéder à ton espace client, <%= link_to "clique ici", petsitter_url(@petsitting.petsitter.id)%>.</multiline>
                                     </div>
                                     <div align="left" class="article-content">
                                         <multiline label="Description">À très vite sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %>.</multiline>
