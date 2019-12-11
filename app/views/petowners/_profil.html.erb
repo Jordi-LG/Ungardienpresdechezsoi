@@ -1,0 +1,52 @@
+<div class="tab-pane show active" id="tab-3-1">
+  <div class="left pt-1 mr-5">
+    <div class="container">
+      <div class="row all-text-white">
+        <div class="col-md-12 align-self-center">
+          <h3 class="text-dark display-3 font-weight-bold ml-6">Mon Profil</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="divider divider-grad"></div><br>
+  <h5 class="col-md-8 display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
+    <span class="pt-0 h5">
+      <p><strong>Identité : </strong><%= @petowner.first_name %> <%= @petowner.last_name %></p>
+      <p><strong>Email : </strong><%= @petowner.email%></p>
+      <p><strong>Numéro de téléphone : </strong><%= @petowner.phone_number%></p>
+    </span>
+  </h5>
+  <div class="col-md-8 mb-4 mr-2">
+		<h5 class="mb-4">Description</h5>
+		<blockquote class="blockquote grad-line">
+    <h5 class="mb-2 "><%= @petowner.describe %></h5>
+		</blockquote>
+	</div>
+  <div class="divider divider-grad"></div><br>
+  <% if current_petowner %>
+    <% if current_petowner.id == @petowner.id %>
+      <span class=>
+        <% if @petowner.avatar.attached? == false %>
+          <p>Il n'y a pas encore d'avatar lié à ce compte !</p>
+          <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
+            <%= file_field_tag :avatar %>
+            <%= button_tag(type: 'submit', class:"btn btn-success") do %>
+              <span><i class="fa fa-check-circle-o""></i>Ajouter une photo</span>
+            <% end %>
+          <% end %>
+        <%else%>
+          <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
+            <%= file_field_tag :avatar, class:"button"%>
+            <%= button_tag(type: 'submit', class:"btn btn-success") do %>
+              <span><i class="fa fa-check-circle-o""></i>Mettre à jour</span>
+            <% end %>
+          <%end%>
+        <%end%>
+      </span>
+    <% end %>
+  <% end %>
+  <%= link_to edit_petowner_registration_path do %>
+    <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0">Editer votre compte </button>
+  <% end %>
+</div>
