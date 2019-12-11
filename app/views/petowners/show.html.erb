@@ -76,6 +76,11 @@
       																<span class="btn btn-info text-white">Validé</span>
                                     </td>
                                   <% end %>
+                                  <%= form_with(url: petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, method: 'delete') do %>
+                                    <%= button_tag(type: "submit", class:"btn btn-danger shadow-sm") do %>
+                                      <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <% end %>
+                                  <% end %>
                 								</tr>
       												<% end %>
                             <% end %>
