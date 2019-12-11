@@ -1,4 +1,5 @@
 <%= render "layouts/flash_success"%>
+<%= render "layouts/flash_alert"%>
 
 <section class="p-0 position-relative mt-3 mb-6">
   <div class="d-flex h-100 w-100">
@@ -14,135 +15,10 @@
   <div class="tab-content">
 
     <!-- Profile Part ! -->
-    <div class="tab-pane show active" id="tab-3-1">
-        <div class="left pt-2">
-          <div class="container">
-            <div class="row all-text-white">
-              <div class="col-md-12 align-self-center">
-                <h3 class="text-dark display-3 font-weight-bold ml-6">Mon Profil</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
-          <span class="pt-0 h5">
-            <p><strong>Nom : </strong><%= @petowner.first_name %> <%= @petowner.last_name %></p>
-            <p><strong>Email : </strong><%= @petowner.email%></p>
-            <p><strong>Numéro de téléphone : </strong><%= @petowner.phone_number%></p>
-            <p><strong>Animal : </strong><%= @petowner.phone_number%></p>
-          </span>
-          </h5>
-        <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petowner.describe %></p>
-        <% if current_petowner %>
-          <%= link_to petsitters_path do%>
-            <span class="btn btn-button btn-grad"><i class="fa fa-address-book fa-2x"></i>Faire une réservation</span>
-          <% end %>
-            <% if current_petowner.id == @petowner.id %>
-              <span>
-                <% if @petowner.avatar.attached? == false %>
-                  <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
-                  <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= submit_tag "Ajouter une photo" %>
-                  <% end %>
-                <%else%>
-                  <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= submit_tag "Mettre à jour" %>
-                  <%end%>
-                <%end%>
-                <% end %>
-              </span>
-          <% end %>
-          <%= link_to edit_petowner_registration_path do %>
-            <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
-          <% end %>
-    </div>
+    <%= render 'profil' %>
 
     <!-- Pets Part ! -->
-    <div class="tab-pane" id="tab-3-2">
-      <div class="d-flex">
-        <div class="row justify-content-around align-items-center w-100">
-            <div class="left pt-2">
-              <div class="row all-text-white">
-                <div class="col-md-12 align-self-center">
-                  <h3 class="text-dark display-3 font-weight-bold">Mes animaux</h3>
-                </div>
-              </div>
-            </div>
-
-            <% if current_petowner %>
-        			<div class="col-md-12 align-self-center text-center" >
-        				<!-- Button of modal -->
-        				<button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
-        					Ajouter le profil d'un animal
-        				</button>
-        				<div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-        					<div class="modal-dialog modal-dialog-centered" role="document">
-        						<div class="modal-content">
-        							<div class="modal-header">
-        								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concernant votre animal.</h5>
-        								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        								<span aria-hidden="true">&times;</span>
-        								</button>
-        							</div>
-        							<%= render "petowners/petsform"%>
-        						</div>
-        					</div>
-        				</div>
-          		</div>
-
-            <% end %>
-
-    				<div class="container">
-    				<div class="row p-3 border border-dashed shadow-lg mt-5">
-    					<% @pets.each do |pet| %>
-    					<div class="item pb-5 col-4">
-            	<div class="post">
-                <% if pet.avatar.attached? != false %>
-                	<%= image_tag pet.avatar, alt: 'avatar' , class:'shadow-lg', style:'display:relative;background-size: cover; width: 400px;height: 300px;border-radius:10px; border:2px solid #28a745;'%>
-                <% end %>
-                  <div class="post-info ">
-                    <span class="post-tag bg-grad text-white mb-3 clearfix"><%= pet.pet_type%></span>
-      	            <div class="post-author">
-      								<% if pet.sterilized == true %>
-      									stérélisé(e)
-      								<% else %>
-      									Non stérilisé(e)
-      								<%end%>
-      							</div>
-      	            <div class="post-title text-primary">
-      								<%= pet.name%><br>
-      									Est un <%= pet.pet_type%> <%= pet.sex%> et
-      								<% if pet.sterilized == true %>
-      									stérélisé(e)
-      								<% else %>
-      									Non stérilisé(e)
-      								<%end%></div>
-                   </div>
-
-               </div>
-    					 <% if current_petowner %>
-    					 	<% if pet.avatar.attached? == false %>
-    							<p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
-    							<%= form_tag pet_avatars_path(pet), multipart: true do %>
-    								<%= file_field_tag :avatar %>
-    								<%= submit_tag "Ajouter une photo" %>
-    							<% end %>
-    						<%else%>
-    							<%= form_tag pet_avatars_path(pet), multipart: true do %>
-    								<%= file_field_tag :avatar %>
-    								<%= submit_tag "Mettre à jour" %>
-    							<%end%>
-    						<%end%>
-                <% end %>
-             </div>
-    				 <% end %>
-           </div>
-    		</div>
-    	</div>
-    	</div>
-    </div>
+    <%= render 'my_pets' %>
 
     <!-- Reservations Part ! -->
     <div class="tab-pane" id="tab-3-3">
@@ -150,7 +26,7 @@
       <% if current_petowner %>
       <% if current_petowner.id == @petowner.id %>
         <section>
-          <div class="container bg-primary mt-6 pt-4 shadow-lg rounded" style="border:2px solid black">
+          <div class="container mt-6 pt-4 shadow-lg rounded" style="border:2px solid black">
             <div class="row" >
         				<div class="col-sm-12 col-md-12 ">
         					<ul class="nav nav-tabs tab-with-center-icon justify-content-center nav-justified">
@@ -165,62 +41,13 @@
       							</li>
         					</ul>
         					<div class="tab-content">
-        						<div class="tab-pane show active" id="tab-8-1">
-      								<div class="col-sm-12 mb-5">
-      	      					<div class="table-responsive-sm">
-      	      						<table class="table table-hover">
-      	      							<thead>
-      	      								<tr class="text-white">
-      	      									<th scope="col">Petsitter</th>
-      	      									<th scope="col">Nom</th>
-      	      									<th scope="col">Prénom</th>
-      	                        <th scope="col">Mail</th>
-      	      									<th scope="col">Réservation</th>
-      	                        <th scope="col"> </th>
-      	      								</tr>
+                    <%= render 'tab_booking_pending' %>
 
-      											</thead>
-      	      							<tbody>
-      	                      <!-- methode my_petsitters => helper -->
-      	                      <% @bookings_petowner.each do |booking|%>
-      													<% if booking.validate_petowner == false%>
-      													<tr id="booking-f-<%= booking.id %>">
-      	                            <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-      	                            <% if petsitter_exists(booking.id) == false %>
-      	          									  <th scope="row"> <%= booking.petsitter_id%> </th>
-      	            									<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-      	            									<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-      	            									<td><%= my_petsitters(booking.petsitter_id).email%> </td>
-      	                              <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-      	                              <td class=d-inline-block">
-
-      	                              	<%= link_to petsitter_path(booking.petsitter_id) do %>
-      	                                	<span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
-      	                              	<%end%>
-      																	<% if booking.validate_petsitter == true %>
-      																		<%= form_with(url: petsitting_path(booking.id), method:'patch', remote: true) do%>
-      	                                  	<%= button_tag(type: "submit", class: "btn btn-default") do %>
-      	                                    	<span class="btn btn-outline-light text-white">Confirmer la demande</span>
-      	                                  	<%end%>
-      	                                	<% end %>
-      																	<% else %>
-      																		<span class="btn btn-secondary text-white">En attentes</span>
-      																	<% end %>
-      	                              </td>
-      	                            <% end %>
-      	          								</tr>
-      													<% end %>
-      	                      <% end %>
-      	      							</tbody>
-      	      						</table>
-      	      					</div>
-      	      				</div>
-                  </div>
       						<div class="tab-pane" id="tab-8-2">
                     <div class="col-sm-12 mb-5">
             					<div class="table-responsive-sm">
-            						<table class="table table-hover">
-            							<thead>
+                        <table class="table table-lg table-noborder table-striped">
+                          <thead class="all-text-white bg-grad">
             								<tr class="text-white">
             									<th scope="col">Petsitter</th>
             									<th scope="col">Nom</th>
@@ -256,46 +83,6 @@
             						</table>
             					</div>
             				</div>
-      						</div>
-      						<div class="tab-pane" id="tab-8-3">
-      							<div class="col-sm-12 mb-5">
-      								<div class="table-responsive-sm">
-      									<table class="table table-hover">
-      										<thead>
-      											<tr class="text-white">
-      												<th scope="col">Petsitter</th>
-      												<th scope="col">Nom</th>
-      												<th scope="col">Prénom</th>
-      												<th scope="col">Mail</th>
-      												<th scope="col">Réservation</th>
-      												<th scope="col"> </th>
-      											</tr>
-      										</thead>
-      										<tbody>
-      											<!-- methode my_petsitters => helper -->
-      											<% @bookings_petowner.each do |booking|%>
-      											<% if booking.petowner_id == true && booking.petsitter_id == true %>
-      													<tr>
-      														<!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-      														<% if petsitter_exists(booking.id) == false %>
-      															<th scope="row"> <%= booking.petsitter_id%> </th>
-      															<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-      															<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-      															<td><%= my_petsitters(booking.petsitter_id).email%> </td>
-      															<td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-      															<td>
-      																<%= link_to petsitter_path(booking.petsitter_id) do %>
-      																	<span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
-      																<%end%>
-      															</td>
-      														<% end %>
-      													</tr>
-      												<% end %>
-      											<% end %>
-      										</tbody>
-      									</table>
-      								</div>
-      							</div>
       						</div>
       					</div>
       				</div>

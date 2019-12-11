@@ -9,7 +9,8 @@ class PetsController < ApplicationController
       flash[:success] = "Le profil de votre animal a bien été enregistré !"
       redirect_to petowner_path(id: current_petowner.id)
     else
-      flash[:warning] = @pet.errors.messages
+      flash[:alert] = @pet.errors.messages
+      redirect_to petowner_path(id: current_petowner.id)
     end
   end
 
