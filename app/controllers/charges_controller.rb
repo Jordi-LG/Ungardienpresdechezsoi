@@ -5,7 +5,6 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    @amount = params[:amount]
     @amount_in_cents = params[:amount]
 
     @amount_in_cents = @amount.gsub('$', '').gsub(',', '')
@@ -20,7 +19,7 @@ class ChargesController < ApplicationController
 
   @amount_in_cents = (@amount_in_cents * 100).to_i # Must be an integer!
 
-  if @amount_in_cents < 500
+  if @amount_in_cents < 100
     flash[:error] = 'Montant non valide, la donation doit etre superieur à 1$.'
     redirect_to new_charge_path
     return

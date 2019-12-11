@@ -124,13 +124,13 @@ OBJECTIVES & PARTICIPATION  -->
             <% end %>
           </div>
           <article>
-            <%= label_tag(:amount, 'Donation Amount:') %>
-            <%= text_field_tag(:amount) %>
+            <%= label_tag(:amount, 'Montant de votre donation:') %>
+            <%= text_field_tag(:amount, "", class: 'form-control',placeholder: "Indiquer le montant") %>
           </article>
           <article>
             <%= hidden_field_tag(:stripeToken) %>
           </article>
-          <button id='donateButton'>Donate</button>
+          <button id='donateButton' class="btn btn-lg btn-grad">Donate</button>
         <% end %>
         <script src="https://checkout.stripe.com/checkout.js"></script>
 
@@ -158,7 +158,7 @@ OBJECTIVES & PARTICIPATION  -->
           if (isNaN(amount)) {
             $('#error_explanation').html("<p>Montant non valide, merci d'entrée une valeur en dollar ($).</p>");
           }
-          else if (amount < 5.00) {
+          else if (amount < 1.00) {
             $('#error_explanation').html('<p>Montant non valide, la donation doit etre superieur à 1$.</p>');
           }
           else {
@@ -182,7 +182,7 @@ OBJECTIVES & PARTICIPATION  -->
 
 <!-- =======================
 CONTACT-->
-<section class="mb-6">
+<div class="mb-6">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -207,13 +207,13 @@ CONTACT-->
       </div>
     </div>
   </div>
-</section>
+</div>
 <!-- =======================
 CONTACT -->
 
 <!-- =======================
 Btn back index -->
-<section class="mb-6">
+<div class="mb-6">
   <div class="d-flex justify-content-center mt-3">
     <%= link_to root_path do %>
     <div class="btn btn-button btn-dark">
@@ -221,7 +221,7 @@ Btn back index -->
     </div>
     <% end %>
   </div>
-</section>
+</div>
 <!-- =======================
 Btn back index -->
 
