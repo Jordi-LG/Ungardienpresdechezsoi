@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'comments/new'
-  get 'comments/create'
-  get 'comments/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: 'staticpages#index'
   get 'team', to: 'staticpages#team'
-  get 'contact', to: 'staticpages#contact'
+
 
   resources :charges
 
@@ -20,9 +17,13 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
 
-  resources :associations, only: [:show, :index]
+  resources :pets, only: [:new, :create] do
+    resources :avatars, only: [:create]
+  end
+
+  resources :associations, only: [:show, :index, :new, :create]
   resources :petsittings, except: [:edit]
-  resources :pets, only: [:new, :create]
+  resources :contacts, only: [:new, :create]
   resources :comments, only: [:new, :create, :index]
 
 end

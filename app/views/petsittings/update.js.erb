@@ -1,7 +1,14 @@
 $(document).ready(function() {
 console.log("123");
-$('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
-var n = $(".booking");
-console.log(n)
-$(".booking").append("<%= j render 'verif_petsitter', booking: @booking %>");
+<% if current_petsitter %>
+  $('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
+  var n = $(".booking");
+  console.log(n)
+  $(".booking").append("<%= j render 'verif_petsitter', booking: @booking %>");
+<% else %>
+  $('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
+  var n = $(".booking");
+  console.log(n)
+  $(".booking").append("<%= j render 'verif_petowner', booking: @booking %>");
+<% end %>
 });

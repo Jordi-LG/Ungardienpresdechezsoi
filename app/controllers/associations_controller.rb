@@ -15,4 +15,26 @@ class AssociationsController < ApplicationController
     end
   end
 
+  def new
+  end
+
+  def create
+    @association = Association.new(name: association_form_params['name'], describe: association_form_params['describe'], date_of_birth: association_form_params['date_of_birth'], email: association_form_params['email'], facebook_url: association_form_params['facebook_url'], donation_url: association_form_params['donation_url'], validate_association: false)
+
+
+
+    if @association.save
+      flash[:success] = "Votre dossier Association a bien été enregistrée !"
+      redirect_to associations_path
+    else
+      flash[:warning] = @association.errors.messages
+      redirect_to associations_path
+    end
+  end
+
+  private
+
+  def association_form_params
+    params.require(:association).permit(:name, :date_of_birth, :describe, :email, :facebook_url, :donation_url, :validate_association)
+  end
 end

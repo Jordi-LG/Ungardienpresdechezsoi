@@ -18,8 +18,16 @@ class PetsittingsController < ApplicationController
   end
 
   def update
-    @booking = Petsitting.find_by(petsitter_id: current_petsitter,petowner_id: petowner_choosen_id)
-    @booking.validate_petsitter = true
+    if current_petsitter
+      @booking = Petsitting.find_by(petsitter_id: current_petsitter,petowner_id: validate)
+      @booking.validate_petsitter = true
+      PetownerMailer.accepted_request(@booking).deliver_now
+    else
+      @booking = Petsitting.find_by(petsitter_id: validate , petowner_id: current_petowner)
+      @booking.validate_petowner = true
+      PetsitterMailer.accepted_booking(@booking).deliver_now
+    end
+
       respond_to do |format|
         if     @booking.save
       format.js
@@ -29,11 +37,11 @@ class PetsittingsController < ApplicationController
 
   def destroy
     if current_petsitter
-      @petsitting = Petsitting.find_by(petowner_id: petowner_choosen_id, petsitter_id: current_petsitter)
+      @petsitting = Petsitting.find_by(petowner_id: validate, petsitter_id: current_petsitter)
       @petsitting.delete
       redirect_to petsitter_path(current_petsitter.id)
     else
-      @petowner = Petsitting.find_by(petowner_id: current_petowner, petsitter_id: petsitter_choosen_id)
+      @petowner = Petsitting.find_by(petowner_id: current_petowner, petsitter_id: validate)
       @petowner.delete
       redirect_to petsitter_path(current_petowner.id)
     end
@@ -41,17 +49,20 @@ class PetsittingsController < ApplicationController
   end
 
   private
+
   def petsitter_choosen_id
     params.require(:id)
   end
 
-  def petowner_choosen_id
-    @petowner = Petsitting.find(params.require(:id))
-
-    @petowner.petowner_id
+  def validate
+    if current_petowner
+      @petsitter = Petsitting.find(params.require(:id))
+      @petsitter.petsitter_id
+    else
+      @petowner = Petsitting.find(params.require(:id))
+      @petowner.petowner_id
+    end
   end
-
-
 
   def already_contacted?
     Petsitting.find_by(petowner_id: current_petowner.id, petsitter_id: petsitter_choosen_id)

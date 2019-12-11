@@ -18,7 +18,7 @@
                 <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
                   <h1 class="h3 mb-3 font-weight-normal text-center">Inscription</h1>
                   <%= devise_error_messages! %>
-                  <div class="col-6 d-inline-block">
+                  <div class="col-xs-6 d-inline-block">
                       <div class="form-group">
                         <%= f.label :first_name, "Nom de famille" %>
                         <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "Entrer votre nom" %>
@@ -40,11 +40,16 @@
                         <%= f.phone_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", placeholder: "Entrer votre numéro de téléphone" %>
                       </div>
                       <div class="form-group">
-                        <%= f.label :garden, "Avez-vous un jardin ?" %><br/>
+                        <%= f.label :garden, "Avez-vous un jardin ?" %>
                         <%= f.select :garden,[["Oui", true], ["Non", false]], {}, { :class => 'form-control form-control-lg' }%>
                       </div>
-                      </div>
-                  <div class="col-5 d-inline-block">
+                      </div>                    
+                      
+                  <div class="col-xs-6 d-inline-block">
+                    <div class="form-group">
+                      <%= f.label :district_id, "Quel est votre quartier ?" %><br/>
+                      <%= f.select :district_ids,[["Aiguelongues", 1], ['Arceaux', 2], ['Boutonnet', 3], ['Croix-d argent', 4], ['Ecusson', 5], ['Euromédecine', 6], ['Figuerolles', 7], ['Gambetta', 8], ['Hauts de Massane', 9], ['Hopitaux Facultés', 10], ['Malbosc', 11],['Nouveau Saint-Roch', 12], ['Odysseum', 13], ['Port Marianne', 14], ['Tournezy', 15]], {}, { :class => 'form-control form-control-lg' }%>
+                    </div>
                     <div class="form-group">
                     <%= f.label :living_space, "De combien d'espace habitable disposez vous ?" %>
                     <%= f.number_field :living_space, in: 25...1000, autofocus: true, autocomplete: "living_space", class: "form-control", placeholder: "Donner votre surface en m2" %>

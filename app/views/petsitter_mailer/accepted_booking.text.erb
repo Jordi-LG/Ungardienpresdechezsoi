@@ -1,0 +1,7 @@
+Salut <%= @petsitting.petsitter.last_name %>,
+
+Ta demande auprès du pet owner <%= @petsitting.petowner.last_name%> a été validé.
+
+Pour accéder à ton espace client, <%= link_to "clique ici", petsitter_url(@petsitting.petsitter.id)%>.
+
+À très vite sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %>.

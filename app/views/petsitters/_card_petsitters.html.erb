@@ -1,0 +1,36 @@
+  <div class="row">
+    <!-- ITEM -->
+    <% @petsitters.shuffle.each do |petsitter| %>
+      <% if petsitter.account_validate == true %>
+        <div class="item pb-5 col-4">
+          <div class="post">
+            <%= image_tag petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid #28a745;'%>
+            <div class="post-info ">
+              <% petsitter.districts.each do |district| %>
+                <span class="post-tag bg-grad text-white mb-3 clearfix"><%= district.district_name %></span>
+              <% end %>
+              <span class="post-price bg-grad text-white clearfix"><%= petsitter.price %> €/jours</span>
+              <div class="post-author"><%= petsitter.first_name %> <%= petsitter.last_name %></div>
+              <!-- HELPER POUR RECHERCHE LES COMMENTAIRES D'UN PETSITTER -->
+              <div class="post-time float-right"><%= comments_petsitter(petsitter.id).count %>  <i class="fa fa-comment"></i></div>
+
+              <div class="post-title text-primary"><%= petsitter.describe %></div>
+            </div>
+            <div class="d-flex justify-content-between flex-md-wrap mt-auto p-2 bd-highligh">
+              <%= link_to petsitter_path(petsitter.id) do %>
+                <span class="btn btn-info"><i class="fa fa-bullseye"></i>Son profil !</span>
+              <% end %>
+              <% if current_petsitter == nil %>
+                <%= form_with(url: petsittings_path, method: 'post', local: true) do%>
+                  <%= hidden_field_tag(name='id', petsitter.id) %>
+                  <%= button_tag(type: "submit",  class:"btn btn-grad") do %>
+                    <span><i class="fa fa-envelope-o"></i>Contacter</span>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>

@@ -1,0 +1,16 @@
+<tr>
+  <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+  <% if petsitter_exists(booking.id) == false %>
+    <th scope="row"> <%= booking.petsitter_id%> </th>
+    <td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
+    <td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
+    <td><%= my_petsitters(booking.petsitter_id).email%> </td>
+    <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+    <td>
+      <%= link_to petsitter_path(booking.petsitter.id) do %>
+        <span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
+      <%end%>
+      <span class="btn btn-info text-white">Validé</span>
+    </td>
+  <% end %>
+</tr>
