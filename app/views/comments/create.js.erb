@@ -1,0 +1,4 @@
+$(document).ready(function() {
+  console.log($(".owl-carousel"));
+$('.owl-carousel').hide().html("<%= j render 'add_comment', comment: @comment %>").fadeIn('slow')
+});
