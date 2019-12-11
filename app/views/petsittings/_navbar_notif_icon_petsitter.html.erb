@@ -1,0 +1,14 @@
+<% if current_petsitter %>
+  <% if notifications_for_petsitter == 0 %>
+    <%= link_to petsitter_path(current_petsitter.id) do %><li class="nav-link">	<i class="fa fa-envelope-open-o fa-2x"></i></li><% end %>
+  <%else%>
+    <%= link_to petsitter_path(current_petsitter.id) do %>
+      <li class="nav-link">
+        <i class="fa fa-envelope fa-2x">
+          <span class="badge badge-pill badge-danger"> <%= notifications_for_petsitter %>
+          </span>
+        </i>
+      </li>
+    <% end %>
+  <%end%>
+<%end%>

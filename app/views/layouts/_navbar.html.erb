@@ -38,8 +38,7 @@
 								</ul>
 							</li>
 						<% elsif current_petsitter%>
-							<%= link_to petsitter_path(current_petsitter.id) do %><li class="nav-link">	<i class="fa fa-envelope-open-o fa-2x"></i></li><% end %>
-							<%= link_to petsitter_path(current_petsitter.id) do %><li class="nav-link">	<i class="fa fa-envelope fa-2x"></i><span class="badge badge-pill badge-danger">1</span></li><% end %>
+							 <%= render "petsittings/navbar_notif_icon_petsitter"%>
 							<li class="nav-item dropdown">
 								<span class="nav-link dropdown-toggle" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style ="color:black;"><strong>Mon compte</strong></span>
 								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">

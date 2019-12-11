@@ -18,6 +18,8 @@ class PetsittingsController < ApplicationController
   end
 
   def update
+    @notification = []
+
     if current_petsitter
       @booking = Petsitting.find_by(petsitter_id: current_petsitter,petowner_id: validate)
       @booking.validate_petsitter = true
@@ -30,8 +32,12 @@ class PetsittingsController < ApplicationController
       respond_to do |format|
         if     @booking.save
         format.js
+        end
       end
-    end
+  end
+
+  def show
+    @notification = notifications_for_petsitter
   end
 
   def destroy
