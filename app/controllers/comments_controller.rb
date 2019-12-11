@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
       @comment.ps_id = params[:id]
       @comment.petowner_id = current_petowner.id
       @comment.save
+      @comments = Comment.all_comments_petsitter(params[:id])
 
       if @comment.save
         respond_to do |format|

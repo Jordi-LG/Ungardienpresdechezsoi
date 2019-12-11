@@ -1,4 +1,6 @@
 $(document).ready(function() {
   console.log($(".owl-carousel"));
 $('.owl-carousel').hide().html("<%= j render 'add_comment', comment: @comment %>").fadeIn('slow')
+
+$('#counterjs').hide().html("+1 !").hide().html("<%= j render 'update_counter', comments: @comments %>").fadeIn('slow');
 });
