@@ -4,7 +4,7 @@
       <% if petsitter.account_validate == true %>
         <div class="item pb-5 col-4">
           <div class="post">
-            <%= image_tag petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid #28a745;'%>
+            <%= image_tag petsitter.avatar, alt: 'avatar' , class:'shadow-lg avatar-card'%>
             <div class="post-info ">
               <% petsitter.districts.each do |district| %>
                 <span class="post-tag bg-grad text-white mb-3 clearfix"><%= district.district_name %></span>

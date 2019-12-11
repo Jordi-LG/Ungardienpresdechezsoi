@@ -84,3 +84,35 @@ html {
   background-size:cover;
   background-position: center center;
 }
+
+.pet-img {
+  display:relative;background-size: cover;
+  width: 400px;
+  height: 300px;
+  border-radius:10px;
+  border:2px solid #28a745;
+}
+
+.figure-petowner {
+  transform: scaleX(-1);
+  margin-left:5%;
+}
+
+.form-style {
+  margin-left:10%;
+}
+
+.avatar-img {
+  max-height: 85%;
+  margin-top: 5%;
+  width:85%;
+  border-radius:10px;
+  border:2px solid black;
+}
+
+.avatar-card {
+  max-height: 100%;
+  width:100%;
+  border-radius:10px;
+  border:2px solid #28a745;
+}
