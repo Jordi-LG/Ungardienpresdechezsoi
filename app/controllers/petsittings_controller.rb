@@ -30,9 +30,22 @@ class PetsittingsController < ApplicationController
 
       respond_to do |format|
         if     @booking.save
-        format.js
+      format.js
       end
     end
+  end
+
+  def destroy
+    if current_petsitter
+      @petsitting = Petsitting.find_by(petowner_id: validate, petsitter_id: current_petsitter)
+      @petsitting.delete
+      redirect_to petsitter_path(current_petsitter.id)
+    else
+      @petowner = Petsitting.find_by(petowner_id: current_petowner, petsitter_id: validate)
+      @petowner.delete
+      redirect_to petsitter_path(current_petowner.id)
+    end
+
   end
 
   private
