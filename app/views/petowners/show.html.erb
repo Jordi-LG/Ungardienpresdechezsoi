@@ -14,50 +14,7 @@
   <div class="tab-content">
 
     <!-- Profile Part ! -->
-    <div class="tab-pane show active" id="tab-3-1">
-        <div class="left pt-2">
-          <div class="container">
-            <div class="row all-text-white">
-              <div class="col-md-12 align-self-center">
-                <h3 class="text-dark display-3 font-weight-bold ml-6">Mon Profil</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
-          <span class="pt-0 h5">
-            <p><strong>Nom : </strong><%= @petowner.first_name %> <%= @petowner.last_name %></p>
-            <p><strong>Email : </strong><%= @petowner.email%></p>
-            <p><strong>Numéro de téléphone : </strong><%= @petowner.phone_number%></p>
-            <p><strong>Animal : </strong><%= @petowner.phone_number%></p>
-          </span>
-          </h5>
-        <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petowner.describe %></p>
-        <% if current_petowner %>
-          <%= link_to petsitters_path do%>
-            <span class="btn btn-button btn-grad"><i class="fa fa-address-book fa-2x"></i>Faire une réservation</span>
-          <% end %>
-            <% if current_petowner.id == @petowner.id %>
-              <span>
-                <% if @petowner.avatar.attached? == false %>
-                  <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
-                  <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= submit_tag "Ajouter une photo" %>
-                  <% end %>
-                <%else%>
-                  <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= submit_tag "Mettre à jour" %>
-                  <%end%>
-                <%end%>
-                <% end %>
-              </span>
-          <% end %>
-          <%= link_to edit_petowner_registration_path do %>
-            <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
-          <% end %>
-    </div>
+    <%= render 'profil', object: @petowner %>
 
     <!-- Pets Part ! -->
     <div class="tab-pane" id="tab-3-2">
