@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :associations, only: [:show, :index, :new, :create]
-  resources :petsittings, only: [:new, :create, :show, :update]
+  resources :petsittings, only: [:new, :create, :show, :update, :destroy]
   resources :contacts, only: [:new, :create]
   resources :comments, only: [:new, :create, :index]
 
