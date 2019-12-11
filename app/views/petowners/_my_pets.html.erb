@@ -40,7 +40,7 @@
             <div class="item pb-5 col-4">
               <div class="post">
                 <% if pet.avatar.attached? != false %>
-                  <%= image_tag pet.avatar, alt: 'avatar' , class:'shadow-lg', style:'display:relative;background-size: cover; width: 400px;height: 300px;border-radius:10px; border:2px solid #28a745;'%>
+                  <%= image_tag pet.avatar, alt: 'avatar' , class:'shadow-lg pet-img'%>
                 <% end %>
                 <div class="post-info ">
                   <span class="post-tag bg-grad text-white mb-3 clearfix"><%= pet.pet_type%></span>

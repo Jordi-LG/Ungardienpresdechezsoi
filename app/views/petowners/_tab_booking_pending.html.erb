@@ -22,7 +22,6 @@
                   <td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
                   <td><%= my_petsitters(booking.petsitter_id).email%> </td>
                   <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-                  
                   <td class="d-flex justify-content-around flex-md-wrap">
                     <%= link_to petsitter_path(booking.petsitter_id) do %>
                       <span class="btn btn-info">Profil</span>

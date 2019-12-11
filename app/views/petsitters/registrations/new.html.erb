@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" style="height:100%;">
+<html lang="en">
 <head>
   <title>Un gardien pres de chez soi | Inscription</title>
   <meta charset="utf-8">
@@ -8,9 +8,8 @@
 <body>
   <div class="preloader">
   </div>
-  <section class="p-0" style="min-height: 100%;">
-    <div style="min-height: 100%;">
-      <div class="row" style="min-height: 100vh;" >
+  <section class ="p-0 section_div">
+      <div class="row devise_div" >
         <!-- left -->
             <div class="col-12 col-lg-5 text-left mx-auto ">
               <div class="w-100">
@@ -43,8 +42,8 @@
                         <%= f.label :garden, "Avez-vous un jardin ?" %>
                         <%= f.select :garden,[["Oui", true], ["Non", false]], {}, { :class => 'form-control form-control-lg' }%>
                       </div>
-                      </div>                    
-                      
+                      </div>
+
                   <div class="col-xs-6 d-inline-block">
                     <div class="form-group">
                       <%= f.label :district_id, "Quel est votre quartier ?" %><br/>
@@ -88,8 +87,8 @@
             <div class="justify-content-center align-self-center">
               <%= link_to root_path do %>
               <div class="logo-auth; m-4">
-                <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
-                <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+                <%= image_tag "logos/LogoGardien.png", :class => "img_logo"%>
+                <%= image_tag "logos/TitreGardien.png", :class => "img_logo"%>
               </div>
               <%end%>
             </div>
@@ -102,7 +101,6 @@
           </div>
         </div>
       </div>
-    </div>
   </section>
 </body>
 </html>
