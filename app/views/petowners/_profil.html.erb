@@ -23,25 +23,30 @@
     <h5 class="mb-2 "><%= @petowner.describe %></h5>
 		</blockquote>
 	</div>
+  <div class="divider divider-grad"></div><br>
   <% if current_petowner %>
     <% if current_petowner.id == @petowner.id %>
-      <span>
+      <span class=>
         <% if @petowner.avatar.attached? == false %>
-          <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
+          <p>Il n'y a pas encore d'avatar lié à ce compte !</p>
           <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
             <%= file_field_tag :avatar %>
-            <%= submit_tag "Ajouter une photo" %>
+            <%= button_tag(type: 'submit', class:"btn btn-success") do %>
+              <span><i class="fa fa-check-circle-o""></i>Ajouter une photo</span>
+            <% end %>
           <% end %>
         <%else%>
           <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-            <%= file_field_tag :avatar %>
-            <%= submit_tag "Mettre à jour" %>
+            <%= file_field_tag :avatar, class:"button"%>
+            <%= button_tag(type: 'submit', class:"btn btn-success") do %>
+              <span><i class="fa fa-check-circle-o""></i>Mettre à jour</span>
+            <% end %>
           <%end%>
         <%end%>
       </span>
     <% end %>
   <% end %>
   <%= link_to edit_petowner_registration_path do %>
-    <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
+    <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0">Editer votre compte </button>
   <% end %>
 </div>
