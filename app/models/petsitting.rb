@@ -5,7 +5,7 @@ class Petsitting < ApplicationRecord
   after_create :validate_petsitting_false
 
   def validate_petsitting_false
-    @petsitting = Petsitting.last
+    @petsitting = self
     @petsitting.validate_petsitter = false
     @petsitting.validate_petowner = false
     PetownerMailer.booking_a_petsitter(@petsitting).deliver_now
