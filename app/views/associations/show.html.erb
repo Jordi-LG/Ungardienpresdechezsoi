@@ -117,58 +117,58 @@ OBJECTIVES & PARTICIPATION  -->
         <div class="d-flex float-right m-4">
           <h2>Vous voulez <span class="text-primary"> participer</span> à notre action ? </h2>
         </div>
-<%= form_tag charges_path do %>
-  <div id="error_explanation">
-    <% if flash[:error].present? %>
-      <p><%= flash[:error] %></p>
-    <% end %>
-  </div>
-  <article>
-    <%= label_tag(:amount, 'Donation Amount:') %>
-    <%= text_field_tag(:amount) %>
-  </article>
-  <article>
-    <%= hidden_field_tag(:stripeToken) %>
-  </article>
-  <button id='donateButton'>Donate</button>
-<% end %>
-<script src="https://checkout.stripe.com/checkout.js"></script>
+        <%= form_tag charges_path do %>
+          <div id="error_explanation">
+            <% if flash[:error].present? %>
+              <p><%= flash[:error] %></p>
+            <% end %>
+          </div>
+          <article>
+            <%= label_tag(:amount, 'Montant de votre donation:') %>
+            <%= text_field_tag(:amount, "", class: 'form-control',placeholder: "Indiquer le montant") %>
+          </article>
+          <article>
+            <%= hidden_field_tag(:stripeToken) %>
+          </article>
+          <button id='donateButton' class="btn btn-lg btn-grad">Donate</button>
+        <% end %>
+        <script src="https://checkout.stripe.com/checkout.js"></script>
 
-<script>
-var handler = StripeCheckout.configure({
-  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-  locale: 'EUR',
-  name: '<%= @association.name %>',
-  description: 'Donation',
-  token: function(token) {
-    $('input#stripeToken').val(token.id);
-    $('form').submit();
-  }
-});
-$('#donateButton').on('click', function(e) {
-  e.preventDefault();
+        <script>
+        var handler = StripeCheckout.configure({
+          key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+          locale: 'EUR',
+          name: '<%= @association.name %>',
+          description: 'Donation',
+          token: function(token) {
+            $('input#stripeToken').val(token.id);
+            $('form').submit();
+          }
+        });
+        $('#donateButton').on('click', function(e) {
+          e.preventDefault();
 
-  $('#error_explanation').html('');
+          $('#error_explanation').html('');
 
-  var amount = $('input#amount').val();
-  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+          var amount = $('input#amount').val();
+          amount = amount.replace(/\$/g, '').replace(/\,/g, '')
 
-  amount = parseFloat(amount);
+          amount = parseFloat(amount);
 
-  if (isNaN(amount)) {
-    $('#error_explanation').html("<p>Montant non valide, merci d'entrée une valeur en dollar ($).</p>");
-  }
-  else if (amount < 5.00) {
-    $('#error_explanation').html('<p>Montant non valide, la donation doit etre superieur à 1$.</p>');
-  }
-  else {
-    amount = amount * 100; // Needs to be an integer!
-    handler.open({
-      amount: Math.round(amount)
-    })
-  }
-});
-</script>
+          if (isNaN(amount)) {
+            $('#error_explanation').html("<p>Montant non valide, merci d'entrée une valeur en dollar ($).</p>");
+          }
+          else if (amount < 1.00) {
+            $('#error_explanation').html('<p>Montant non valide, la donation doit etre superieur à 1$.</p>');
+          }
+          else {
+            amount = amount * 100; // Needs to be an integer!
+            handler.open({
+              amount: Math.round(amount)
+            })
+          }
+        });
+        </script>
 
 
         </div>
@@ -182,7 +182,7 @@ OBJECTIVES & PARTICIPATION  -->
 
 <!-- =======================
 CONTACT-->
-<section class="mb-6">
+<div class="mb-6">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -207,13 +207,13 @@ CONTACT-->
       </div>
     </div>
   </div>
-</section>
+</div>
 <!-- =======================
 CONTACT -->
 
 <!-- =======================
 Btn back index -->
-<section class="mb-6">
+<div class="mb-6">
   <div class="d-flex justify-content-center mt-3">
     <%= link_to root_path do %>
     <div class="btn btn-button btn-dark">
@@ -221,7 +221,7 @@ Btn back index -->
     </div>
     <% end %>
   </div>
-</section>
+</div>
 <!-- =======================
 Btn back index -->
 
