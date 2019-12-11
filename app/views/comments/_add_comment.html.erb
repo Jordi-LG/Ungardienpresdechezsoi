@@ -1,0 +1,11 @@
+<p> Merci pour votre commentaire ! Il apparaitra désormais avec les autres</p>
+<div class="item">
+  <div class="testimonials-wrap">
+    <div class="testi-text">
+      <p><%= comment.content %></p>
+      <!-- HELPER POUR TROUVER LE PETOWNER A L'ORIGINE DU COMMENTAIRE -->
+      <h6 class="mb-0 mt-3"><%= my_petowners((comment).petowner_id).first_name %></h6>
+      <h6 class="small"><%= comment.title %></h6>
+    </div>
+  </div>
+</div>

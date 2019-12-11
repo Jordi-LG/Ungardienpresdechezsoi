@@ -9,9 +9,13 @@ class CommentsController < ApplicationController
       @comment.ps_id = params[:id]
       @comment.petowner_id = current_petowner.id
       @comment.save
+      @comments = Comment.all_comments_petsitter(params[:id])
 
       if @comment.save
-        redirect_to petsitter_path(page_id)
+        respond_to do |format|
+          format.html { petsitter_path(page_id)}
+          format.js
+        end
       end
     else
       flash[:alert] = "Vous avez déjà laissé un commentaire à ce Pet sitter !"
