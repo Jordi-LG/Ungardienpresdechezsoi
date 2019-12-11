@@ -1,14 +1,15 @@
-  <% if current_petsitter %>
+<% if current_petsitter %>
   <% if current_petsitter.id == @petsitter.id %>
     <% if current_petsitter.account_validate == false %>
     	<div class="col-sm-12">
         <div class="alert alert-warning" role="alert">
-          Votre compte est en attente de validation. Veuillez patienter le temps qu'un modérateur accède à votre demande.
+          <p>Votre compte est en attente de validation. Veuillez patienter le temps qu'un modérateur accède à votre demande.</p>
         </div>
       </div>
     <% end %>
-    <% end %>
   <% end %>
+<% end %>
+
 <section class="p-0 position-relative mb-6">
   <div class="container-fluid d-flex h-100 w-100">
     <div class="row justify-content-between align-items-center w-100">
@@ -53,63 +54,7 @@
           <div class="tab-content">
 
             <!-- PROFILE PART -->
-            <div class="tab-pane show active" id="tab-3-1">
-              <h3><strong>Bienvenue sur ma page !</strong></h3>
-              <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
-                <span class="pt-0 h5">
-                  <p><strong>Nom :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
-                  <% if current_petowner %>
-                  <% if current_petowner.id == booking_validate %>
-                    <p><strong>Numéro de télephone :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
-                    <p><strong>Email :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
-                  <% end %>
-                  <% end %>
-                </span>
-                <span class="pt-0">Je vous propose de garder</span><br>
-                <span class="pt-0">vos :</span>
-                <span class="cd-words-wrapper pt-0 text-primary">
-                  <b class="is-visible">Chiens</b>
-                  <b>Chats</b>
-                  <b>Tarentules</b>
-                </span>
-              </h5>
-              <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petsitter.describe %></p>
-              <% if current_petowner %>
-                <%= form_with(url: petsittings_path, method: 'post', local: true) do%>
-                  <%= hidden_field_tag(name='id', @petsitter.id) %>
-                  <%= button_tag(type: "submit", class: "btn btn-default") do %>
-                    <span class="btn btn-info"><i class="fa fa-envelope-o"></i>Contacter</span>
-                    <span>
-                      <%= form_with(url: charges_path) do %>
-                        <% if flash[:error].present? %>
-                          <div id="error_explanation">
-                            <p><%= flash[:error] %></p>
-                          </div>
-                        <% end %>
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                            data-description="Validez votre achat de <%= %> 5 € !"
-                            data-amount= 500
-                            data-locale="auto"
-                            data-label="Commander">
-                        </script>
-                      <% end %>
-                    </span>
-                  <% end %>
-                <% end %>
-              <% end %>
-              <% if current_petsitter %>
-              <% if current_petsitter.id == @petsitter.id %>
-                <span>
-                  <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
-                  <%= form_tag petsitter_avatars_path(@petsitter), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= submit_tag "mettre à jour" %>
-                  <% end %>
-                </span>
-              <% end %>
-              <% end %>
-            </div>
+            <%= render 'profil' %>
 
             <!-- COMMENTS PART -->
             <div class="tab-pane" id="tab-3-2">
