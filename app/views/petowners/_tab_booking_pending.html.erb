@@ -39,6 +39,9 @@
                     <% else %>
                       <span class="btn btn-secondary text-white">En attente</span>
                     <% end %>
+                    <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
+                      <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
+                    <% end %>
                   </td>
                 <% end %>
               </tr>
