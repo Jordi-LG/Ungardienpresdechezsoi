@@ -27,13 +27,25 @@ class PetsittingsController < ApplicationController
       @booking.validate_petowner = true
       PetsitterMailer.accepted_booking(@booking).deliver_now
     end
-
       respond_to do |format|
         if     @booking.save
         format.js
       end
     end
   end
+
+  def destroy
+    if current_petsitter
+      @delete_booking_petsitter = Petsitting.find_by(petsitter_id: current_petsitter, petowner_id: validate)
+      @delete_booking_petsitter.destroy
+      redirect_to petsitter_path(current_petsitter.id)
+    else
+      @delete_booking_petowner = Petsitting.find_by(petsitter_id: validate,petowner_id: current_petowner)
+      @delete_booking_petowner.destroy
+      redirect_to petowner_path(current_petowner.id)
+    end
+  end
+
 
   private
 
