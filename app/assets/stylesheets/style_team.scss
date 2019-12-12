@@ -102,13 +102,17 @@ html {
   margin-left:10%;
 }
 
+.res {
+
+}
 .avatar-img {
+  object-fit: cover;
+  display: block;
   max-height: 600px;
   max-width: 600px;
-  object-fit: cover;
   height: 100%;
-  margin: 5% 0 0 5%;
   width: 100%;
+  margin: 5% 0 0 5%;
   border-radius:10px;
   border:2px solid black;
 }
