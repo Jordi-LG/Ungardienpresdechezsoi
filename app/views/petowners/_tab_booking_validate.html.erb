@@ -30,9 +30,11 @@
                     <span class="btn btn-grad">Validé</span>
 
                 <% end %>
+                <% if booking.validate_petowner == false && booking.validate_petsitter == false || booking.validate_petowner == false && booking.validate_petsitter == true %>
                 <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
                   <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
                 <% end %>
+                <%end%>
               </td>
               </tr>
             <% end %>

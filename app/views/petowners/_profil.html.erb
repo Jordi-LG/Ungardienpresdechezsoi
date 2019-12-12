@@ -32,14 +32,14 @@
           <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
             <%= file_field_tag :avatar %>
             <%= button_tag(type: 'submit', class:"btn btn-success") do %>
-              <span><i class="fa fa-check-circle-o""></i>Ajouter une photo</span>
+              <span><i class="fa fa-check-circle-o"></i>Ajouter une photo</span>
             <% end %>
           <% end %>
         <%else%>
           <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
             <%= file_field_tag :avatar, class:"button"%>
             <%= button_tag(type: 'submit', class:"btn btn-success") do %>
-              <span><i class="fa fa-check-circle-o""></i>Mettre à jour</span>
+              <span><i class="fa fa-check-circle-o"></i>Mettre à jour</span>
             <% end %>
           <%end%>
         <%end%>

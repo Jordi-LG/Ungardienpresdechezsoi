@@ -49,7 +49,7 @@ class PetsittingsController < ApplicationController
     else
       @delete_booking_petowner = Petsitting.find_by(petsitter_id: validate,petowner_id: current_petowner)
       @delete_booking_petowner.destroy
-      PetsitterMailer.refused_request(@delete_booking_petowner).deliver_now
+      PetsitterMailer.refused_booking(@delete_booking_petowner).deliver_now
       redirect_to petowner_path(current_petowner.id)
       
     end
