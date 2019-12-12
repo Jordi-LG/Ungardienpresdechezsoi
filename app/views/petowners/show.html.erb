@@ -1,16 +1,14 @@
-<%= render "layouts/flash_success"%>
-<%= render "layouts/flash_alert"%>
-
-
+<%= render 'layouts/flash_alert' %>
+<%= render 'layouts/flash_success' %>
 <div class="p-0 position-relative mt-3 mb-6">
   <div class="d-flex h-100 w-100">
     <div class="row justify-content-around w-100">
       <div class="col-sm-12 col-md-6">
         <ul class="nav nav-tabs tab-line">
-          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab-3-1"> Profil</a> </li>
+          <li class="nav-item ml-2"> <a class="nav-link active" data-toggle="tab" href="#tab-3-1">Profil</a> </li>
           <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-2">Mes animaux</a> </li>
           <% if current_petowner %>
-          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-3"> Mes réservations</a> </li>
+          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-3">Mes réservations</a> </li>
           <% end %>
         </ul>
         <div class="tab-content">
@@ -49,7 +47,7 @@
         </figure>
         <span class="position-relative form-style">
           <%if @petowner.avatar.attached?%>
-            <%= image_tag @petowner.avatar, alt: 'avatar' , class:'shadow-lg avatar-img'%>
+            <%= image_tag @petowner.avatar, alt: 'avatar' , class:'shadow-lg avatar-img '%>
           <%else%>
          <%end%>
        </span>

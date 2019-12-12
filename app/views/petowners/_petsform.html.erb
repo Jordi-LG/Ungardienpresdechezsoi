@@ -6,7 +6,7 @@
     </div>
     <div class="form-group">
       <label>Quel est son âge ?</label>
-      <%= form.number_field :birth_year, class: "form-control", placeholder: "Age"%>
+      <%= form.number_field :birth_year, min:"0", max:"25", class: "form-control", placeholder: "Age"%>
     </div>
     <div class="form-group">
 			<label>Avez vous un chat ou un chien ?</label>
@@ -18,7 +18,7 @@
 		</div>
     <div class="form-group">
       <label>Votre animal est-il stérilisé ?</label>
-      <%= form.select :sterilized,[['oui',true], ['non',false]], {}, {:class => 'custom-select select-big mb-3'}%>
+      <%= form.select :sterilized,[['Oui',true], ['Non',false]], {}, {:class => 'custom-select select-big mb-3'}%>
     </div>
     <div class="modal-footer">
       <p><button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button></p>
