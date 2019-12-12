@@ -16,10 +16,10 @@
           <% if @bookings.nil? %>
           <% else %>
             <% @bookings.each do |booking|%>
-            <% if booking.validate_petsitter == false %>
+              <% if booking.validate_petsitter == false %>
                 <tr>
                   <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-                  <% if petsitter_exists(booking.id) == false %>
+                  <% if petowner_exists(booking.petowner_id) == false %>
 
                     <td class="d-flex justify-content-around align-items-center flex-md-wrap">
                       <%= link_to petowner_path(booking.petowner_id) do %>
@@ -27,7 +27,7 @@
                       <%end%>
                       <%= form_with(url: petsitting_path(booking.id), method:'patch', remote: true) do%>
                         <%= button_tag(type: "submit", class: "btn btn-grad") do %>
-                          <span>Confirmer</span>
+                          <span>Confirmé</span>
                         <%end%>
                       <% end %>
                       <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
@@ -39,6 +39,19 @@
                     <td><%= my_petowners(booking.petowner_id).last_name%> </td>
                     <td><%= my_petowners(booking.petowner_id).email%> </td>
                     <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+
+                  <!-- AFFICHAGE SI UN PO A SUPPRIMÉ SON COMPTE -->
+                  <% else %>
+
+                    <td class="d-flex justify-content-around align-items-center flex-md-wrap">
+                    <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
+                      <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
+                    <% end %>
+                    </td>
+                    <td><i class='small'> Utilisateur supprimé </i> </td>
+                    <td><i class='small'> Utilisateur supprimé </i></td>
+                    <td><i class='small'> Utilisateur supprimé </i></td>
+                    <td><i class='small'> Utilisateur supprimé </i></td>
                   <%end%>
                 </tr>
               <% end %>
