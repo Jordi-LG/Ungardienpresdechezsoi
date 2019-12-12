@@ -1,0 +1,64 @@
+<div class="tab-pane show active" id="tab-8-1">
+  <div class="col-sm-12 mb-5">
+    <div class="table-responsive">
+      <table class="table table-lg table-noborder table-striped">
+        <thead class="all-text-white bg-grad">
+          <tr class="text-white">
+            <th scope="col"> </th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Réservation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- methode my_petowners => helper -->
+          <% if @bookings.nil? %>
+          <% else %>
+            <% @bookings.each do |booking|%>
+            <% if booking.validate_petsitter == false %>
+                <tr id="booking-f-<%= booking.id %>">
+                  <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+                  <% if petowner_exists(booking.petowner_id) == false %>
+
+                    <td class="d-flex justify-content-around align-items-center flex-md-wrap">
+                      <%= link_to petowner_path(booking.petowner_id) do %>
+                        <span class="btn btn-info">Profil</span>
+                      <%end%>
+                      <%= form_with(url: petsitting_path(booking.id), method:'patch', remote: true) do%>
+                        <%= button_tag(type: "submit", class: "btn btn-grad") do %>
+                          <span>Confirmer</span>
+                        <%end%>
+                      <% end %>
+                      <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
+                        <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
+                      <% end %>
+                    </td>
+
+                    <td><%= my_petowners(booking.petowner_id).first_name%> </td>
+                    <td><%= my_petowners(booking.petowner_id).last_name%> </td>
+                    <td><%= my_petowners(booking.petowner_id).email%> </td>
+                    <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+
+                  <!-- AFFICHAGE SI UN PO A SUPPRIMÉ SON COMPTE -->
+                  <% else %>
+
+                    <td class="d-flex justify-content-around align-items-center flex-md-wrap">
+                    <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
+                      <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
+                    <% end %>
+                    </td>
+                    <td><i class='small'> Utilisateur supprimé </i> </td>
+                    <td><i class='small'> Utilisateur supprimé </i></td>
+                    <td><i class='small'> Utilisateur supprimé </i></td>
+                    <td><i class='small'> Utilisateur supprimé </i></td>
+                  <%end%>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

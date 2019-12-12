@@ -1,65 +1,33 @@
-<section>
-  <div class="container mt-4" >
-    <% if flash[:alert] %>
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Mais qu'est ce qu'il se passe ?!</strong><h4><%= flash[:alert] %></h4>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <% end %>
-    <% if flash[:success] %>
-      <div class="alert alert-primary alert-dismissible fade show" role="alert">
-    		<strong>Félicitations <%= current_petowner.first_name %> !</strong><h4><%= flash[:success] %></h4>
-    		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    		  <span aria-hidden="true">&times;</span>
-    		</button>
-    	</div>
-    <% end %>
-  </div>
-</section>
 
-<section>
-  <center>
-    <span class="m-4"> <h1>Choisissez le Pet Sitter qui vous convient !</h1></span>
-  </center>
-  <% @petsitters.each do |petsitter| %>
-    <% if petsitter.account_validate == true %>
-      <div class="card shadow-lg animated zoomIn m-2">
-        <div class="row banniere">
-          <div class="col-3 m-2">
-            <%= image_tag petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
-          </div>
-          <div class="col-9 d-flex row flex-column">
-            <div class="container mt-4">
-              <h1><%= petsitter.first_name %> <%= petsitter.last_name %> </h1>
-              <h4><%= petsitter.describe %></h4>
-            </div>
-            <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
-              <span class="badge badge-pill badge-warning  pt-2"><h5><%= petsitter.price %> €/jours</h5></span>
-              <%= link_to petsitter_path(petsitter.id) do %>
-                <span class="btn btn-button btn-info"><i class="fa fa-bullseye"></i>Son profil !</span>
-              <% end %>
-              <% if current_petsitter == nil %>
-                <%= form_with(url: petsittings_path, method: 'post', local: true) do%>
-                  <%= hidden_field_tag(name='id', petsitter.id) %>
-                  <%= button_tag(type: "submit", class: "btn btn-default") do %>
-                    <span class="btn btn-info"><i class="fa fa-envelope-o"></i>Contacter</span>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</section>
+<div class="blog bg-light">
+	<div class="container">
+    <%= render 'layouts/flash_alert' %>
+    <%= render 'layouts/flash_success' %>
 
-<section>
-  <div class="d-flex justify-content-center mt-3">
-    <%= link_to root_path do%>
-      <span class="btn btn-button btn-dark"><i class="fa fa-angle-double-left"></i> RETOUR ACCUEIL</span>
-    <% end %>
-  </div>
-</section>
+		<div class="row">
+			<div class="col-12 col-lg-10 mx-auto">
+				<div class="title text-center">
+					<h2>Trouver et réserver le Pet sitters de votre choix. </h2>
+					<p>Mais vous pouvez également visiter son profil avant. ;)</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- NARBAR RECHERCHE PAR QUARTIER -->
+		<div class="form-inline justify ml-3">
+			<%= form_with( method: 'get') do %>
+				<%= select_tag(:district_choosen, options_from_collection_for_select(@districts, :id, :district_name), class:"custom-select select-big mb-3")%>
+				<%= button_tag(type: "submit", class: "btn btn-default") do %>
+					<span class="btn btn-grad">Filtrer</span>
+				<% end %>
+			<% end %>
+		</div>
+
+    <!-- CARDS -->
+		<div class="container" id='card_petsitters'>
+    	<%= render 'card_petsitters' %>
+		</div>
+	</div>
+</div>
+
+<%= render "layouts/button_back_index"%>

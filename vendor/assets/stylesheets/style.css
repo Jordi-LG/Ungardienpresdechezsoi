@@ -14008,6 +14008,15 @@ footer .widget {
   right: 20px;
 }
 
+.post .post-price {
+  padding: 1px 10px;
+  font-size: 12px;
+  border-radius: 3px;
+  position: absolute;
+  top: 28px;
+  left: 20px;
+}
+
 .post .post-tag a {
   color: #ffffff;
   font-size: 0.8125rem;

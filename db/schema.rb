@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_164327) do
+ActiveRecord::Schema.define(version: 2019_12_12_130920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,21 @@ ActiveRecord::Schema.define(version: 2019_12_05_164327) do
     t.string "donation_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "validate_association"
+    t.string "image_tag"
+    t.text "describe_short"
+    t.text "actions"
+    t.text "actions_2"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "ps_id"
+    t.bigint "petowner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["petowner_id"], name: "index_comments_on_petowner_id"
   end
 
   create_table "districts", force: :cascade do |t|
@@ -109,12 +124,13 @@ ActiveRecord::Schema.define(version: 2019_12_05_164327) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.string "birthday"
-    t.string "type"
+    t.string "birth_year"
+    t.string "pet_type"
     t.boolean "sterilized"
     t.bigint "petowner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sex"
     t.index ["petowner_id"], name: "index_pets_on_petowner_id"
   end
 

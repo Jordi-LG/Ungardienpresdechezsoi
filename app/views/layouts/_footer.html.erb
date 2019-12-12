@@ -14,10 +14,10 @@
 								<!-- SVG Logo Start -->
 								<div class="logo-auth; mb-4 row">
 									<div class="mr-3 ml-3">
-										<%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
+										<%= image_tag "logos/LogoGardien.png", :class => "img_logo"%>
 									</div>
 									<div>
-										<%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+										<%= image_tag "logos/TitreGardien.png", :class => "img_logo"%>
 									</div>
 								</div>
 							<% end %>
@@ -28,7 +28,7 @@
 					</div>
 					<!-- Footer widget 2 -->
 					<div class="col-md-5 col-sm-6">
-						<div class="widget address" style="background-image: url('<%= asset_path('footer/world-map.png') %>'); background-position: 50% 20px; background-repeat: no-repeat; background-size: contain;">
+						<div class="widget address footer-img" style="background-image: url('<%= asset_path('footer/world-map.png') %>');">
 							<ul class="list-unstyled">
 								<li class="media mb-3"><i class="mr-3 display-8 ti-map-alt"></i>L'Anacrouse, 5, Place du Petit Scel, Montpellier 34000 </li>
 								<li class="media mb-3"><i class="mr-3 display-8 ti-headphone-alt"></i> +334 01 20 03 40 </li>
@@ -46,7 +46,7 @@
 							<ul class="nav flex-column primary-hover">
 
 								<li class="nav-item"><%= link_to 'Accueil', root_path, class: 'nav-link' %></li>
-								<li class="nav-item"><%= link_to 'Contact', contact_path, class: 'nav-link' %></li>
+								<li class="nav-item"><%= link_to 'Contact', new_contact_path, class: 'nav-link' %></li>
 								<li class="nav-item"><%= link_to 'Équipe', team_path	, class: 'nav-link' %></li>
 							</ul>
 						</div>

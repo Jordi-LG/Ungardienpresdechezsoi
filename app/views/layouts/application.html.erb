@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -13,12 +14,15 @@
   </head>
 
   <body>
-    <% if show_navbar %>
+    <% unless devise_controller? %>
       <%= render "layouts/navbar" %>
-    <% end %>
+     <% end %>
     <%= yield %>
   </body>
-  <% if show_footer %>
+  <% unless devise_controller? %>
     <%= render "layouts/footer" %>
   <% end %>
+
+  <%= render "layouts/button_back_to_top"%>
+
 </html>

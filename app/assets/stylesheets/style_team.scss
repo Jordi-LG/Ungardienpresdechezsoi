@@ -1,0 +1,146 @@
+html {
+  height:100%;
+}
+.section_div {
+  min-height: 100%;
+}
+
+.devise_div {
+  min-height: 100vh;
+}
+
+.txt {
+  color: black;
+}
+
+.txt:hover {
+  color:grey;
+}
+
+.img_logo {
+  height: 55px;
+}
+
+.team {
+  background:url(assets/images/bg/08.jpg) no-repeat;
+  background-size:cover;
+  background-position: center center;
+}
+
+.index_slide_2 {
+  background-image:url(https://images.unsplash.com/photo-1470390356535-d19bbf47bacb?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);
+  background-position: center center;
+  background-size: cover;
+}
+
+.index_slide_1 {
+  background-image:url(https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-position: center center;
+  background-size: cover;
+}
+
+.index_color {
+  color: Tomato;
+}
+
+.index_association {
+  background:url(https://images.pexels.com/photos/757457/pexels-photo-757457.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat center center;
+  background-size:cover;
+}
+.footer-img {
+  background-position: 50% 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.contact {
+  background:url(/assets/index/petsiting-86930169fc8eec291979644f93a22f46c33d16a3e76009f726a0d91132e71a85.jpg) no-repeat;
+  background-size: cover;
+  background-position: right 45% bottom 56%;
+}
+
+.contact-img-1 {
+  background:url(/assets/index/trust2-9ec8caaf3b38dbc15bb3cb2db9ec23c758be323fe1b9f904e97f28e11286932e.jpg) no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.association-banner-index {
+  background:url(https://images.pexels.com/photos/787876/pexels-photo-787876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat;
+  background-size:cover;
+  background-position: center;
+}
+.association-about {
+  height:50%;
+  width:50%;
+}
+.association-img {
+  height:80%;
+  width:70%;
+}
+
+.association-banner-inner {
+  background:url(https://images.pexels.com/photos/787876/pexels-photo-787876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat;
+  background-size:cover;
+  background-position: center center;
+}
+
+.pet-img {
+  display:relative;background-size: cover;
+  width: 400px;
+  height: 300px;
+  border-radius:10px;
+  border:2px solid #28a745;
+}
+
+.figure-petowner {
+  transform: scaleX(-1);
+  margin-left:5%;
+}
+
+.form-style {
+  margin-left:10%;
+}
+
+.res {
+
+}
+.avatar-img {
+  object-fit: cover;
+  display: block;
+  max-height: 600px;
+  max-width: 600px;
+  height: 100%;
+  width: 100%;
+  margin: 5% 0 0 5%;
+  border-radius:10px;
+  border:2px solid black;
+}
+.team-card {
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+}
+.team-banner {
+background: url(asset_path("team/cat.jpg")) no-repeat;
+background-size:cover;
+background-position: center center;
+height: 600px;
+}
+.team-border {
+  border:3px dotted black;
+}
+
+.avatar-card {
+  max-height: 100%;
+  width:100%;
+  border-radius:10px;
+  border:2px solid #28a745;
+}
+
+.comments-counter {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+}

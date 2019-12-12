@@ -1,10 +1,10 @@
-Salut <%= @petowner.last_name %>
+Salut <%= @petsitting.petowner.last_name %>
 ==========================================================
 
-Ta demande auprès du petsitter <%=@petsitter.last_name %> a été refusé.
+Ta demande auprès du Pet sitter <%=@petsitting.petsitter.last_name %> a été refusé.
 
 Nous en sommes désolés et t'invitons à consulter d'autres annonces pour trouver votre futur petsitter.
 
-Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+Pour accéder à ton espace client, connecte-toi via : <%= link_to "Mon compte", petowner_url(@petsitting.petowner.id) %>
 
-À très vite sur ungardienpresdechezsoi.herokuapp.com !
+À très vite sur <%= link_to "ungardienpresdechezsoi.herokuapp.com", root_url %> !

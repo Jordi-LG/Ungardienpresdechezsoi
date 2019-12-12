@@ -1,0 +1,20 @@
+$(document).ready(function() {
+  console.log('<%= @petsitters_district %>');
+
+  <% if @params_district == '1' %>
+    $('#card_petsitters').hide().html("<%= j render 'card_petsitters' %>").fadeIn('slow');
+  <% else %>
+    <% if @petsitters_district.empty? || @validate_petsitters.empty? %>
+      <% flash[:alert] = 'Il semblerait que la recherche ne donne rien..' %>
+      $('#card_petsitters').hide().html("<%= j render 'layouts/flash_alert' %>").fadeIn('slow')
+    <% else %>
+      <% if !@selected_district.empty? %>
+        $('#card_petsitters').hide().html("<%= j render 'card_petsitters_JS', petsitter_district: @petsitters_district %>").fadeIn('slow');
+
+      <% else %>
+        <% flash[:alert] = 'Il semblerait que la recherche ne donne rien..' %>
+        $('#card_petsitters').hide().html("<%= j render 'layouts/flash_alert' %>").fadeIn('slow')
+      <% end %>
+    <% end %>
+  <%end%>
+});

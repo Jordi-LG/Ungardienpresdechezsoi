@@ -1,0 +1,22 @@
+<tr>
+  <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+  <% if petsitter_exists(booking.id) == false %>
+    <td class="d-flex justify-content-around align-items-center flex-md-wrap">
+      <%= link_to petowner_path(booking.petowner_id) do %>
+        <span class="btn btn-info">Profil</span>
+      <%end%>
+      <% if booking.validate_petowner == false %>
+      <span class="btn btn-secondary"> En attente </span>
+      <% else %>
+      <span class="btn btn-grad"> Validée</span>
+      <%end %>
+      <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
+        <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
+      <% end %>
+    </td>
+    <td><%= my_petowners(booking.petowner_id).first_name%> </td>
+    <td><%= my_petowners(booking.petowner_id).last_name%> </td>
+    <td><%= my_petowners(booking.petowner_id).email%> </td>
+    <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+  <%end%>
+</tr>
