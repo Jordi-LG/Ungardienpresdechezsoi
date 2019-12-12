@@ -13,12 +13,10 @@
 <h5 class="display-6 display-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
   <span class="pt-0 h5">
     <p><span class= "font-weight-bold">Nom : </span> <%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
-    <% if current_petowner %>
-      <% if current_petowner.id == booking_validate %>
-        <p><span class= "font-weight-bold">Numéro de télephone :</span><%= @petsitter.phone_number %> <%= @petsitter.last_name %></p>
-        <p><span class= "font-weight-bold">Email :</span><%= @petsitter.email %></p>
+      <% if current_petsitter || booking_validate %>
+        <p><span class= "font-weight-bold">Numéro de télephone : </span> <%= @petsitter.phone_number %></p>
+        <p><span class= "font-weight-bold">Email :</span> <%= @petsitter.email %></p>
       <% end %>
-    <% end %>
   </span><br>
   <span class="pt-0">Je vous propose de garder vos:</span><br>
   <span class="cd-words-wrapper pt-0 text-primary">

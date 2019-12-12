@@ -4,8 +4,7 @@ module PetsittersHelper
   end
 
   def booking_validate
-    @access = Petsitting.find_by(petowner_id: current_petowner.id)
-    @access.petowner_id
+    Petsitting.find_by(petowner_id: current_petowner.id, petsitter_id: params[:id])
   end
 
   def petowner_exists(arg)
