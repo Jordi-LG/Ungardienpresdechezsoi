@@ -116,6 +116,20 @@ html {
   border-radius:10px;
   border:2px solid black;
 }
+.team-card {
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+}
+.team-banner {
+background: url(asset_path("team/cat.jpg")) no-repeat;
+background-size:cover;
+background-position: center center;
+height: 600px;
+}
+.team-border {
+  border:3px dotted black;
+}
 
 .avatar-card {
   max-height: 100%;
