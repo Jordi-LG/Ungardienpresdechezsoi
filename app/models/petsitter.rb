@@ -25,7 +25,7 @@ class Petsitter < ApplicationRecord
   def account_validate_false
   	@petsitter = Petsitter.last
   	@petsitter.account_validate = false
-    @petsitter.avatar.attach(io: File.open('./app/assets/images/avatar_default/default_avatar.jpg'), filename:"avatar.jpg")
+    @petsitter.avatar.attach(io: File.open('./app/assets/images/avatar_default/random_petsitter.jpg'), filename:"avatar.jpg")
 	  @petsitter.save
   end
 
