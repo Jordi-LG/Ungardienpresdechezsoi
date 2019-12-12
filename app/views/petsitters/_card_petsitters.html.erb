@@ -20,11 +20,7 @@
               <%= link_to petsitter_path(petsitter.id) do %>
                 <span class="btn btn-info"><i class="fa fa-bullseye"></i>Son profil !</span>
               <% end %>
-<<<<<<< HEAD
               <% if current_petowner %>
-=======
-              <% if current_petsitter %>
->>>>>>> 9c59d7846954cd1927cd761544e8236c1efc10d6
                 <% if petsitter.email != current_petowner.email %>
                   <%= form_with(url: petsittings_path, method: 'post', local: true) do%>
                     <%= hidden_field_tag(name='id', petsitter.id) %>
