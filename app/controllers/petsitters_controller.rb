@@ -25,6 +25,7 @@ class PetsittersController < ApplicationController
     @petsitter = Petsitter.find(params[:id])
     #METHODE DANS LE MODEL COMMENTS
     @comments = Comment.all_comments_petsitter(params[:id])
+    @district = District.find((Petdistrict.find_by(petsitter_id: params[:id])).district_id)
 
 
 
