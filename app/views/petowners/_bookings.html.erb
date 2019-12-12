@@ -1,0 +1,38 @@
+<div class="tab-pane" id="tab-3-3">
+  <div class="left pt-1 mr-5">
+    <div class="container">
+      <div class="row all-text-white">
+        <div class="col-md-12 align-self-center">
+          <h3 class="text-dark display-4 font-weight-bold ml-4">Mes réservations</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="divider divider-grad"></div>
+  <% if current_petowner %>
+    <% if current_petowner.id == @petowner.id %>
+      <section>
+        <div class="container shadow-lg rounded">
+          <div class="col-sm-12 col-md-12 ">
+            <ul class="nav nav-tabs tab-with-center-icon justify-content-center nav-justified">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab-8-1"> <i class="ti-time"></i> Demandes de réservations </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-check-box"></i> Petsittings validés</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <!-- FIRST TAB -->
+              <%= render 'tab_booking_pending' %>
+              <!-- SECOND TAB -->
+              <%= render 'tab_booking_validate' %>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%else%>
+    <% end %>
+  <% end %>
+</div>

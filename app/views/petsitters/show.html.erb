@@ -33,9 +33,9 @@
 								</g>
 							</svg>
 					</figure>
-          <span class="position-relative " style="margin-left:10%">
+          <span class="position-relative form-style">
             <%if @petsitter.avatar.attached?%>
-              <%= image_tag @petsitter.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
+              <%= image_tag @petsitter.avatar, alt: 'avatar' , class:'shadow-lg avatar-img'%>
             <%else%>
            <%end%>
          </span>
@@ -79,21 +79,6 @@
                   <%= hidden_field_tag(name='id', @petsitter.id) %>
                   <%= button_tag(type: "submit", class: "btn btn-default") do %>
                     <span class="btn btn-info"><i class="fa fa-envelope-o"></i>Contacter</span>
-                    <span>
-                      <%= form_with(url: charges_path) do %>
-                        <% if flash[:error].present? %>
-                          <div id="error_explanation">
-                            <p><%= flash[:error] %></p>
-                          </div>
-                        <% end %>
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                            data-description="Validez votre achat de <%= %> 5 € !"
-                            data-amount= 500
-                            data-locale="auto"
-                            data-label="Commander">
-                        </script>
-                      <% end %>
                     </span>
                   <% end %>
                 <% end %>
@@ -191,6 +176,9 @@
                                                 <span class="btn btn-outline-light text-white">Confirmer la demande</span>
                                               <%end%>
                                             <% end %>
+                                            <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
+                                              <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
+                                            <% end %>
                                           </td>
                                         <%end%>
                       								</tr>
@@ -230,7 +218,7 @@
                                           <td><%= my_petowners(booking.petowner_id).last_name%> </td>
                                           <td><%= my_petowners(booking.petowner_id).email%> </td>
                                           <td><%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-                                          <td class=d-inline-block">
+                                          <td class="d-inline-block">
                                             <%= link_to petowner_path(booking.petowner_id) do %>
                                               <span class="btn btn-outline-light text-white">Profile de <%= my_petowners(booking.petowner_id).first_name%></span>
                                             <%end%>
@@ -239,6 +227,9 @@
                                             <% else %>
                                             <span class="btn btn-info text-white"> Validée</span>
                                             <%end %>
+                                            <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
+                                              <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
+                                            <% end %>
                                           </td>
                                         <%end%>
                                       </tr>

@@ -1,7 +1,7 @@
 <body>
   <!-- =======================
   	Banner innerpage -->
-  	<div class="innerpage-banner left bg-overlay-dark-5 py-7 parallax-bg" style="background:url(https://images.pexels.com/photos/787876/pexels-photo-787876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat; background-size:cover; background-position: center;">
+  	<div class="innerpage-banner left bg-overlay-dark-5 py-7 parallax-bg association-banner-index">
   		<div class="container py-7">
   			<div class="row all-text-white pb-7">
   				<div class="col-12 col-lg-12">
@@ -16,11 +16,12 @@
   	<!-- =======================
   	Banner innerpage -->
 
-  <%= render "associations/flash_alert"%>
+<%= render 'layouts/flash_alert' %>
+<%= render 'layouts/flash_success' %>
 
   <!-- =======================
   Portfolio -->
-  <section class="portfolio pb-0 mb-6">
+  <div class="portfolio pb-0 mb-6">
     <div class="container">
       <div class="row">
         <div class="col-md-12 p-0">
@@ -51,7 +52,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
   <!-- =======================
   Portfolio -->
 

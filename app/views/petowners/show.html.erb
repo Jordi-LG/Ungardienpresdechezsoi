@@ -1,344 +1,60 @@
-<%= render "layouts/flash_success"%>
-
-<section class="p-0 position-relative mt-3 mb-6">
+<%= render 'layouts/flash_alert' %>
+<%= render 'layouts/flash_success' %>
+<div class="p-0 position-relative mt-3 mb-6">
   <div class="d-flex h-100 w-100">
     <div class="row justify-content-around w-100">
       <div class="col-sm-12 col-md-6">
-  <ul class="nav nav-tabs tab-line">
-    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab-3-1"> Profil</a> </li>
-    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-2">Mes animaux</a> </li>
-    <% if current_petowner %>
-    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-3"> Mes réservations</a> </li>
-    <% end %>
-  </ul>
-  <div class="tab-content">
+        <ul class="nav nav-tabs tab-line">
+          <li class="nav-item ml-2"> <a class="nav-link active" data-toggle="tab" href="#tab-3-1">Profil</a> </li>
+          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-2">Mes animaux</a> </li>
+          <% if current_petowner %>
+          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-3-3">Mes réservations</a> </li>
+          <% end %>
+        </ul>
+        <div class="tab-content">
 
-    <!-- Profile Part ! -->
-    <div class="tab-pane show active" id="tab-3-1">
-        <div class="left pt-2">
-          <div class="container">
-            <div class="row all-text-white">
-              <div class="col-md-12 align-self-center">
-                <h3 class="text-dark display-3 font-weight-bold ml-6">Mon Profil</h3>
-              </div>
-            </div>
-          </div>
+          <!-- Profile Part ! -->
+          <%= render 'profil' %>
+
+          <!-- Pets Part ! -->
+          <%= render 'my_pets' %>
+
+          <!-- Reservations Part ! -->
+          <%= render 'bookings' %>
         </div>
-        <h5 class="display-6 display-xl-4 font-weight-normal cd-headline clip clip-dark big-clip is-full-width">
-          <span class="pt-0 h5">
-            <p><strong>Nom : </strong><%= @petowner.first_name %> <%= @petowner.last_name %></p>
-            <p><strong>Email : </strong><%= @petowner.email%></p>
-            <p><strong>Numéro de téléphone : </strong><%= @petowner.phone_number%></p>
-            <p><strong>Animal : </strong><%= @petowner.phone_number%></p>
-          </span>
-          </h5>
-        <p class="h3 text-light-gray mb-4 font-weight-normal"><%= @petowner.describe %></p>
-        <% if current_petowner %>
-          <%= link_to petsitters_path do%>
-            <span class="btn btn-button btn-grad"><i class="fa fa-address-book fa-2x"></i>Faire une réservation</span>
-          <% end %>
-            <% if current_petowner.id == @petowner.id %>
-              <span>
-                <% if @petowner.avatar.attached? == false %>
-                  <p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
-                  <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= submit_tag "Ajouter une photo" %>
-                  <% end %>
-                <%else%>
-                  <%= form_tag petowner_avatars_path(@petowner), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= submit_tag "Mettre à jour" %>
-                  <%end%>
-                <%end%>
-                <% end %>
-              </span>
-          <% end %>
-          <%= link_to edit_petowner_registration_path do %>
-            <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
-          <% end %>
-    </div>
-
-    <!-- Pets Part ! -->
-    <div class="tab-pane" id="tab-3-2">
-      <div class="d-flex">
-        <div class="row justify-content-around align-items-center w-100">
-            <div class="left pt-2">
-              <div class="row all-text-white">
-                <div class="col-md-12 align-self-center">
-                  <h3 class="text-dark display-3 font-weight-bold">Mes animaux</h3>
-                </div>
-              </div>
-            </div>
-
-            <% if current_petowner %>
-        			<div class="col-md-12 align-self-center text-center" >
-        				<!-- Button of modal -->
-        				<button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
-        					Ajouter le profil d'un animal
-        				</button>
-        				<div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-        					<div class="modal-dialog modal-dialog-centered" role="document">
-        						<div class="modal-content">
-        							<div class="modal-header">
-        								<h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concernant votre animal.</h5>
-        								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        								<span aria-hidden="true">&times;</span>
-        								</button>
-        							</div>
-        							<%= render "petowners/petsform"%>
-        						</div>
-        					</div>
-        				</div>
-          		</div>
-
-            <% end %>
-
-    				<div class="container">
-    				<div class="row p-3 border border-dashed shadow-lg mt-5">
-    					<% @pets.each do |pet| %>
-    					<div class="item pb-5 col-4">
-            	<div class="post">
-                <% if pet.avatar.attached? != false %>
-                	<%= image_tag pet.avatar, alt: 'avatar' , class:'shadow-lg', style:'display:relative;background-size: cover; width: 400px;height: 300px;border-radius:10px; border:2px solid #28a745;'%>
-                <% end %>
-                  <div class="post-info ">
-                    <span class="post-tag bg-grad text-white mb-3 clearfix"><%= pet.pet_type%></span>
-      	            <div class="post-author">
-      								<% if pet.sterilized == true %>
-      									stérélisé(e)
-      								<% else %>
-      									Non stérilisé(e)
-      								<%end%>
-      							</div>
-      	            <div class="post-title text-primary">
-      								<%= pet.name%><br>
-      									Est un <%= pet.pet_type%> <%= pet.sex%> et
-      								<% if pet.sterilized == true %>
-      									stérélisé(e)
-      								<% else %>
-      									Non stérilisé(e)
-      								<%end%></div>
-                   </div>
-
-               </div>
-    					 <% if current_petowner %>
-    					 	<% if pet.avatar.attached? == false %>
-    							<p>=== Il n'y a pas encore d'avatar lié à ce compte ! ===</p>
-    							<%= form_tag pet_avatars_path(pet), multipart: true do %>
-    								<%= file_field_tag :avatar %>
-    								<%= submit_tag "Ajouter une photo" %>
-    							<% end %>
-    						<%else%>
-    							<%= form_tag pet_avatars_path(pet), multipart: true do %>
-    								<%= file_field_tag :avatar %>
-    								<%= submit_tag "Mettre à jour" %>
-    							<%end%>
-    						<%end%>
-                <% end %>
-             </div>
-    				 <% end %>
-           </div>
-    		</div>
-    	</div>
-    	</div>
-    </div>
-
-    <!-- Reservations Part ! -->
-    <div class="tab-pane" id="tab-3-3">
-
-      <% if current_petowner %>
-      <% if current_petowner.id == @petowner.id %>
-        <section>
-          <div class="container bg-primary mt-6 pt-4 shadow-lg rounded" style="border:2px solid black">
-            <div class="row" >
-        				<div class="col-sm-12 col-md-12 ">
-        					<ul class="nav nav-tabs tab-with-center-icon justify-content-center nav-justified">
-        						<li class="nav-item">
-        							<a class="nav-link active" data-toggle="tab" href="#tab-8-1"> <i class="ti-panel"></i> Demandes de réservations </a>
-        						</li>
-        						<li class="nav-item">
-        							<a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-palette"></i> Petsittings validé</a>
-        						</li>
-      							<li class="nav-item">
-      								<a class="nav-link" data-toggle="tab" href="#tab-8-3"> <i class="ti-pencil"></i> Petsittings effectués</a>
-      							</li>
-        					</ul>
-        					<div class="tab-content">
-        						<div class="tab-pane show active" id="tab-8-1">
-      								<div class="col-sm-12 mb-5">
-      	      					<div class="table-responsive-sm">
-      	      						<table class="table table-hover">
-      	      							<thead>
-      	      								<tr class="text-white">
-      	      									<th scope="col">Petsitter</th>
-      	      									<th scope="col">Nom</th>
-      	      									<th scope="col">Prénom</th>
-      	                        <th scope="col">Mail</th>
-      	      									<th scope="col">Réservation</th>
-      	                        <th scope="col"> </th>
-      	      								</tr>
-
-      											</thead>
-      	      							<tbody>
-      	                      <!-- methode my_petsitters => helper -->
-      	                      <% @bookings_petowner.each do |booking|%>
-      													<% if booking.validate_petowner == false%>
-      													<tr id="booking-f-<%= booking.id %>">
-      	                            <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-      	                            <% if petsitter_exists(booking.id) == false %>
-      	          									  <th scope="row"> <%= booking.petsitter_id%> </th>
-      	            									<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-      	            									<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-      	            									<td><%= my_petsitters(booking.petsitter_id).email%> </td>
-      	                              <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-      	                              <td class=d-inline-block">
-
-      	                              	<%= link_to petsitter_path(booking.petsitter_id) do %>
-      	                                	<span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
-      	                              	<%end%>
-      																	<% if booking.validate_petsitter == true %>
-      																		<%= form_with(url: petsitting_path(booking.id), method:'patch', remote: true) do%>
-      	                                  	<%= button_tag(type: "submit", class: "btn btn-default") do %>
-      	                                    	<span class="btn btn-outline-light text-white">Confirmer la demande</span>
-      	                                  	<%end%>
-      	                                	<% end %>
-      																	<% else %>
-      																		<span class="btn btn-secondary text-white">En attentes</span>
-      																	<% end %>
-      	                              </td>
-      	                            <% end %>
-      	          								</tr>
-      													<% end %>
-      	                      <% end %>
-      	      							</tbody>
-      	      						</table>
-      	      					</div>
-      	      				</div>
-                  </div>
-      						<div class="tab-pane" id="tab-8-2">
-                    <div class="col-sm-12 mb-5">
-            					<div class="table-responsive-sm">
-            						<table class="table table-hover">
-            							<thead>
-            								<tr class="text-white">
-            									<th scope="col">Petsitter</th>
-            									<th scope="col">Nom</th>
-            									<th scope="col">Prénom</th>
-                              <th scope="col">Mail</th>
-            									<th scope="col">Réservation</th>
-                              <th scope="col"> </th>
-            								</tr>
-            							</thead>
-      										<tbody class="booking">
-                            <!-- methode my_petsitters => helper -->
-                            <% @bookings_petowner.each do |booking|%>
-      												<% if booking.validate_petowner == true %>
-                								<tr>
-                                  <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-                                  <% if petsitter_exists(booking.id) == false %>
-                									  <th scope="row"> <%= booking.petsitter_id%> </th>
-                  									<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-                  									<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-                  									<td><%= my_petsitters(booking.petsitter_id).email%> </td>
-                                    <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-                                    <td>
-                                      <%= link_to petsitter_path(booking.petsitter_id) do %>
-                                        <span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
-                                      <%end%>
-      																<span class="btn btn-info text-white">Validé</span>
-                                    </td>
-                                  <% end %>
-                								</tr>
-      												<% end %>
-                            <% end %>
-            							</tbody>
-            						</table>
-            					</div>
-            				</div>
-      						</div>
-      						<div class="tab-pane" id="tab-8-3">
-      							<div class="col-sm-12 mb-5">
-      								<div class="table-responsive-sm">
-      									<table class="table table-hover">
-      										<thead>
-      											<tr class="text-white">
-      												<th scope="col">Petsitter</th>
-      												<th scope="col">Nom</th>
-      												<th scope="col">Prénom</th>
-      												<th scope="col">Mail</th>
-      												<th scope="col">Réservation</th>
-      												<th scope="col"> </th>
-      											</tr>
-      										</thead>
-      										<tbody>
-      											<!-- methode my_petsitters => helper -->
-      											<% @bookings_petowner.each do |booking|%>
-      											<% if booking.petowner_id == true && booking.petsitter_id == true %>
-      													<tr>
-      														<!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
-      														<% if petsitter_exists(booking.id) == false %>
-      															<th scope="row"> <%= booking.petsitter_id%> </th>
-      															<td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-      															<td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-      															<td><%= my_petsitters(booking.petsitter_id).email%> </td>
-      															<td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-      															<td>
-      																<%= link_to petsitter_path(booking.petsitter_id) do %>
-      																	<span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
-      																<%end%>
-      															</td>
-      														<% end %>
-      													</tr>
-      												<% end %>
-      											<% end %>
-      										</tbody>
-      									</table>
-      								</div>
-      							</div>
-      						</div>
-      					</div>
-      				</div>
-          </div>
-        </section>
-        <%else%>
-      <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
+      </div>
 
       <!-- banner image -->
       <div class="col-md-5 d-none d-md-block p-0 ">
-          <figure class="w-100 ie-height-900 position-absolute" style="transform: scaleX(-1);margin-left:5%">
-            <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 881.8 917.9" style="enable-background:new 0 0 881.8 917.9;" xml:space="preserve">
-              <path id="XMLID_6_" fill="url(#BgGradient)" d="M0,39.6c0,0,171-121.5,264,64.5s508.5,178.5,508.5,178.5s240-6-6,228S816,755.1,657,830.1
-                s-309,106.5-445.5,76.5C75,876.6,0,717.6,0,717.6V39.6z"/>
-                <path id="XMLID_5_" class="fill-dark" d="M0,291.1c0,0,133.5-100.5,169.5,91.5s103.5,204,81,283.5S0,832.6,0,832.6V291.1z"/>
-                <g id="XMLID_3_">
-                  <defs>
-                  <rect id="XMLID_11_" x="175" y="18" width="650" height="850"/>
-                  <linearGradient id="BgGradient">
-                    <stop class="fill-grad-start" offset="0%"/>
-                    <stop class="fill-grad-end" offset="100%"/>
-                  </linearGradient>
-                  </defs>
-                  <clipPath id="XMLID_51_">
-                  <use xlink:href="#XMLID_11_"  style="overflow:visible;"/>
-                  </clipPath>
-                </g>
-              </svg>
-          </figure>
-          <span class="position-relative " style="margin-left:10%">
-            <%if @petowner.avatar.attached?%>
-              <%= image_tag @petowner.avatar, alt: 'avatar' , class:'shadow-lg', style:'height-max: 560px;width:560px;border-radius:10px;border:2px solid black;'%>
-            <%else%>
-           <%end%>
-         </span>
-        </div>
+        <figure class="w-100 ie-height-900 position-absolute figure-petowner">
+          <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 881.8 917.9" style="enable-background:new 0 0 881.8 917.9;" xml:space="preserve">
+            <path id="XMLID_6_" fill="url(#BgGradient)" d="M0,39.6c0,0,171-121.5,264,64.5s508.5,178.5,508.5,178.5s240-6-6,228S816,755.1,657,830.1
+              s-309,106.5-445.5,76.5C75,876.6,0,717.6,0,717.6V39.6z"/>
+              <path id="XMLID_5_" class="fill-dark" d="M0,291.1c0,0,133.5-100.5,169.5,91.5s103.5,204,81,283.5S0,832.6,0,832.6V291.1z"/>
+              <g id="XMLID_3_">
+                <defs>
+                <rect id="XMLID_11_" x="175" y="18" width="650" height="850"/>
+                <linearGradient id="BgGradient">
+                  <stop class="fill-grad-start" offset="0%"/>
+                  <stop class="fill-grad-end" offset="100%"/>
+                </linearGradient>
+                </defs>
+                <clipPath id="XMLID_51_">
+                <use xlink:href="#XMLID_11_"  style="overflow:visible;"/>
+                </clipPath>
+              </g>
+            </svg>
+        </figure>
+        <span class="position-relative form-style">
+          <%if @petowner.avatar.attached?%>
+            <%= image_tag @petowner.avatar, alt: 'avatar' , class:'shadow-lg avatar-img '%>
+          <%else%>
+         <%end%>
+       </span>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 
 <%= render "layouts/button_back_index"%>
