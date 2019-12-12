@@ -12,7 +12,7 @@ class Petsitter < ApplicationRecord
 
   has_many :petsittings
   has_many :petowners, through: :petsittings
-  
+
   after_create :account_validate_false, :demand_creation
 
   validates :first_name, presence: true
@@ -26,11 +26,37 @@ class Petsitter < ApplicationRecord
   	@petsitter = Petsitter.last
   	@petsitter.account_validate = false
     @petsitter.avatar.attach(io: File.open('./app/assets/images/avatar_default/default_avatar.jpg'), filename:"avatar.jpg")
-	  @petsitter.save  	
+	  @petsitter.save
   end
 
   def demand_creation
   	PetsitterMailer.demand_creation(self).deliver_now
+  end
+
+  # SELECTION DES PETSITTERS VIA LE DISTRICT SELECTIONNÉ DANS LA PAGE INDEX
+  def self.petsitters_district(params)
+    @params_district = params
+    @selected_district = Petdistrict.where(district_id: params)
+
+    @petsitters_district = []
+    @selected_district.each do |petsitter|
+      if Petsitter.find_by(id: petsitter.petsitter_id).blank? == false
+        @petsitters_district << Petsitter.find_by(id: petsitter.petsitter_id)
+      end
+    end
+    return @petsitters_district
+  end
+
+  #METHODE POUR DIFFERENCIER COMPTE VALIDATE, SURTOUT UTILISÉ POUR L'AJAX DE L'INDEX PETSITTER
+  def self.validate_petsitters(petsitter_district)
+    @validate_petsitters = []
+
+    @petsitters_district.each do |petsitter|
+      if petsitter.account_validate == true
+        @validate_petsitters << petsitter
+      end
+    end
+    return @validate_petsitters
   end
 
 end
