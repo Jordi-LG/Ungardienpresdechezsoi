@@ -27,7 +27,7 @@
                       <%end%>
                       <%= form_with(url: petsitting_path(booking.id), method:'patch', remote: true) do%>
                         <%= button_tag(type: "submit", class: "btn btn-grad") do %>
-                          <span>Confirmé</span>
+                          <span>Confirmer</span>
                         <%end%>
                       <% end %>
                       <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
