@@ -103,9 +103,12 @@ html {
 }
 
 .avatar-img {
-  max-height: 85%;
-  margin-top: 5%;
-  width:85%;
+  max-height: 600px;
+  max-width: 600px;
+  object-fit: cover;
+  height: 100%;
+  margin: 5% 0 0 5%;
+  width: 100%;
   border-radius:10px;
   border:2px solid black;
 }
