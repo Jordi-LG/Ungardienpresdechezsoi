@@ -1,0 +1,13 @@
+<div class="tab-pane show active" id="tab-8-1">
+  <h3><u>Vos informations de contact</u></h3>
+  <span class="pt-0 h5">
+    <p><strong>Nom :</strong><%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
+    <p><strong>Email :</strong><%= @petsitter.email%></p>
+    <p><strong>Numéro de téléphone :</strong><%= @petsitter.phone_number%></p>
+  </span>
+  <div>
+    <%= link_to edit_petsitter_registration_path do %>
+    <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0 float-right">Editer votre compte </button>
+    <% end %>
+  </div>
+</div>
