@@ -13,8 +13,8 @@
 								<h2 class="animated fadeInUp dealy-500 display-6 display-md-4 display-lg-3 font-weight-bold text-white">Découvrez&nbsples&nbspPet&nbspSitters <br> près de chez vous !</h2>
 								<div class="animated fadeInUp mt-3 dealy-1500">
 									<%= link_to petsitters_path do %>
-                    				<span class="btn btn-grad btn-lg">Trouver un Pet Sitter !</span>
-                  					<%end%>
+                		<span class="btn btn-grad btn-lg">Trouver un Pet Sitter !</span>
+                  <%end%>
 								</div>
 							</div>
 						</div>
@@ -30,8 +30,8 @@
 									<h2 class="animated fadeInUp dealy-1000 display-6 display-md-4 display-lg-3 font-weight-bold text-white">Devenez&nbspPet&nbspSitter&nbsp!</h2>
 									<div class="animated fadeInUp mt-3 dealy-1500">
 										<%= link_to new_petsitter_registration_path do %>
-                    					<span class="btn btn-grad btn-lg">Déposer une demande</span>
-                  						<%end%>
+                  		<span class="btn btn-grad btn-lg">Déposer une demande</span>
+                  	<%end%>
 									</div>
 								</div>
 							</div>
@@ -45,38 +45,34 @@
 			<div class="swiper-pagination"></div>
 		</div>
 	</section>
-<!-- =======================
-	Index banner -->
 
-<!-- =======================
-  Presentation-->
   <section class="mt-lg-n9 mt-sm-0 pb-0 z-index-9">
   	<div class="container ">
   		<div class="row bg-white shadow m-0 p-2 p-lg-5 border-radius-3">
-        	<div class="row col-md-12 ">
-          		<h2 class="col-md-12 mb-5 cd-headline zoom text-center ">
-					<span>Faire garder votre animal devient</span>
-					<span class="cd-words-wrapper pt-0">
-						<b class="is-visible">Simple</b>
-						<b>Rapide</b>
-					</span>
-				</h2>
+        <div class="row col-md-12 ">
+          <h2 class="col-md-12 mb-5 cd-headline zoom text-center ">
+						<span>Faire garder votre animal devient</span>
+							<span class="cd-words-wrapper pt-0">
+								<b class="is-visible">Simple</b>
+								<b>Rapide</b>
+							</span>
+						</h2>
         	</div>
         <div class="row">
     			<div class="col-md-4">
     				<div class="feature-box h-100 text-center">
     					<div class="feature-box-icon  icon-grad">
-                			<i class="fa fa-home fa-2x"></i>
-              			</div>
-    					<h3 class="feature-box-title">Cherchez un Pet Sitter <br>près de chez vous</h3>
-    					<h6 class="feature-box-desc text-muted">Recherchez parmis les quartiers de Montpellier, un gardien pour vos animaux de compagnie.</h6>
+              	<i class="fa fa-home fa-2x"></i>
+              </div>
+    						<h3 class="feature-box-title">Cherchez un Pet Sitter <br>près de chez vous</h3>
+    						<h6 class="feature-box-desc text-muted">Recherchez parmis les quartiers de Montpellier, un gardien pour vos animaux de compagnie.</h6>
+    					</div>
     				</div>
-    			</div>
     			<div class="col-md-4">
     				<div class="feature-box h-100 text-center">
     					<div class="feature-box-icon  icon-grad">
-                			<i class="fa fa-comment fa-2x"></i>
-              			</div>
+                <i class="fa fa-comment fa-2x"></i>
+              </div>
     					<h3 class="feature-box-title">Contacter et échanger <br> avec un Pet Sitter</h3>
     					<h6 class="feature-box-desc text-muted">Une fois inscrit, échangez avec le gardien afin de définir les modalités de gardiennage.</h6>
     				</div>
@@ -84,21 +80,17 @@
     			<div class="col-md-4">
     				<div class="feature-box h-100 text-center">
     					<div class="feature-box-icon  icon-grad index_color">
-                			<i class="fa fa-heart-o fa-2x"></i>
-              			</div>
+              	<i class="fa fa-heart-o fa-2x"></i>
+              </div>
     					<h3 class="feature-box-title">Vous pouvez partir <br>l'esprit tranquille !</h3>
     					<h6 class="feature-box-desc text-muted">Nos Pet Sitters sont sélectionnés pour vous garantir un service de qualité ! </h6>
     				</div>
     			</div>
-        	</div>
+        </div>
   		</div>
   	</div>
   </section>
-  <!-- =======================
-  Presentation -->
 
-<!-- =======================
-	Petsitters qualification -->
 	<section>
 		<div class="container">
 			<div class="row class">
@@ -128,7 +120,7 @@
 							<h3 class="feature-box-title mb-0">Votre animal sera heureux !</h3>
 							<h4 class="feature-box-desc text-muted">Durant vos absences, votre animal aura toujours une personne bienveillante pour s'occuper de lui !</h4>
 						</div>
-          			</div >
+          </div >
 				</div>
 			</div>
 		</div>
@@ -144,11 +136,11 @@
 				<div class="col-md-10 mx-auto">
 					<h2 class="h1">Trouvez un gardien pour vos animaux <br> dès maintenant !</h2>
 				</div>
-        		<div class=" d-flex float-right">
-          			<%= link_to petsitters_path do %>
-            		<span class="btn btn-grad btn-lg text-white mb-0 mt-3">Voir les annonces !</span>
-          			<%end%>
-        		</div>
+        <div class=" d-flex float-right">
+        	<%= link_to petsitters_path do %>
+          	<span class="btn btn-grad btn-lg text-white mb-0 mt-3">Voir les annonces !</span>
+          <%end%>
+        </div>
 			</div>
 		</div>
 	</section>
@@ -166,11 +158,12 @@
 						<div class="feature-box-icon"><i class="fa fa-paw"></i></div>
 						<h3 class="feature-box-title text-white">Pas encore d'animaux à vous ? <br> Vous pouvez adopter !</h3>
 						<h5 class="feature-box-desc text-white">De nombreuses associations sur Montpellier vous permettrons ....</h5>
-            			<div class=" d-flex float-right">
-              				<%= link_to associations_path do %>
-                			<span class="btn btn-primary mb-0 mt-3">Plus d'infos</span>
-              				<%end%>
-            			</div>
+            	<div class=" d-flex float-right">
+              	<%= link_to associations_path do %>
+                	<span class="btn btn-primary mb-0 mt-3">Plus d'infos</span>
+              	<%end%>
+            	</div>
+						</div>
 					</div>
 				</div>
 			</div>
