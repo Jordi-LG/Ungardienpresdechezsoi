@@ -79,6 +79,15 @@
               <% end %>
             </div>
 
+            <!-- PROFIL PRIVÉE POUR EDIT -->
+            <div class="tab-pane" id="tab-4-4">
+              <% if current_petsitter %>
+                <% if current_petsitter.id == @petsitter.id %>
+                  <%= render 'private_profil' %>
+                <%end%>
+              <% end %>
+            </div>
+
         </div>
       </div>
     </div>
