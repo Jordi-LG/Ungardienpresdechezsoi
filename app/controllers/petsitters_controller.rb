@@ -4,19 +4,20 @@ class PetsittersController < ApplicationController
   def index
     @petsitters = Petsitter.all
     @districts = District.all_districts
-
-    if !params_district.nil?
-      @params_district = params_district
+    @params_district = params_district
     @selected_district = Petdistrict.where(district_id: params_district)
 
-    @petsitters_district = []
-    @selected_district.each {|petsitter| @petsitters_district << Petsitter.find(petsitter.petsitter_id)}
+    # METHODE DANS MODEL PETSITTER
+    if !params_district.nil?
+      @petsitters_district = Petsitter.petsitters_district(params_district)
+
+      @validate_petsitters = Petsitter.validate_petsitters(Petsitter.petsitters_district(params_district))
+    end
 
     respond_to do |format|
       format.html { petsitters_path }
       format.js { }
     end
-  end
 
 
   end
