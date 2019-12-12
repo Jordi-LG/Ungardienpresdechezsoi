@@ -10,7 +10,7 @@
   <div class="preloader">
     <img src="<%= asset_path('logos/LogoGardien') %>" alt="Pre-loader">
   </div>
-  <section class="p-0 d-flex align-items-center">
+  <section class ="p-0 section_div d-flex align-items-center">
     <div class="container-fluid">
       <div class="row">
 
@@ -29,7 +29,7 @@
                       </div>
 
                       <div class="form-group">
-                        <%= f.label :password %><br />
+                        <%= f.label :mot_de_passe %><br />
                         <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Entrer votre mot de passe" %>
                       </div>
 
@@ -59,8 +59,8 @@
               <div class="justify-content-center align-self-center">
                 <%= link_to root_path do %>
                 <div class="logo-auth; m-4">
-                  <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
-                  <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+                  <%= image_tag "logos/LogoGardien.png", :class => "img_logo"%>
+                  <%= image_tag "logos/TitreGardien.png", :class => "img_logo"%>
                 </div>
                 <%end%>
               </div>

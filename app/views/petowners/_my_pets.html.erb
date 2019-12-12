@@ -1,85 +1,85 @@
 <div class="tab-pane" id="tab-3-2">
-  <div class="d-flex">
-    <div class="row justify-content-around align-items-center w-100">
-      <div class="left pt-1 mr-5">
-        <div class="row all-text-white">
-          <div class="col-md-12 align-self-center">
-            <h3 class="text-dark display-3 font-weight-bold">Mes animaux</h3>
-          </div>
+  <div class= "container">
+    <div class="left pt-1 mr-5">
+      <div class="row">
+        <div class="col-md-12 align-self-center">
+          <h4>Mes animaux</h4>
         </div>
       </div>
-      <br>
+    </div>
+    <br><div class="divider divider-grad"></div><br>
+    <div class="d-flex">
+      <div class="row justify-content-around align-items-center w-100">
+        <% if current_petowner %>
+          <div class="col-md-12 align-self-center text-center">
 
-      <% if current_petowner %>
-        <div class="col-md-12 align-self-center text-center">
-          <br><div class="divider divider-grad"></div><br>
-
-          <!-- BUTTON MODAL -->
-          <button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
-            Ajouter le profil d'un animal
-          </button>
-          <div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concernant votre animal.</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                  </button>
+            <!-- BUTTON MODAL -->
+            <button type="button" class="btn btn-grad" data-toggle="modal" data-target="#exampleModalCenter">
+              Ajouter le profil d'un animal
+            </button>
+            <div class="modal fade text-left" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concernant votre animal.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <%= render "petowners/petsform"%>
                 </div>
-                <%= render "petowners/petsform"%>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
 
-      <div class="container">
-        <div class="row p-3 border border-dashed shadow-lg mt-5">
-          <% @pets.each do |pet| %>
-            <div class="item pb-5 col-4">
-              <div class="post">
-                <% if pet.avatar.attached? != false %>
-                  <%= image_tag pet.avatar, alt: 'avatar' , class:'shadow-lg', style:'display:relative;background-size: cover; width: 400px;height: 300px;border-radius:10px; border:2px solid #28a745;'%>
-                <% end %>
-                <div class="post-info ">
-                  <span class="post-tag bg-grad text-white mb-3 clearfix"><%= pet.pet_type%></span>
-                  <div class="post-author">
-                    <% if pet.sterilized == true %>
-                      <p>Stérélisé(e)</p>
-                    <% else %>
-                      <p>Non stérilisé(e)</p>
-                    <%end%>
-                  </div>
-                  <div class="post-title text-primary">
-                    <%= pet.name%><br>
-                    <p><%= pet.pet_type%> <%= pet.sex%></p>
-                    <% if pet.sterilized == true %>
-                      <p>Stérélisé(e)
-                    <% else %>
-                      Non stérilisé(e)</p>
-                    <%end%>
+        <div class="container">
+          <div class="row p-3 border border-dashed shadow-lg mt-5">
+            <% @pets.each do |pet| %>
+              <div class="item pb-5 col-4">
+                <div class="post">
+                  <% if pet.avatar.attached? != false %>
+                    <%= image_tag pet.avatar, alt: 'avatar' , class:'shadow-lg pet-img'%>
+                  <% end %>
+                  <div class="post-info ">
+                    <span class="post-tag bg-grad text-white mb-3 clearfix"><%= pet.pet_type%></span>
+                    <div class="post-author">
+                      <% if pet.sterilized == true %>
+                        <p>Stérélisé(e)</p>
+                      <% else %>
+                        <p>Non stérilisé(e)</p>
+                      <%end%>
+                    </div>
+                    <div class="post-title text-primary">
+                      <%= pet.name%><br>
+                      <p><%= pet.pet_type%> <%= pet.sex%></p>
+                      <% if pet.sterilized == true %>
+                        <p>Stérélisé(e)
+                      <% else %>
+                        Non stérilisé(e)</p>
+                      <%end%>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <% if current_petowner %>
-                <% if pet.avatar.attached? == false %>
-                  <p>Il n'y a pas encore d'avatar lié à ce compte !</p>
-                  <%= form_tag pet_avatars_path(pet), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= submit_tag "Ajouter une photo" %>
-                  <% end %>
-                <%else%>
-                  <%= form_tag pet_avatars_path(pet), multipart: true do %>
-                    <%= file_field_tag :avatar %>
-                    <%= button_tag(type: 'submit', class:"btn btn-success") do %>
-                      <span><i class="fa fa-check-circle-o""></i>Mettre à jour</span>
+                <% if current_petowner %>
+                  <% if pet.avatar.attached? == false %>
+                    <p>Il n'y a pas encore d'avatar lié à ce compte !</p>
+                    <%= form_tag pet_avatars_path(pet), multipart: true do %>
+                      <%= file_field_tag :avatar %>
+                      <%= submit_tag "Ajouter une photo" %>
                     <% end %>
+                  <%else%>
+                    <%= form_tag pet_avatars_path(pet), multipart: true do %>
+                      <%= file_field_tag :avatar %>
+                      <%= button_tag(type: 'submit', class:"btn btn-success") do %>
+                        <span><i class="fa fa-check-circle-o""></i>Mettre à jour</span>
+                      <% end %>
+                    <%end%>
                   <%end%>
-                <%end%>
-              <% end %>
-            </div>
-          <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

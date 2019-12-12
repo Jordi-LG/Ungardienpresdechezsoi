@@ -1,59 +1,37 @@
 <body>
-<!-- =======================
-Banner innerpage -->
-<div class="innerpage-banner center bg-overlay-dark-7 py-7" style="background:url(https://images.pexels.com/photos/787876/pexels-photo-787876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat; background-size:cover; background-position: center center;">
-  <div class="container">
-    <div class="row all-text-white">
-      <div class="col-md-12 align-self-center">
-        <h1 class="innerpage-title">Fiches associations</h1>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item active">
-              <%= link_to associations_path do %>
-                <i class="fa fa-5x fa-list "></i> Retour Associations
-              <% end %>
-            </li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- =======================
-Banner innerpage -->
+<%= render "associations/banner_show"%>
 
-<!-- =======================
-NAME ASSOCIATION -->
-<div class="left pt-7">
-  <div class="container">
-    <div class="row all-text-white">
-      <div class="col-md-12 align-self-center">
-        <h1 class="text-dark display-3 font-weight-bold">Les Pattounes du Coeur <%= @association.name %></h1>
-        </div>
-    </div>
-  </div>
-</div>
-<!-- =======================
-NAME ASSOCIATION -->
-
-<!-- =======================
-ABOUT  -->
-<section>
-  <div class="container h-100">
-    <div class="row">
-      <div class="col-md-12 col-lg-6 align-self-center ">
-        <%= image_tag "associations/logo_pattounes.jpg", class: 'rounded', style: 'height:50%;width:50%;'  %>
+<section class="position-relative bg-light">
+  <div class="container ">
+    <div class="row" >
+      <div class="col-2 col-md-4" >
+        <%= image_tag @association.image_tag, class: 'rounded shadow' %>
       </div>
-      <div class="col-md-10 col-lg-6 mx-md-auto align-self-center ">
-        <div class="title text-left">
-          <h2>Nous sommes une <span class="text-primary">Association à but non lucratif</span> qui s'occupe de chats errants à Montpellier.</h2>
-        </div>
+      <div class="col-8 col-md-8 left pt-7 mb-4">
+          <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+              <p class="text-primary display-8 mb-0">Association</p>
+              <p class="text-dark display-4"><%= @association.name %></p>
+              </div>
+          </div>
       </div>
     </div>
-  </div>
+    <div class="divider mt-6 mb-4"><i class="ti-heart"></i> </div>
+		<div class="row">
+			<div class="col-sm-12 col-lg-12 align-self-center">
+				<div class="text-center pb-4 p-lg-0 ">
+          <h2><%= @association.describe_short %></h2>
+				</div>
+			</div>
+		</div>
+	</div>
+  <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block ie-d-none mb-n3">
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 43.4" style="enable-background:new 0 0 1920 43.4;" xml:space="preserve">
+			<path id="XMLID_4_" class="fill-white" d="M0,23.3c0,0,405.1-43.5,697.6,0c316.5,1.5,108.9-2.6,480.4-14.1c0,0,139-12.2,458.7,14.3 c0,0,67.8,19.2,283.3-22.7v35.1H0V23.3z"/>
+		</svg>
+	</figure>
 </section>
-<!-- =======================
-ABOUT -->
+
 
 <!-- =======================
 PRESENTATION -->
@@ -65,13 +43,11 @@ PRESENTATION -->
           <span class="text-primary">
             <%= @association.date_of_birth %>
           </span></h2>
-        <h4 class="lead"> TEST ici describe de l'asso : <%= @association.describe %>
-          </h4>
-        <h4 class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam vitae justo semper commodo. Donec interdum lorem felis, et vestibulum nisi sodales a. Suspendisse bibendum tortor ut libero pulvinar porta. Proin magna turpis, dignissim vel nisl nec, cursus placerat mauris. In hac habitasse platea dictumst. Aenean luctus dignissim felis et finibus. Morbi consectetur tristique luctus. Integer ultricies luctus accumsan. Sed pellentesque varius facilisis. Proin arcu velit, hendrerit vitae tempor ut, sollicitudin nec arcu. Quisque quis nibh sit amet mauris sagittis pulvinar. Ut et neque quis quam molestie mollis.
+        <h4 class="lead"> <%= @association.describe %>
         </h4>
       </div>
     </div>
+		<div class="divider"><i class="ti-heart"></i> </div>
   </div>
 </section>
 <!-- =======================
@@ -88,22 +64,26 @@ OBJECTIVES & PARTICIPATION  -->
         <div class="row mt-4 mt-md-0">
           <div class="col-5 offset-1 px-2 mb-3 align-self-end">
             <div data-wow-duration="0.8s" data-wow-delay="0.4s">
-              <%= image_tag "associations/cat1.jpeg", class: 'border-radius-3 wow fadeInUp', style: 'height:80%;width:70%;'  %>
+              <%= image_tag "associations/cat1.jpeg", class: 'border-radius-3 wow fadeInUp association-img'  %>
             </div>
           </div>
           <div class="col-6 px-2 mb-3">
             <div class="border-radius-3 wow fadeInLeft bg-grad p-2 p-sm-3 p-lg-4 p-xl-5 all-text-white" data-wow-duration="0.8s" data-wow-delay="0s">
-              <h4 class="font-weight-bold"> Stérilisation, identification et nourrissage des chats dits "errants"</h4>
+              <h4 class="font-weight-bold">
+                <%= @association.actions %>
+              </h4>
             </div>
           </div>
           <div class="col-7 px-2 mb-3">
             <div class="border-radius-3 wow fadeInLeft bg-grad p-2 p-sm-3 p-lg-4 p-xl-5 all-text-white" data-wow-duration="0.8s" data-wow-delay="0s">
-              <h3 class="font-weight-bold"> Placement en famille d'accueil des chats recceuillis dans la rue</h3>
+              <h3 class="font-weight-bold">
+                <%= @association.actions_2 %>
+              </h3>
             </div>
           </div>
           <div class="col-5 align-self-start pl-2 mb-3">
             <div data-wow-duration="0.8s" data-wow-delay="0.4s">
-              <%= image_tag "associations/cat2.jpeg", class: 'border-radius-3 wow fadeInUp', style: 'height:80%;width:80%;'  %>
+              <%= image_tag "associations/cat2.jpeg", class: 'border-radius-3 wow fadeInUp association-img' %>
             </div>
           </div>
         </div>
@@ -117,10 +97,60 @@ OBJECTIVES & PARTICIPATION  -->
         <div class="d-flex float-right m-4">
           <h2>Vous voulez <span class="text-primary"> participer</span> à notre action ? </h2>
         </div>
-        <div class="d-flex float-right">
-          <%= link_to @association.donation_url do %>
-            <span class="btn btn-grad btn-lg">Aidez l'association !</span>
-          <%end%>
+        <%= form_tag charges_path do %>
+          <div id="error_explanation">
+            <% if flash[:warning].present? %>
+              <p><%= flash[:warning] %></p>
+            <% end %>
+          </div>
+          <article>
+            <%= label_tag(:amount, 'Montant de votre donation:') %>
+            <%= number_field_tag(:amount, "", class: 'form-control', placeholder: "Indiquer le montant") %>
+          </article>
+          <article>
+            <%= hidden_field_tag(:stripeToken) %>
+          </article>
+          <button id='donateButton' class="btn btn-lg btn-grad">Donate</button>
+        <% end %>
+        <script src="https://checkout.stripe.com/checkout.js"></script>
+
+        <script>
+        var handler = StripeCheckout.configure({
+          key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+          locale: 'EUR',
+          name: '<%= @association.name %>',
+          description: 'Donation',
+          token: function(token) {
+            $('input#stripeToken').val(token.id);
+            $('form').submit();
+          }
+        });
+        $('#donateButton').on('click', function(e) {
+          e.preventDefault();
+
+          $('#error_explanation').html('');
+
+          var amount = $('input#amount').val();
+          amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+          amount = parseFloat(amount);
+
+          if (isNaN(amount)) {
+            $('#error_explanation').html("<p>Montant non valide, merci d'entrée une valeur en dollar ($).</p>");
+          }
+          else if (amount < 1.00) {
+            $('#error_explanation').html('<p>Montant non valide, la donation doit etre superieur à 1$.</p>');
+          }
+          else {
+            amount = amount * 100; // Needs to be an integer!
+            handler.open({
+              amount: Math.round(amount)
+            })
+          }
+        });
+        </script>
+
+
         </div>
       </div>
     </div>
@@ -132,7 +162,7 @@ OBJECTIVES & PARTICIPATION  -->
 
 <!-- =======================
 CONTACT-->
-<section class="mb-6">
+<div class="mb-6">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -157,13 +187,13 @@ CONTACT-->
       </div>
     </div>
   </div>
-</section>
+</div>
 <!-- =======================
 CONTACT -->
 
 <!-- =======================
 Btn back index -->
-<section class="mb-6">
+<div class="mb-6">
   <div class="d-flex justify-content-center mt-3">
     <%= link_to root_path do %>
     <div class="btn btn-button btn-dark">
@@ -171,7 +201,7 @@ Btn back index -->
     </div>
     <% end %>
   </div>
-</section>
+</div>
 <!-- =======================
 Btn back index -->
 

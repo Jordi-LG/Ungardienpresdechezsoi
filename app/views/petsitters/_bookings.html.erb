@@ -1,0 +1,32 @@
+<div class="left pt-1 mr-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 align-self-center">
+        <h4>Mes réservations</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="divider divider-grad"></div>
+<section>
+  <div class="container shadow-lg rounded">
+    <div class="col-sm-12 col-md-12 ">
+      <ul class="nav nav-tabs tab-with-center-icon justify-content-center nav-justified">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#tab-8-1"> <i class="ti-time"></i> Mes nouvelles réservations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab-8-2"> <i class="ti-check-box"></i>Pet sittings validés</a>
+        </li>
+      </ul>
+        <div class="tab-content">
+          <!-- VALIDATIONS EN ATTENTE, FIRST TAB -->
+          <%= render 'tab_booking_pending' %>
+
+          <!-- PET SITTINGS VALIDÉS, SECOND TAB -->
+          <%= render 'tab_booking_validate' %>
+        </div>
+      </div>
+    </div>
+</section>

@@ -1,0 +1,35 @@
+<div class="left pt-1 mr-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 align-self-center">
+        <h4>Mon Profil</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="divider divider-grad"></div><br>
+  <span class="pt-0 h5">
+    <p><span class= "font-weight-bold">Identité :</span> <%= @petsitter.first_name %> <%= @petsitter.last_name %></p>
+    <p><span class= "font-weight-bold">Âge :</span> <%= @petsitter.age %></p>
+    <p><span class= "font-weight-bold">Numéro de télephone :</span> <%= @petsitter.phone_number %></p>
+    <p><span class= "font-weight-bold">Email :</span> <%= @petsitter.email %></p>
+    <p><span class= "font-weight-bold">Quartier :</span> <%= @district.district_name %></p><br>
+
+    <div class="divider divider-grad"></div><br>
+
+    <p><span class= "font-weight-bold">Jardin :</span>
+      <% if @petsitter.garden == true %>
+        Oui
+      <% else %>
+        Non
+      <% end %></p>
+    <p><span class= "font-weight-bold">Surface habitable :</span> <%= @petsitter.living_space %> m2</p>
+    <p><span class= "font-weight-bold">Prix par jour :</span> <%= @petsitter.price %> €</p>
+
+  </span>
+  <div>
+    <%= link_to edit_petsitter_registration_path do %>
+    <button type="button" class="btn btn-button btn-dark mr-4 mb-3 mb-sm-0">Editer votre compte </button>
+    <% end %>
+  </div>

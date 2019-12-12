@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" style="height:100%;">
+<html lang="en">
 <head>
   <title>Un gardien pres de chez soi | Inscription</title>
   <meta charset="utf-8">
@@ -8,9 +8,8 @@
 <body>
   <div class="preloader">
   </div>
-  <section class="p-0" style="min-height: 100%;">
-    <div style="min-height: 100%;">
-      <div class="row" style="min-height: 100vh;" >
+  <section class ="p-0 section_div">
+      <div class="row devise_div" >
         <!-- left -->
             <div class="col-12 col-lg-5 text-left mx-auto ">
               <div class="w-100">
@@ -18,7 +17,7 @@
                 <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
                   <h1 class="h3 mb-3 font-weight-normal text-center">Inscription</h1>
                   <%= devise_error_messages! %>
-                  <div class="col-xs-6 d-inline-block">
+                  <div class="col-5 col-sm-5 col-xs-5 col-lg-5 col-md-5 d-inline-block ml-4 d-inline-block">
                       <div class="form-group">
                         <%= f.label :first_name, "Nom de famille" %>
                         <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "Entrer votre nom" %>
@@ -29,7 +28,7 @@
                       </div>
                       <div class="form-group">
                         <%= f.label :describe, "Description" %>
-                        <%= f.text_field :describe, autofocus: true, autocomplete: "descrition", class: "form-control", placeholder: "Entrer votre description" %>
+                        <%= f.text_area :describe, autofocus: true, autocomplete: "descrition", class: "form-control", rows:"7", placeholder: "Entrer votre description" %>
                       </div>
                       <div class="form-group">
                         <%= f.label :age, "Age" %>
@@ -39,16 +38,12 @@
                         <%= f.label :phone_number, "Numéro de téléphone" %>
                         <%= f.phone_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", placeholder: "Entrer votre numéro de téléphone" %>
                       </div>
-                      <div class="form-group">
-                        <%= f.label :garden, "Avez-vous un jardin ?" %>
-                        <%= f.select :garden,[["Oui", true], ["Non", false]], {}, { :class => 'form-control form-control-lg' }%>
                       </div>
-                      </div>                    
-                      
-                  <div class="col-xs-6 d-inline-block">
+
+                  <div class="col-5 col-sm-5 col-xs-5 col-lg-5 col-md-5 d-inline-block ml-2">
                     <div class="form-group">
                       <%= f.label :district_id, "Quel est votre quartier ?" %><br/>
-                      <%= f.select :district_ids,[["Aiguelongues", 1], ['Arceaux', 2], ['Boutonnet', 3], ['Croix-d argent', 4], ['Ecusson', 5], ['Euromédecine', 6], ['Figuerolles', 7], ['Gambetta', 8], ['Hauts de Massane', 9], ['Hopitaux Facultés', 10], ['Malbosc', 11],['Nouveau Saint-Roch', 12], ['Odysseum', 13], ['Port Marianne', 14], ['Tournezy', 15]], {}, { :class => 'form-control form-control-lg' }%>
+                      <%= f.select :district_ids,[["Aiguelongues", 2], ['Arceaux', 3], ['Boutonnet', 4], ['Croix-d argent', 5], ['Ecusson', 6], ['Euromédecine', 7], ['Figuerolles', 8], ['Gambetta', 9], ['Hauts de Massane', 10], ['Hopitaux Facultés', 11], ['Malbosc', 12],['Nouveau Saint-Roch', 13], ['Odysseum', 14], ['Port Marianne', 15], ['Tournezy', 16]], {}, { :class => 'form-control form-control-lg' }%>
                     </div>
                     <div class="form-group">
                     <%= f.label :living_space, "De combien d'espace habitable disposez vous ?" %>
@@ -63,14 +58,14 @@
                     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" , placeholder: "Entrer votre email" %>
                   </div>
                   <div class="form-group">
-                    <%= f.label :password %>
+                    <%= f.label :mot_de_passe %>
                     <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> caractères minimum)</em>
                     <% end %>
                     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" , placeholder: "Entrer votre mot de passe"%>
                   </div>
                   <div class="form-group">
-                    <%= f.label :password_confirmation %>
+                    <%= f.label :confirmation_mot_de_passe %>
                     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" , placeholder: "Confirmer votre mot de passe" %>
                   </div>
                 </div>
@@ -88,8 +83,8 @@
             <div class="justify-content-center align-self-center">
               <%= link_to root_path do %>
               <div class="logo-auth; m-4">
-                <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
-                <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+                <%= image_tag "logos/LogoGardien.png", :class => "img_logo"%>
+                <%= image_tag "logos/TitreGardien.png", :class => "img_logo"%>
               </div>
               <%end%>
             </div>
@@ -102,7 +97,6 @@
           </div>
         </div>
       </div>
-    </div>
   </section>
 </body>
 </html>

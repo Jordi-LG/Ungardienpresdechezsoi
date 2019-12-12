@@ -1,16 +1,20 @@
 <tr>
   <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
   <% if petsitter_exists(booking.id) == false %>
-    <th scope="row"> <%= booking.petsitter_id%> </th>
     <td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
     <td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
     <td><%= my_petsitters(booking.petsitter_id).email%> </td>
     <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
-    <td>
-      <%= link_to petsitter_path(booking.petsitter.id) do %>
-        <span class="btn btn-outline-light text-white">Profile de <%= my_petsitters(booking.petsitter_id).first_name%></span>
+
+    <td class="d-flex justify-content-around flex-md-wrap">
+      <%= link_to petsitter_path(booking.petsitter_id) do %>
+        <span class="btn btn-info">Profil</span>
       <%end%>
-      <span class="btn btn-info text-white">Validé</span>
-    </td>
+      <span class="btn btn-grad">Validé</span>
+
   <% end %>
+  <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
+    <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
+  <% end %>
+</td>
 </tr>
