@@ -17,7 +17,10 @@ class PetownerMailer < ApplicationMailer
   end
 
   def refused_request(petsitting)
-  	@petsitting = petsitting
-    mail(to: @petsitting.petowner.email, subject: 'Demande auprès du petsitter refusée')
+    if Petowner.find_by(id: petsitting.petowner) == nil
+    else
+  	  @petsitting = petsitting
+      mail(to: @petsitting.petowner.email, subject: 'Demande auprès du petsitter refusée')
+    end
   end
 end
