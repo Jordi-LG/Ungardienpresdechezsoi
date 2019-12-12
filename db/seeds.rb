@@ -15,6 +15,10 @@ Petdistrict.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('petdistricts')
 Petowner.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('petowners')
+Comment.all.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('comments')
+Petsitting.all.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('petsittings')
 AdminUser.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('adminusers')
 
@@ -43,6 +47,7 @@ end
 
 puts "Districs created"
 
+
 30.times do
   p = Petsitter.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, describe: Faker::Lorem.sentence(word_count: 20), age: Faker::Number.between(from: 18, to: 40), phone_number: '+336' + Faker::Number.number(digits: 8).to_s, garden: [true, false].sample, living_space: Faker::Number.between(from: 20, to: 80), account_validate: [true, false], password: '123456', price: (Faker::Number.normal(mean: 5, standard_deviation: 1.5).round(1)))
   p.email = p.first_name + '.' + p.last_name + '@yopmail.com'
@@ -60,11 +65,17 @@ end
 
 puts "Petowners created"
 
-15.times do
-  Comment.create(title: Faker::Book.title, content: Faker::Lorem.sentence(word_count: 20), petowner_id: rand(1..2), ps_id: rand(1..2))
+100.times do
+  Comment.create(title: Faker::Book.title, content: Faker::Lorem.sentence(word_count: 20), petowner_id: rand(1..30), ps_id: rand(1..5))
 end
 
 puts "Comments created"
+
+1.times do
+  Petsitting.create(petsitter_id: rand(1..30), petowner_id: rand(1..30))
+end
+
+puts 'Petsitting created'
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
