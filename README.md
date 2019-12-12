@@ -1,75 +1,57 @@
-## Bienvenue sur notre site de mise en relation de Petsitter et de propriétaire d'animaux : **Un gardien près de chez toi** !
+### Welcome to our site linking Pet-sitter and Pet-owner: **Un gardien près de chez toi** !
 
-### 1. Présentation
-L'idée de ce site est de faciliter la recherche d'un petsitter certifié pour les propriétaires de chiens et de chats qui partent en vacances pour un week-end ou plus.
+- Link to our Heroku website: https://ungardienpresdechezsoi.herokuapp.com/
 
-Il existe dejà des chenils ou des pensions pour cela mais l'idée ici est de favoriser un service de proximité. Le site va donc repertorier des petsitters sur la ville de Montpellier et à proximité de votre domicile qui sont prêts à garder vos animaux le temps de vos congés. Le petsitter sélectionné s'occupera de vos animaux à votre domicile ou en les prenant chez lui. La rémunération se discute entre les particuliers.
+### 1. Presentation
 
-Le site proposera également une section avec des liens utiles pour les propriétaires. Nous présenterons notamment les activités des principales associations d'animaux domestiques sur Montpellier : leurs actions, accès aux "newsletters", appel aux dons, etc...
+The idea was to facilitate the search for a certified Pet sitter for owners of dogs and cats who go on week-end or holidays.
 
-# Le concept est le suivant:
-Repertorié sur la ville de Montpellier des petsitters prêt à garder vos animaux (chiens et chats) le temps de vos congés divers et variés;
-Il existe déjà des chenils ou vous pouvez convié vos animaux, ici, on se propose de trouver quelqu'un à proximité de chez vous, qui peut venir s'occuper de votre animal ou l'avoir chez lui pendant un certain temps, sous rémunération.
-Le site proposera aussi une partie sur les associations à Montpellier: présentation, coordonnées, actions, "newsletters", appel aux dons, etc...
+Kennels and pensions already exist but here, the goal was to  promote a local service between individuals. Therefore, this site list Pet-sitters close to Pet-owners homes in Montpellier. The Pet-sitter selected by a person will take care of the pets at Petowner's home or by taking them in their own home. All conditions of the petsitting, including the price, is **discussed between individuals**.
 
-## 2. Parcours utilisateur
-Le principe de notre site est simple ! Comme par exemple sur le site SuperProf qui aide à trouver un super prof certifié pour donner des cours, ici il s'agit de trouver un super petsitter en qui vous aurez totalement confiance pour garder vos animaux !
+The site also offer a section with the activities of the main associations on Montpellier: their actions, call for donation...
 
-Dans la navigation sur le site, n'importe qui peut consulter les annonces des petsitters et n'importe qui peut consulter les informations concernant les quelques associations référencées. Par contre, il faut bien sur s'inscrire pour profiter des services du site !
+### 2. User experience
+
+The aim of our site is simple. In the same way as on the site "SuperProf", which aim at helping finding certified teachers, here we want to find a **certified petsitter in wich you can trust** to look after our pets.
+
+In navigation of the site, anyone can consult announcements of Petsitters or the list of the referenced associations. However, you must register to access the site's services.
+
+Once you registered as a *Petowner*, you can see announcements posted and the profiles of the Petsitters. Then you can contact a petsitter to benefit from his services.
+
+You have a personal profile containing your personal data, informations about your pets and the possibility to manage his bookings. You also have a public profile with restricted informations, only see by the petsitters you contact.
+
+Once you registered as a *Petsitter*, your profile must be validate by the administrator of the website to confirm your identity and certified ability to looking after pets. The petsitter can access only his own profile or the profiles of petowners wich demand him a petsitting.
+
+The Petsitter have access to his personal profile containing personal data, the comments made by petowners and the possibility to manage his bookings.
 ​
-Une fois inscrit en tant qu'utilisateur, vous pouvez voir les annonces postées, les profils des pettsiters et ainsi bénéficier des services proposés. Vous avez aussi un profil personnel contenant des infos vous concernant et concernant les animaux à faire garder. De plus le site proposera un historique des réservations effectuées.
 ​
-Vous pouvez également devenir petsitter. Un petsitter doit être certifié pour pouvoir poster des annonces, c'est un premier gage de confiance pour les utilisateurs (un peu comme sur blablacar où le conducteur est "validé"). Le petsitter a accès à son profil et aux profils des utilisateurs ayant besoin d'un service.
-​
-Les utilisateurs et les petsitters peuvent recommander un utilisateur et/ou un petsitter, commenter son profil et lui attribuer une notation.
-​
-## 3. Concrètement et techniquement
+### 3. Concretely and technically
 
-### 3.1. Base de données
-Les tables principales seront:
+#### 3.1. Databases
 
-* Gestion des utilisateurs (User)
-* Gestion des petsitters (Petsitters)
-* Gestion des fiches associations
+The tables of the database are :
 
-Une table de jointure pour recenser les transactions : retrouver quel User à béneficié du service de tel Petsitters.
+* `Petsitters`
+* `Petowners`
+* `Pets`
+* `Districs`
+* `Associations`
+* `Comments`
 
-### 3.2. Front
-Dynamique, recherche d'utilisateur, de petsitter, d'associations. Système de notifications, de recommandations, de commentaires, de rating, de messagerie.
+A jointable `Petsittings` make the link between the tables `Petsitters` and `Petowners` in order to manage the bookings. An other jointable connect the `Petsitters` and the `Districts` in wich they can do petsittings.
 
-En terme de charte graphique: nuances de vert en primaire, nuances de marrons en secondaire... Et des photos de chats et de chiens, of course !
+#### 3.2. Front
 
-### 3.3. Backend
-Nous utiliserons des gems vu pendant la formation, avec notament Devise (gestion des utilisateurs) et Stripe (pour le paiement).
+We wanted a site with green theme. And obviously, a lot of photos of cats and dogs !
 
-Nous aimerions mettre en place une localisation des utilisateurs/petsitters sur une carte (API google maps).
 
-Nous voudrions également faire du scrapping pour récupérer les informations relatives aux associations.
+#### 3.3. Backend
 
-### 3.4. Mes besoins techniques
+We used `gems` covered in the THP courses : Devise (management of two differents profiles of users), Stripe (payment for supporting associations)...
 
-Besoin de consolider le projet avec des personnes qui partagent l'état d'esprit du projet.
-
-Idéalement une répartition équitable sur le front et le back en fonction des préférences (petit +: quelqu'un a l'aise avec le scrapping).
-
-## 4. La version minimaliste mais fonctionnelle qu'il faut avoir livré la première semaine (le 6/12/19)
-
-La première semaine, le livrable présentera :
-
-* Système d'utilisateur avec gestion des inscriptions, pages profils
-* Petsitters peut s'inscrire mais doit être valider par un admin
-* Système de mailing (à l'inscription pour commencer)
-* Gestion des accès aux inscrits et non-inscrits
-* Page type pour une fiche d'association
-    ​
-
-## 5. La version que l'on présentera aux jury
-Un site qui permettra à un visiteur de s'inscrire, et de se trouver un petsitter qui s'occupera de son animal, donc réservation et paiement effectué.
-
-L'utilisateur pourra également faire une demande pour devenir lui même petsitter
-
-L'utilisateur pourra rechercher une association.
-
-Un système de localisation des petsitters et des associations, ainsi qu'un système de filtre pour rechercher par quartier.
-
-Un système administrateur pour gérer la base de données.
+### Team
+We were 4 members of the 10th session of The Hacking Project in Montpellier to worked on this project :
+- Jordi Le Guet
+- Terence Le Guet
+- Paul Hennin
+- Marine El Adouzi
