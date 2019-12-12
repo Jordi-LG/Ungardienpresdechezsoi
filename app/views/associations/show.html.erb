@@ -105,7 +105,7 @@ OBJECTIVES & PARTICIPATION  -->
           </div>
           <article>
             <%= label_tag(:amount, 'Montant de votre donation:') %>
-            <%= text_field_tag(:amount, "", class: 'form-control', placeholder: "Indiquer le montant") %>
+            <%= number_field_tag(:amount, "", class: 'form-control', placeholder: "Indiquer le montant") %>
           </article>
           <article>
             <%= hidden_field_tag(:stripeToken) %>

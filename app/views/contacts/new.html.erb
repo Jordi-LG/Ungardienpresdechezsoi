@@ -9,7 +9,7 @@
 		</div>
 	</div>
   <%= render 'layouts/flash_send' %>
-	<section class="contact-page">
+	<div class="contact-page">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-lg-8 mx-auto">
@@ -56,13 +56,6 @@
 					<div class="h-100">
 						<h3>Une suggestion pour le site ?</h3>
 						<p>Le formulaire ci-dessous nous permettra de rester en contact !</p>
-							<div class="row">
-								<div class="col-12">
-									<div class="alert alert-success contact-msg contact-alert" role="alert">
-										Votre message a bien été envoyé.
-									</div>
-								</div>
-							</div>
 						<%= form_for(@contact) do |f| %>
 							<% if @contact.errors.any? %>
     							<div id="error_explanation">
@@ -109,7 +102,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 	<section class="pt-0">
 		<div class="container ">
 			<div class="row justify-content-md-center">
