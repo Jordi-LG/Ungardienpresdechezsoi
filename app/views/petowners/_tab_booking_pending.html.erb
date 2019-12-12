@@ -1,14 +1,15 @@
 <div class="tab-pane show active" id="tab-8-1">
   <div class="col-sm-12 mb-5">
-    <div class="table-responsive-sm">
-      <table class="table table-lg table-noborder table-striped">
+    <div class="table-responsive text-nowrap">
+      <table class="table table-noborder table-striped">
         <thead class="all-text-white bg-grad">
           <tr class="text-white">
+            <th scope="col"> </th>
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
             <th scope="col">Mail</th>
             <th scope="col">Réservation</th>
-            <th scope="col"> </th>
+            
           </tr>
         </thead>
         <tbody>
@@ -18,10 +19,6 @@
               <tr>
                 <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
                 <% if petsitter_exists(booking.id) == false %>
-                  <td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
-                  <td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
-                  <td><%= my_petsitters(booking.petsitter_id).email%> </td>
-                  <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
                   <td class="d-flex justify-content-around flex-md-wrap">
                     <%= link_to petsitter_path(booking.petsitter_id) do %>
                       <span class="btn btn-info">Profil</span>
@@ -39,6 +36,11 @@
                       <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
                     <% end %>
                   </td>
+                  <td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
+                  <td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
+                  <td><%= my_petsitters(booking.petsitter_id).email%> </td>
+                  <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
+                  
                 <% end %>
               </tr>
             <% end %>
