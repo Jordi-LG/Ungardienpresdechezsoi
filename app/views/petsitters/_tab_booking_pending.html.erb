@@ -16,8 +16,8 @@
           <% if @bookings.nil? %>
           <% else %>
             <% @bookings.each do |booking|%>
-              <% if booking.validate_petsitter == false %>
-                <tr>
+            <% if booking.validate_petsitter == false %>
+                <tr id="booking-f-<%= booking.id %>">
                   <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
                   <% if petowner_exists(booking.petowner_id) == false %>
 
