@@ -102,12 +102,33 @@ html {
   margin-left:10%;
 }
 
+.res {
+
+}
 .avatar-img {
-  max-height: 85%;
-  margin-top: 5%;
-  width:85%;
+  object-fit: cover;
+  display: block;
+  max-height: 600px;
+  max-width: 600px;
+  height: 100%;
+  width: 100%;
+  margin: 5% 0 0 5%;
   border-radius:10px;
   border:2px solid black;
+}
+.team-card {
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+}
+.team-banner {
+background: url(asset_path("team/cat.jpg")) no-repeat;
+background-size:cover;
+background-position: center center;
+height: 600px;
+}
+.team-border {
+  border:3px dotted black;
 }
 
 .avatar-card {
