@@ -2,7 +2,7 @@
     <!-- ITEM -->
     <% petsitter_district.shuffle.each do |petsitter| %>
       <% if petsitter.account_validate == true %>
-        <div class="item pb-5 col-4">
+        <div class="item pb-5 col-sm-4">
           <div class="post">
             <%= image_tag petsitter.avatar, alt: 'avatar' , class:'shadow-lg avatar-card'%>
             <div class="post-info ">
@@ -16,7 +16,7 @@
 
               <div class="post-title text-primary"><%= petsitter.describe %></div>
             </div>
-            <div class="d-flex justify-content-between flex-md-wrap mt-auto p-2 bd-highligh">
+            <div class="d-flex justify-content-around flex-md-wrap mt-auto p-2 bd-highligh">
               <%= link_to petsitter_path(petsitter.id) do %>
                 <span class="btn btn-info"><i class="fa fa-bullseye"></i>Son profil !</span>
               <% end %>
