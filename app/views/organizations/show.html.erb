@@ -1,7 +1,10 @@
 <body>
 <%= render "organizations/banner_show"%>
 
+
   <section class="position-relative bg-light">
+    <%= render 'layouts/flash_alert' %>
+<%= render 'layouts/flash_success' %>
     <div class="container ">
       <div class="row" >
         <div class="col-2 col-md-4" >
@@ -117,8 +120,8 @@
 var handler = StripeCheckout.configure({
   key: '<%= Rails.configuration.stripe[:publishable_key] %>',
   locale: 'auto',
-  name: 'Sand Castles United',
-  description: 'One-time donation',
+  name: 'Donation pour :',
+  description: '<%= @association.name %>',
   token: function(token) {
     $('input#stripeToken').val(token.id);
     $('form').submit();
