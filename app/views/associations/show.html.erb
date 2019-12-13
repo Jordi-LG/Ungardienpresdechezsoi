@@ -80,118 +80,113 @@
         </div>
       </div>
     </div>
-        <!-- right side -->
     <div class="col-md-6 pl-lg-5">
       <blockquote class="blockquote primary-line">
         <h3 class="mb-2 "> "On n'a pas deux coeurs, l'un pour l'homme, l'autre pour l'animal. On a un coeur ou on n'en a pas."</h3>
           <cite>– Alphonse De Lamartine</cite>
       </blockquote>
-        <div class="d-flex float-right m-4">
-          <h2>Vous voulez <span class="text-primary"> participer</span> à notre action ? </h2>
+      <div class="d-flex float-right m-4">
+        <h2>Vous voulez <span class="text-primary"> participer</span> à notre action ? </h2>
+      </div>
+
+      <!-- stripe -->
+      <%= form_tag charges_path do %>
+        <div id="error_explanation">
+          <% if flash[:error].present? %>
+            <p><%= flash[:error] %></p>
+          <% end %>
         </div>
-  <%= form_tag charges_path do %>
-  <div id="error_explanation">
-    <% if flash[:error].present? %>
-      <p><%= flash[:error] %></p>
-    <% end %>
-  </div>
-  <article>
-    <%= label_tag(:amount, 'Donation Amount:') %>
-    <%= number_field_tag(:amount) %>
-  </article>
-  <article>
-    <%= hidden_field_tag(:stripeToken) %>
-    <%= hidden_field_tag(:association, params[:id]) %>
-    <% if current_petowner %>
-    <%= hidden_field_tag(:id_petowner, current_petowner.id) %>
-    <% else current_petsitter %>
-    <%= hidden_field_tag(:id_petsitter, current_petsitter.id) %>
-    <%end%>
-  </article>
-  <button id='donateButton'>Donate</button>
-<% end %>
+        <article>
+          <%= label_tag(:amount, 'Donation Amount:') %>
+          <%= number_field_tag(:amount) %>
+        </article>
+        <article>
+          <%= hidden_field_tag(:stripeToken) %>
+          <%= hidden_field_tag(:association, params[:id]) %>
+          <% if current_petowner %>
+          <%= hidden_field_tag(:id_petowner, current_petowner.id) %>
+          <% else current_petsitter %>
+          <%= hidden_field_tag(:id_petsitter, current_petsitter.id) %>
+          <%end%>
+        </article>
+        <button id='donateButton'>Donate</button>
+      <% end %>
 
-    <script src="https://checkout.stripe.com/checkout.js"></script>
+      <script src="https://checkout.stripe.com/checkout.js"></script>
 
-<script>
-var handler = StripeCheckout.configure({
-  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-  locale: 'auto',
-  name: 'Sand Castles United',
-  description: 'One-time donation',
-  token: function(token) {
-    $('input#stripeToken').val(token.id);
-    $('form').submit();
-  }
-});
+      <script>
+        var handler = StripeCheckout.configure({
+          key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+          locale: 'auto',
+          name: 'Sand Castles United',
+          description: 'One-time donation',
+          token: function(token) {
+            $('input#stripeToken').val(token.id);
+            $('form').submit();
+          }
+        });
 
-      $('#donateButton').on('click', function(e) {
-  e.preventDefault();
+          $('#donateButton').on('click', function(e) {
+          e.preventDefault();
 
-  $('#error_explanation').html('');
+          $('#error_explanation').html('');
 
-  var amount = $('input#amount').val();
-  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+          var amount = $('input#amount').val();
+          amount = amount.replace(/\$/g, '').replace(/\,/g, '')
 
-  amount = parseFloat(amount);
+          amount = parseFloat(amount);
 
-  if (isNaN(amount)) {
-    $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
-  }
-  else if (amount < 5.00) {
-    $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
-  }
-  else {
-    amount = amount * 100; // Needs to be an integer!
-    handler.open({
-      amount: Math.round(amount)
-    })
-  }
-});
-    </script>
-  </div>
+          if (isNaN(amount)) {
+            $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+          }
+          else if (amount < 5.00) {
+            $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
+          }
+          else {
+            amount = amount * 100; // Needs to be an integer!
+            handler.open({
+              amount: Math.round(amount)
+            })
+          }
+        });
+      </script>
+    </div>
 </section>
 
 <div class="mb-6">
-    <div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="divider mb-4"></div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="divider mb-4">
-                </div>
-                <div class="row">
-                    <div class="tags col-12 col-sm-8 text-center text-sm-left">
-                        <h3 class="text-muted">Nous contacter </h3>
-                    </div>
-                        <div class="col-12 col-sm-4 text-center text-sm-right">
-                            <ul class="social-icons si-colored-bg light">
-                                <%= link_to  @association.facebook_url do %>
-                                    <li class="social-icons-item social-facebook mb-0">
-                                        <span class="social-icons-link"><i class="fa fa-facebook-f fa-lg"></i>
-                                        </span>
-                                    </li>
-                                <%end%>
-                                <%= mail_to @association.email do %>
-                                    <li class="social-icons-item social-youtube mb-0">
-                                        <span class="social-icons-link"><i class="fa fa-at fa-lg"></i>
-                                        </span>
-                                    </li>
-                                <%end%>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="divider mt-4">
-                    </div>
-                </div>
-            </div>
+          <div class="tags col-12 col-sm-8 text-center text-sm-left">
+            <h3 class="text-muted">Nous contacter </h3>
+          </div>
+          <div class="col-12 col-sm-4 text-center text-sm-right">
+            <ul class="social-icons si-colored-bg light">
+              <%= link_to  @association.facebook_url do %>
+                <li class="social-icons-item social-facebook mb-0">
+                  <span class="social-icons-link"><i class="fa fa-facebook-f fa-lg"></i>
+                  </span>
+                </li>
+              <%end%>
+              <%= mail_to @association.email do %>
+                <li class="social-icons-item social-youtube mb-0">
+                  <span class="social-icons-link"><i class="fa fa-at fa-lg"></i>
+                  </span>
+                </li>
+              <%end%>
+            </ul>
+          </div>
         </div>
-    </div>
-<div class="mb-6">
-  <div class="d-flex justify-content-center mt-3">
-      <%= link_to root_path do %>
-        <div class="btn btn-button btn-dark">
-          <i class="fa fa-angle-double-left"></i> Retour Accueil
-        </div>
-      <% end %>
+        <div class="divider mt-4"></div>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="mb-6">
+  <%= render "layouts/button_back_index"%>
+</div>
+
 </body>

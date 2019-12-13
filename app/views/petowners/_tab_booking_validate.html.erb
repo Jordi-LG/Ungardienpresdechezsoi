@@ -12,11 +12,11 @@
           </tr>
         </thead>
         <tbody class="booking">
-          <!-- methode my_petsitters => helper -->
+          <!-- helper methode my_petsitters -->
           <% @bookings_petowner.each do |booking|%>
             <% if booking.validate_petowner == true %>
               <tr>
-                <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+                <!-- CHECK IF PETSITTER ALREADY EXIST IN DATABASE -->
                 <% if petsitter_exists(booking.petsitter_id) == false %>
                   <td class="d-flex justify-content-around flex-md-wrap">
                     <%= link_to petsitter_path(booking.petsitter_id) do %>
@@ -29,15 +29,13 @@
                     <% end %>
                     <%end%>
                   </td>
-
                   <td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
                   <td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
                   <td><%= my_petsitters(booking.petsitter_id).email%> </td>
                   <td>Validé le <%= booking.updated_at.strftime("%d-%m-%Y")%></td>
 
-                  <!-- AFFICHAGE SI UN PS A SUPPRIMÉ SON COMPTE -->
+                <!-- VIEW IF A PETSITTER DELETED IS ACCOUNT -->
                 <% else %>
-
                   <td class="d-flex justify-content-around align-items-center flex-md-wrap">
                   <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
                     <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>

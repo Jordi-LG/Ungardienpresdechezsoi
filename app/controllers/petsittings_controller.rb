@@ -3,18 +3,22 @@ class PetsittingsController < ApplicationController
   end
 
   def create
-    if already_contacted?.nil? == true
+    @contacted = already_contacted?
+    if @contacted.nil? == true
       @petsitting = Petsitting.create(petowner_id: current_petowner.id, petsitter_id: petsitter_choosen_id)
 
       if @petsitting.save
-        flash[:success] = "Votre réservation a bien été prise en compte. Votre Pet sitter va être alerté de votre demande. N'hésitez pas dés maintenant à prendre contact ensemble !"
-        redirect_to petsitters_path
+        respond_to do |format|
+          format.html { redirect_to petsitters_path }
+          format.js { }
+        end
       end
     else
-      flash[:alert] = "Vous avez déjà contacté ce Pet sitter, veuillez attendre sa réponse !"
-      redirect_to petsitters_path
+      respond_to do |format|
+        format.html { redirect_to petsitters_path }
+        format.js { }
+      end
     end
-
   end
 
   def update
@@ -30,7 +34,7 @@ class PetsittingsController < ApplicationController
       PetsitterMailer.accepted_booking(@booking).deliver_now
     end
       respond_to do |format|
-        if     @booking.save
+        if @booking.save
         format.js
         end
       end
@@ -51,7 +55,6 @@ class PetsittingsController < ApplicationController
       @delete_booking_petowner.destroy
       PetsitterMailer.refused_booking(@delete_booking_petowner).deliver_now
       redirect_to petowner_path(current_petowner.id)
-      
     end
   end
 

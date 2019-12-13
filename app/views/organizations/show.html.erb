@@ -186,12 +186,7 @@ var handler = StripeCheckout.configure({
         </div>
     </div>
 <div class="mb-6">
-  <div class="d-flex justify-content-center mt-3">
-      <%= link_to root_path do %>
-        <div class="btn btn-button btn-dark">
-          <i class="fa fa-angle-double-left"></i> Retour Accueil
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render "layouts/button_back_index"%>
+</div>
+
 </body>
