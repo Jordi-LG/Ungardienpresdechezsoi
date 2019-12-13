@@ -1,5 +1,5 @@
 <tr>
-  <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+  <!-- CHECK IF PETSITTERS ALREADY EXIST IN DATABASE -->
   <% if petsitter_exists(booking.id) == false %>
     <td><%= my_petsitters(booking.petsitter_id).first_name%> </td>
     <td><%= my_petsitters(booking.petsitter_id).last_name%> </td>
@@ -16,5 +16,5 @@
   <%= link_to petsitting_path(booking.id),local:true, data: { confirm: "Etes-vous sur de vouloir annuler ce rendez-vous ?"}, :method => :delete do %>
     <i class="fa fa-trash fa-2x ml-1" aria-hidden="true"></i>
   <% end %>
-</td>
+    </td>
 </tr>

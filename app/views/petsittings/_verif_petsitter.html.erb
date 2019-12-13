@@ -1,5 +1,5 @@
 <tr>
-  <!-- VERIFICATION SI LE PETSITTERS EXISTE TOUJOURS EN BASE DE DONNÉES -->
+  <!-- CHECK IF PETSITTERS ALREADY EXIST IN DATABASE -->
   <% if petsitter_exists(booking.id) == false %>
     <td class="d-flex justify-content-around align-items-center flex-md-wrap">
       <%= link_to petowner_path(booking.petowner_id) do %>
