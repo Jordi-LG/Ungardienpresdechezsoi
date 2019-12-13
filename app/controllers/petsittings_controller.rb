@@ -34,7 +34,7 @@ class PetsittingsController < ApplicationController
       PetsitterMailer.accepted_booking(@booking).deliver_now
     end
       respond_to do |format|
-        if     @booking.save
+        if @booking.save
         format.js
         end
       end
@@ -55,7 +55,6 @@ class PetsittingsController < ApplicationController
       @delete_booking_petowner.destroy
       PetsitterMailer.refused_booking(@delete_booking_petowner).deliver_now
       redirect_to petowner_path(current_petowner.id)
-
     end
   end
 
