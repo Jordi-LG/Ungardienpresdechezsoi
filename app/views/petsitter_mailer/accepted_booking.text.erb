@@ -1,6 +1,6 @@
 Salut <%= @petsitting.petsitter.last_name %>,
 
-Ta demande auprès du Pet owner <%= @petsitting.petowner.last_name%> a été validé.
+La demande pour une garde de <%= @petsitting.petowner.last_name%> a été validé.
 
 
 Pour accéder à ton espace client, <%= link_to "clique ici", petsitter_url(@petsitting.petsitter.id)%>.
