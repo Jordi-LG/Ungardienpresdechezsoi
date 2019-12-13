@@ -24,10 +24,10 @@ class OrganizationsController < ApplicationController
 
 
     if @association.save
-      flash[:success] = "Votre dossier Association a bien été enregistrée !"
+      flash.now[:success] = "Votre dossier Association a bien été enregistrée !"
       redirect_to organizations_path
     else
-      flash[:warning] = @association.errors.messages
+      flash.now[:warning] = @association.errors.messages
       redirect_to organizations_path
     end
   end

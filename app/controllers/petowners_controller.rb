@@ -34,8 +34,9 @@ private
         redirect_to petowner_path(current_petowner.id)
       end
     end
+
     rescue ActiveRecord::RecordNotFound
       redirect_to root_url
-      flash[:success] = "La page que vous avez demandé n'existe pas !"
+      flash.now[:success] = "La page que vous avez demandé n'existe pas !"
     end
 end
