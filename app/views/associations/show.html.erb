@@ -89,57 +89,65 @@
         <div class="d-flex float-right m-4">
           <h2>Vous voulez <span class="text-primary"> participer</span> à notre action ? </h2>
         </div>
-        <%= form_tag charges_path do %>
-        <div id="error_explanation">
-          <% if flash[:warning].present? %>
-            <p><%= flash[:warning] %></p>
-          <% end %>
-      </div>
-    <article>
-    <%= label_tag(:amount, 'Montant de votre donation:') %>
-    <%= number_field_tag(:amount, "", class: 'form-control', placeholder: "Indiquer le montant") %>
-    </article>
-    <article>
-        <%= hidden_field_tag(:stripeToken) %>
-    </article>
-        <button id='donateButton' class="btn btn-lg btn-grad">Donate</button>
+  <%= form_tag charges_path do %>
+  <div id="error_explanation">
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
     <% end %>
+  </div>
+  <article>
+    <%= label_tag(:amount, 'Donation Amount:') %>
+    <%= number_field_tag(:amount) %>
+  </article>
+  <article>
+    <%= hidden_field_tag(:stripeToken) %>
+    <%= hidden_field_tag(:association, params[:id]) %>
+    <% if current_petowner %>
+    <%= hidden_field_tag(:id_petowner, current_petowner.id) %>
+    <% else current_petsitter %>
+    <%= hidden_field_tag(:id_petsitter, current_petsitter.id) %>
+    <%end%>
+  </article>
+  <button id='donateButton'>Donate</button>
+<% end %>
+
     <script src="https://checkout.stripe.com/checkout.js"></script>
 
-    <script>
-      var handler = StripeCheckout.configure({
-      key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-      locale: 'EUR',
-      name: '<%= @association.name %>',
-      description: 'Donation',
-      token: function(token) {
-        $('input#stripeToken').val(token.id);
-        $('form').submit();
-        }
-      });
+<script>
+var handler = StripeCheckout.configure({
+  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+  locale: 'auto',
+  name: 'Sand Castles United',
+  description: 'One-time donation',
+  token: function(token) {
+    $('input#stripeToken').val(token.id);
+    $('form').submit();
+  }
+});
+
       $('#donateButton').on('click', function(e) {
-        e.preve
+  e.preventDefault();
 
-        $('#error_explanation').html('');
+  $('#error_explanation').html('');
 
-          var amount = $('input#amount').val();
-          amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+  var amount = $('input#amount').val();
+  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
 
-          amount = parseFloat(amount);
+  amount = parseFloat(amount);
 
-          if (isNaN(amount)) {
-            $('#error_explanation').html("<p>Montant non valide, merci d'entrée une valeur en dollar ($).</p>");
-          }
-          else if (amount < 1.00) {
-            $('#error_explanation').html('<p>Montant non valide, la donation doit etre superieur à 1$.</p>');
-          }
-          else {
-            amount = amount * 100; // Needs to be an integer!
-            handler.open({
-            amount: Math.round(amount)
-          })
-        }
-      });
+  if (isNaN(amount)) {
+    $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+  }
+  else if (amount < 5.00) {
+    $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
+  }
+  else {
+    amount = amount * 100; // Needs to be an integer!
+    handler.open({
+      amount: Math.round(amount)
+    })
+  }
+});
     </script>
   </div>
 </section>

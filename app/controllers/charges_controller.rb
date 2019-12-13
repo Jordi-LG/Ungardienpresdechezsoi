@@ -1,10 +1,16 @@
 class ChargesController < ApplicationController
 
   def new
+
   end
 
   def create
     # Amount in cents
+    @association = params[:association]
+    @petowner = params[:id_petowner]
+    @petsitter = params[:id_petsitter]
+    
+
     @amount = params[:amount]
     @amount= @amount.gsub('$', '').gsub(',', '')
 
@@ -36,6 +42,7 @@ class ChargesController < ApplicationController
       currency: 'EUR',
     })
     
+    donation = Donation.created(amount: @amount, stripe_customer_id: params[:stripeToken], association_id: @association.id )
     flash[:success] = 'Votre donation a bien été effectué, merci pour eux.'
     redirect_to controller: "associations", action: "index"
 
