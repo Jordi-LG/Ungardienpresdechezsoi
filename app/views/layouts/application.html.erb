@@ -22,7 +22,10 @@
   </body>
 
   <% unless devise_controller? %>
+
+  <% unless controller.controller_name == "errors" %>
     <%= render "layouts/footer" %>
+  <%end%>
   <% end %>
 
   <%= render "layouts/button_back_to_top"%>
