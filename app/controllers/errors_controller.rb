@@ -2,19 +2,19 @@ class ErrorsController < ApplicationController
 
   def not_found
 
-  	render :action => 'not_found.html.erb'
+  	render :action => 'not_found'
   	
   end
 
-  def unaceptable
+  def unacceptable
 
-  	render :action => 'unaceptable.html.erb'
+  	render :action => 'unaceptable'
   	
   end
 
   def internal_error
 
-  	render :action => 'internal_error.html.erb'
+  	render :action => 'internal_error'
   	
   end
 end
