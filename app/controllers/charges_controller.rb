@@ -48,7 +48,7 @@ class ChargesController < ApplicationController
       donation = Donation.create(amount: @amount, id_user: @petsitter, is_po: false, is_ps: true, stripe_customer_id: params[:stripeToken], organization_id: @association )
     end
     flash[:success] = 'Votre donation a bien été effectué, merci pour eux.'
-    redirect_to controller: "organizations", action: "index"
+    redirect_to organization_path(@association)
 
     rescue Stripe::CardError => e
       flash[:warning] = e.message

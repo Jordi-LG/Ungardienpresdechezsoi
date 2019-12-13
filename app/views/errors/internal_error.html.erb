@@ -7,7 +7,11 @@
           <h2 class="display-1 font-weight-bold text-grad">500!</h2>
           <h3 class="mb-4">Nous sommes désolés, une erreur s'est produite.</h3>
           <p>Si vous êtes le propriétaire de l'application, consultez les logs pour plus d'informations.</p>
-          <a class="btn btn-sm btn-outline-light" href="index.html">Retour a l'accueil</a>
+           <%= link_to root_path do %>
+          <div class="btn btn-sm btn-outline-light">
+            <i class="fa fa-angle-double-left"></i> Retour a l'accueil
+          </div>
+          <%end%>
         </div>
       </div>
     </div>
