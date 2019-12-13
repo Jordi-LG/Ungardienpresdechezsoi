@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :pets, only: [:new, :create] do
     resources :avatars, only: [:create]
   end
-
+  resources :organizations, only: [:show, :index, :new, :create]
   resources :associations, only: [:show, :index, :new, :create]
   resources :petsittings, only: [:new, :create, :show, :update, :destroy]
   resources :contacts, only: [:new, :create]
