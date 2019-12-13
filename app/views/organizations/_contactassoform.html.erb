@@ -2,13 +2,13 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concenrant votre animal.</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Entrer les informations concernant votre animal.</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with model: Association.new, local: true do |form| %>
+        <%= form_with model: Organization.new, local: true do |form| %>
           <div class="form-group">
             <label>Nom de l'association :</label>
             <%= form.text_field :name, class: "form-control"%>

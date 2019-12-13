@@ -181,10 +181,10 @@ body, td { font-family: HelveticaNeue, sans-serif; }
                                 <td class="w580" width="580">
                                     <p align="left" class="article-title"><singleline label="Title">Salut <%= @petsitting.petowner.last_name %>,</singleline></p>
                                     <div align="left" class="article-content">
-                                        <multiline label="Description">Ta demande auprès du Pet sitter <%=@petsitting.petsitter.last_name %> a été refusé.</multiline>
+                                        <multiline label="Description">Ta demande auprès du Pet Sitter <%=@petsitting.petsitter.last_name %> a été refusé.</multiline>
                                     </div>
                                     <div align="left" class="article-content">
-                                        <multiline label="Description">Nous en sommes désolés et t'invitons à consulter d'autres annonces pour trouver votre futur petsitter en cliquant <%= link_to "ICI", petsitters_url %>.</multiline>
+                                        <multiline label="Description">Nous en sommes désolés et t'invitons à consulter d'autres annonces pour trouver votre futur Pet Sitter en cliquant <%= link_to "ICI", petsitters_url %>.</multiline>
                                     </div>
                                     <div align="left" class="article-content">
                                         <multiline label="Description">Pour accéder à ton espace client, <%= link_to "clique ici", petowner_url(@petsitting.petowner.id)%>.</multiline>

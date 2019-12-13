@@ -27,7 +27,7 @@
         <div class="col-md-12 p-0">
           <div class="col-12 col-lg-12">
             <div class="title pb-4 text-left">
-              <h2>Ces associations ont souhaitées être référencées sur notre site.</h2>
+              <h2>Ces associations ont souhaité être référencé sur notre site.</h2>
               <h4> Vous pouvez les contacter pour avoir des informations, adopter un animal ou vous pouvez aussi les aider en participant aux collectes de dons. </h4>
             </div>
           </div>
@@ -35,7 +35,7 @@
             <% @associations.where(validate_association: true).each do |asso| %>
               <!-- associations-card -->
               <div class="portfolio-card isotope-item">
-                <%= link_to association_path(asso) do %>
+                <%= link_to organization_path(asso) do %>
                   <div class="portfolio-card-body">
                     <div class="portfolio-card-header">
                       <%= image_tag asso.image_tag, class: 'rounded'%>
@@ -59,7 +59,7 @@
 <!-- =======================
   Banner contact asso -->
   <section class="blog bg-light">
-  	 <%= render "associations/contactassobanner"%>
+  	 <%= render "organizations/contactassobanner"%>
 
       <!-- =======================
       Btn back index -->

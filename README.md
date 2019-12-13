@@ -35,8 +35,9 @@ The tables of the database are :
 * `Petowners`
 * `Pets`
 * `Districs`
-* `Associations`
+* `Organizations`
 * `Comments`
+* `Donations`
 
 A jointable `Petsittings` make the link between the tables `Petsitters` and `Petowners` in order to manage the bookings. An other jointable connect the `Petsitters` and the `Districts` in wich they can do petsittings.
 

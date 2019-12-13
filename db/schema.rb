@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_130920) do
+ActiveRecord::Schema.define(version: 2019_12_13_025735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,22 +62,6 @@ ActiveRecord::Schema.define(version: 2019_12_12_130920) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "associations", force: :cascade do |t|
-    t.string "name"
-    t.text "describe"
-    t.date "date_of_birth"
-    t.string "email"
-    t.string "facebook_url"
-    t.string "donation_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "validate_association"
-    t.string "image_tag"
-    t.text "describe_short"
-    t.text "actions"
-    t.text "actions_2"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -92,6 +76,34 @@ ActiveRecord::Schema.define(version: 2019_12_12_130920) do
     t.string "district_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.decimal "amount"
+    t.integer "id_user"
+    t.boolean "is_po"
+    t.boolean "is_ps"
+    t.string "stripe_customer_id"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_donations_on_organization_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.text "describe"
+    t.date "date_of_birth"
+    t.string "email"
+    t.string "facebook_url"
+    t.string "donation_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "validate_association"
+    t.string "image_tag"
+    t.text "describe_short"
+    t.text "actions"
+    t.text "actions_2"
   end
 
   create_table "petdistricts", force: :cascade do |t|
