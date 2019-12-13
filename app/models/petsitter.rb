@@ -33,7 +33,7 @@ class Petsitter < ApplicationRecord
   	PetsitterMailer.demand_creation(self).deliver_now
   end
 
-  # SELECTION DES PETSITTERS VIA LE DISTRICT SELECTIONNÉ DANS LA PAGE INDEX
+  # Petsitters selection via a district selected in index page
   def self.petsitters_district(params)
     @params_district = params
     @selected_district = Petdistrict.where(district_id: params)
@@ -47,7 +47,7 @@ class Petsitter < ApplicationRecord
     return @petsitters_district
   end
 
-  #METHODE POUR DIFFERENCIER COMPTE VALIDATE, SURTOUT UTILISÉ POUR L'AJAX DE L'INDEX PETSITTER
+# method for discriminate if account_validate is true, used mainly for AJAX in petsitters index
   def self.validate_petsitters(petsitter_district)
     @validate_petsitters = []
 
