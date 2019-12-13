@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'staticpages#index'
   get 'team', to: 'staticpages#team'
+  get "404" , to: "errors#not_found"
+  get "422" , to: "errors#unacceptable"
+  get "500" , to: "errors#internal_error"
 
 
   resources :charges
