@@ -9,7 +9,7 @@ class ChargesController < ApplicationController
     @association = params[:association]
     @petowner = params[:id_petowner]
     @petsitter = params[:id_petsitter]
-    
+
 
     @amount = params[:amount]
     @amount= @amount.gsub('$', '').gsub(',', '')
@@ -17,7 +17,7 @@ class ChargesController < ApplicationController
       begin
     @amount = Float(@amount).round(2)
   rescue
-    flash[:warning] = "Montant non valide, merci d'entrée une valeur en dollar ($)."
+    flash.now[:warning] = "Montant non valide, merci d'entrée une valeur en dollar ($)."
     redirect_to controller: "associations", action: "index"
     return
   end
@@ -25,7 +25,7 @@ class ChargesController < ApplicationController
   @amount = (@amount * 100).to_i # Must be an integer!
 
   if @amount < 100
-    flash[:warning] = 'Montant non valide, la donation doit etre superieur à 1$.'
+    flash.now[:warning] = 'Montant non valide, la donation doit etre superieur à 1$.'
     redirect_to controller: "organizations", action: "index"
     return
   end
@@ -47,11 +47,11 @@ class ChargesController < ApplicationController
     else current_petsitter
       donation = Donation.create(amount: @amount, id_user: @petsitter, is_po: false, is_ps: true, stripe_customer_id: params[:stripeToken], organization_id: @association )
     end
-    flash[:success] = 'Votre donation a bien été effectué, merci pour eux.'
+    flash.now[:success] = 'Votre donation a bien été effectué, merci pour eux.'
     redirect_to controller: "organizations", action: "index"
 
     rescue Stripe::CardError => e
-      flash[:warning] = e.message
+      flash.now[:warning] = e.message
       redirect_to controller: "organizations", action: "index"
   end
 
