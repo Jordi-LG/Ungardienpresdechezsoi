@@ -9,7 +9,7 @@ class ChargesController < ApplicationController
     @association = params[:association]
     @petowner = params[:id_petowner]
     @petsitter = params[:id_petsitter]
-    
+
 
     @amount = params[:amount]
     @amount= @amount.gsub('$', '').gsub(',', '')
@@ -47,8 +47,10 @@ class ChargesController < ApplicationController
     else current_petsitter
       donation = Donation.create(amount: @amount, id_user: @petsitter, is_po: false, is_ps: true, stripe_customer_id: params[:stripeToken], organization_id: @association )
     end
+
     flash[:success] = 'Votre donation a bien été effectué, merci pour eux.'
     redirect_to organization_path(@association)
+
 
     rescue Stripe::CardError => e
       flash[:warning] = e.message

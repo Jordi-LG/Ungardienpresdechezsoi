@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
         end
       end
     else
-      flash[:alert] = "Vous avez déjà laissé un commentaire à ce Pet sitter !"
+      flash.now[:alert] = "Vous avez déjà laissé un commentaire à ce Pet sitter !"
       redirect_to petsitter_path(page_id)
     end
   end
