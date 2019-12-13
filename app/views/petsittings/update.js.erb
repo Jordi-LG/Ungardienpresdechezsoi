@@ -1,14 +1,14 @@
 $(document).ready(function() {
-<% if current_petsitter %>
-  $('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
-  var n = $('#booking-f-' + <%= @booking.id%>);
-  console.log(n)
-  $(".booking").append("<%= j render 'verif_petsitter', booking: @booking %>");
-  $(".ajaxnav").hide().html("<%= j render 'navbar_notif_icon_petsitter' %>").fadeIn("slow");
-<% else %>
-  $('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
-  var n = $(".booking");
-  console.log(n)
-  $(".booking").append("<%= j render 'verif_petowner', booking: @booking %>");
-<% end %>
+  <% if current_petsitter %>
+    $('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
+    var n = $('#booking-f-' + <%= @booking.id%>);
+    console.log(n)
+    $(".booking").append("<%= j render 'verif_petsitter', booking: @booking %>");
+    $(".ajaxnav").hide().html("<%= j render 'navbar_notif_icon_petsitter' %>").fadeIn("slow");
+  <% else %>
+    $('#booking-f-' + <%= @booking.id%>).fadeOut("slow");
+    var n = $(".booking");
+    console.log(n)
+    $(".booking").append("<%= j render 'verif_petowner', booking: @booking %>");
+  <% end %>
 });

@@ -1,0 +1,43 @@
+<h3>Une suggestion pour le site ?</h3>
+<p>Le formulaire ci-dessous nous permettra de rester en contact !</p>
+<%= form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h3>
+      <ul>
+        <% @contact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :Nom %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Nom"%>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :Email %>
+        <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :Sujet %>
+        <%= f.text_field :subject, class: "form-control", placeholder: "Sujet de votre message" %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :Message %>
+        <%= f.text_area :message, class: "form-control", placeholder: "Ecriver votre message" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Envoyer votre message", class: "btn btn-lg btn-dark btn-block" %>
+      </div>
+    </div>
+  </div>
+<% end %>

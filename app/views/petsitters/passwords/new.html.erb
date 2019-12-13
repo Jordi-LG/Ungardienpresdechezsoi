@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Un gardien pret de chez soi | Mot de passe oublié</title>
-  <meta charset="utf-8">
-</head>
+  <head>
+    <title>Un gardien pret de chez soi | Mot de passe oublié</title>
+    <meta charset="utf-8">
+  </head>
 
-<body>
-  <div class="preloader">
-  </div>
-  <section class="p-0 d-flex align-items-center">
-    <div class="container-fluid">
-      <div class="row">
-        <!-- left -->
-        <div class="col-12 col-md-5 col-lg-4 d-md-flex align-items-center bg-grad h-sm-100-vh">
-          <div class="w-100 p-3 p-lg-5 all-text-white">
-            <div class="justify-content-center align-self-center">
-              <%= link_to root_path do %>
-              <div class="logo-auth; m-4">
-                <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
-                <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+  <body>
+    <div class="preloader">
+    </div>
+    <section class="p-0 d-flex align-items-center">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left -->
+          <div class="col-12 col-md-5 col-lg-4 d-md-flex align-items-center bg-grad h-sm-100-vh">
+            <div class="w-100 p-3 p-lg-5 all-text-white">
+              <div class="justify-content-center align-self-center">
+                <%= link_to root_path do %>
+                <div class="logo-auth; m-4">
+                  <%= image_tag "logos/LogoGardien.png", :style => "height: 55px;"%>
+                  <%= image_tag "logos/TitreGardien.png", :style => "height: 55px;"%>
+                </div>
+                <%end%>
               </div>
-              <%end%>
+              <h3 class="font-weight-light">Connectez-vous pour gérer votre profil de pet sitter</h3>
+              <ul class="list-group list-group-borderless mt-4">
+                <li class="list-group-item text-white"><i class="fa fa-check"></i>Gérer votre profil</li>
+                <li class="list-group-item text-white"><i class="fa fa-check"></i>Voir vos demandes de garde d'animaux</li>
+                <li class="list-group-item text-white"><i class="fa fa-check"></i>Et valider vos demandes</li>
+              </ul>
             </div>
-            <h3 class="font-weight-light">Connectez-vous pour gérer votre profil de pet sitter</h3>
-            <ul class="list-group list-group-borderless mt-4">
-              <li class="list-group-item text-white"><i class="fa fa-check"></i>Gérer votre profil</li>
-              <li class="list-group-item text-white"><i class="fa fa-check"></i>Voir vos demandes de garde d'animaux</li>
-              <li class="list-group-item text-white"><i class="fa fa-check"></i>Et valider vos demandes</li>
-            </ul>
           </div>
-        </div>
-        <div class="col-12 col-md-7 col-xl-8 mx-auto my-5">
-          <div class="row h-100">
-            <div class="col-12 col-md-10 col-lg-5 text-left mx-auto d-flex align-items-center">
-              <div class="w-100">
-                <div class="bdi">
-                	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-signin mt-3" }) do |f| %>
+          <div class="col-12 col-md-7 col-xl-8 mx-auto my-5">
+            <div class="row h-100">
+              <div class="col-12 col-md-10 col-lg-5 text-left mx-auto d-flex align-items-center">
+                <div class="w-100">
+                  <div class="bdi">
+                  	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-signin mt-3" }) do |f| %>
                       <h1 class="h3 mb-3 font-weight-normal text-center">Mot de passe oublié?</h1>
                       <div class="form-group">
                         <%= f.label :email %><br />
                         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" , placeholder: "Entrer votre email"%>
                       </div>
-                        <div class="actions mt-5">
-                          <%= f.submit "Réinitialisation du mot de passe", class: "btn btn-lg btn-primary btn-block"%>
-                        </div>
+                      <div class="actions mt-5">
+                        <%= f.submit "Réinitialisation du mot de passe", class: "btn btn-lg btn-primary btn-block"%>
+                      </div>
                     <% end %>
                     <br>
                     <%= render "petsitters/shared/links" %>
@@ -56,7 +56,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</body>
+    </section>
+  </body>
 </html>

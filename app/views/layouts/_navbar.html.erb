@@ -1,72 +1,69 @@
-	<header class="header-static navbar-sticky navbar-primary bg-grad">
-		<!-- Logo Nav Start -->
-		<nav class="navbar navbar-expand-lg">
-			<div class="container">
-				<!-- Logo -->
-				<%= link_to root_path do %>
+<header class="header-static navbar-sticky navbar-primary bg-grad">
+	<!-- Logo Nav Start -->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+			<!-- Logo -->
+			<%= link_to root_path do %>
 				<div class="logo-auth; m-4">
-				<%= image_tag "logos/LogoGardien.png", :class => "img_logo"%>
-				<%= image_tag "logos/TitreGardienNoir.png",:class => "img_logo"%>
+					<%= image_tag "logos/LogoGardien.png", :class => "img_logo"%>
+					<%= image_tag "logos/TitreGardienNoir.png",:class => "img_logo"%>
 				</div>
-					<!-- SVG Logo End -->
-				<% end %>
-				<!-- Menu opener button -->
-				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				  <span class="navbar-toggler-icon"> </span>
-			  </button>
-				<!-- Main Menu Start -->
-
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<ul class="navbar-nav ml-auto">
-						<% if current_petowner == nil && current_petsitter == nil %>
+				<!-- SVG Logo End -->
+			<% end %>
+			<!-- Menu opener button -->
+			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"> </span>
+		  </button>
+			<!-- Main Menu Start -->
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav ml-auto">
+					<% if current_petowner == nil && current_petsitter == nil %>
 						<li class="nav-link text-black"> <%= link_to "Les associations", organizations_path , class:'txt'%> </li>
-							<li class="nav-item dropdown">
-								<span class="nav-link dropdown-toggle text-black" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Pet sitters</strong></span>
-								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
-									<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petsitter_registration_path %> </li>
-									<li class="dropdown-divider"></li>
-									<li class="dropdown-item"><%= link_to "Se connecter", new_petsitter_session_path %> </li>
-								</ul>
-							</li>
-							<li class="nav-item dropdown">
-								<span class="nav-link dropdown-toggle text-black" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Vous cherchez un gardien ?</strong></span>
-								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
-									<li class="dropdown-item"><%= link_to "Faire une recherche", petsitters_path %> </li>
-									<li class="dropdown-divider"></li>
-									<li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
-									<li class="dropdown-divider"></li>
-									<li class="dropdown-item"><%= link_to "Se connecter", new_petowner_session_path %> </li>
-								</ul>
-							</li>
-						<% elsif current_petsitter%>
-							<div class="ajaxnav">
-								<%= render "petsittings/navbar_notif_icon_petsitter"%>
-							</div>
-							<li class="nav-link text-black"> <%= link_to "Les associations", organizations_path , class:'txt'%> </li>
-							<li class="nav-item dropdown">
-								<span class="nav-link dropdown-toggle text-black" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Mon compte</strong></span>
-								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
-									<li class="dropdown-item"><%= link_to "Mon profil", petsitter_path(current_petsitter.id) %></li>
-									<li class="dropdown-divider"></li>
-									<li class="dropdown-item"> <%= link_to "Se déconnecter", destroy_petsitter_session_path, method: :delete %></li>
-								</ul>
-							</li>
-						<% elsif current_petowner %>
-							<li class="nav-link text-black"> <%= link_to "Les associations", organizations_path , class:'txt'%> </li>
-							<li class="nav-link text-black"> <%= link_to "Faire une recherche", petsitters_path , class:'txt'%> </li>
-							<li class="nav-item dropdown">
-								<span class="nav-link dropdown-toggle text-black" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Mon compte</strong></span>
-								<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
-									<li class="dropdown-item"><%= link_to "Mon profil", petowner_path(current_petowner.id) %> </li>
-									<li class="dropdown-divider"></li>
-									<li class="dropdown-item"><%= link_to "Se déconnecter", destroy_petowner_session_path, method: :delete%> </li>
-								</ul>
-							</li>
-						<% end %>
-					</ul>
-				</div>
+						<li class="nav-item dropdown">
+							<span class="nav-link dropdown-toggle text-black" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Pet sitters</strong></span>
+							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
+								<li class="dropdown-item"><%= link_to "Devenir Petsitter", new_petsitter_registration_path %> </li>
+								<li class="dropdown-divider"></li>
+								<li class="dropdown-item"><%= link_to "Se connecter", new_petsitter_session_path %> </li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<span class="nav-link dropdown-toggle text-black" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Vous cherchez un gardien ?</strong></span>
+							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
+								<li class="dropdown-item"><%= link_to "Faire une recherche", petsitters_path %> </li>
+								<li class="dropdown-divider"></li>
+								<li class="dropdown-item"><%= link_to "Devenir Membre", new_petowner_registration_path %> </li>
+								<li class="dropdown-divider"></li>
+								<li class="dropdown-item"><%= link_to "Se connecter", new_petowner_session_path %> </li>
+							</ul>
+						</li>
+					<% elsif current_petsitter%>
+						<div class="ajaxnav">
+							<%= render "petsittings/navbar_notif_icon_petsitter"%>
+						</div>
+						<li class="nav-link text-black"> <%= link_to "Les associations", organizations_path , class:'txt'%> </li>
+						<li class="nav-item dropdown">
+							<span class="nav-link dropdown-toggle text-black" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Mon compte</strong></span>
+							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
+								<li class="dropdown-item"><%= link_to "Mon profil", petsitter_path(current_petsitter.id) %></li>
+								<li class="dropdown-divider"></li>
+								<li class="dropdown-item"> <%= link_to "Se déconnecter", destroy_petsitter_session_path, method: :delete %></li>
+							</ul>
+						</li>
+					<% elsif current_petowner %>
+						<li class="nav-link text-black"> <%= link_to "Les associations", organizations_path , class:'txt'%> </li>
+						<li class="nav-link text-black"> <%= link_to "Faire une recherche", petsitters_path , class:'txt'%> </li>
+						<li class="nav-item dropdown">
+							<span class="nav-link dropdown-toggle text-black" id="portfolioMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Mon compte</strong></span>
+							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
+								<li class="dropdown-item"><%= link_to "Mon profil", petowner_path(current_petowner.id) %> </li>
+								<li class="dropdown-divider"></li>
+								<li class="dropdown-item"><%= link_to "Se déconnecter", destroy_petowner_session_path, method: :delete%> </li>
+							</ul>
+						</li>
+					<% end %>
+				</ul>
 			</div>
-
-		</nav>
-
-	</header>
+		</div>
+	</nav>
+</header>
