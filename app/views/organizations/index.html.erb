@@ -1,0 +1,78 @@
+<body>
+  <!-- =======================
+  	Banner innerpage -->
+  	<div class="banner left bg-overlay-dark-5 py-7 parallax-bg association-banner-index">
+  		<div class="container py-7">
+  			<div class="row all-text-white pb-7">
+  				<div class="col-12 col-lg-12">
+  					<h1 class="title">Les associations d'aide aux animaux sur Montpellier</h1>
+  					<h4>Pour trouver des informations utiles concernant vos animaux de compagnies <br> ou trouver un nouveau compagnon à 4 pattes à adopter !</h4>
+  				</div>
+  			</div>
+  		</div>
+  		<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wave"><defs></defs><path id="wave-one" d=""/></svg>
+  		<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wave"><defs></defs><path id="wave-two" d=""/></svg>
+  	</div>
+  	<!-- =======================
+  	Banner innerpage -->
+
+<%= render 'layouts/flash_alert' %>
+<%= render 'layouts/flash_success' %>
+
+  <!-- =======================
+  Portfolio -->
+  <div class="portfolio pb-0 mb-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 p-0">
+          <div class="col-12 col-lg-12">
+            <div class="title pb-4 text-left">
+              <h2>Ces associations ont souhaitées être référencées sur notre site.</h2>
+              <h4> Vous pouvez les contacter pour avoir des informations, adopter un animal ou vous pouvez aussi les aider en participant aux collectes de dons. </h4>
+            </div>
+          </div>
+          <div class="portfolio-wrap grid items-4 items-padding">
+            <% @associations.where(validate_association: true).each do |asso| %>
+              <!-- associations-card -->
+              <div class="portfolio-card isotope-item">
+                <%= link_to organization_path(asso) do %>
+                  <div class="portfolio-card-body">
+                    <div class="portfolio-card-header">
+                      <%= image_tag asso.image_tag, class: 'rounded'%>
+                    </div>
+                    <div class="portfolio-card-footer text-center">
+                      <h5 class="text-muted"> <%= asso.name%> </h5>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            <% end %>
+          </div>
+          <!-- portfolio wrap -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================
+  Portfolio -->
+
+<!-- =======================
+  Banner contact asso -->
+  <section class="blog bg-light">
+  	 <%= render "organizations/contactassobanner"%>
+
+      <!-- =======================
+      Btn back index -->
+      <div class="d-flex justify-content-center mt-6 mb-4">
+        <%= link_to root_path do %>
+        <div class="btn btn-button btn-dark">
+          <i class="fa fa-angle-double-left"></i> Retour Accueil
+        </div>
+        <% end %>
+      </div>
+      <!-- Btn back index
+      ======================= -->
+  </section>
+<!--   Banner contact asso
+======================= -->
+</body>

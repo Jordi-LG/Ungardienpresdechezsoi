@@ -23,11 +23,11 @@ ActiveAdmin.register_page "Dashboard" do
        column do
          panel "Association unvalidate" do
            ul do
-             Association.where(validate_association: false).each do |post|
-               li link_to(post.name, admin_association_path(post))
+             Organization.where(validate_association: false).each do |post|
+               li link_to(post.name, admin_organization_path(post))
              end
            end
-           if Association.where(validate_association: false) == []
+           if Organization.where(validate_association: false) == []
             para "Pas de nouvelles demande de validation"
         end
          end

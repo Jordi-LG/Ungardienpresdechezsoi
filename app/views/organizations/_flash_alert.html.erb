@@ -1,0 +1,18 @@
+<div class="container" >
+  <% if flash[:success] %>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+      <strong>Félicitations !</strong><h4><%= flash[:success] %></h4>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+  <% if flash[:warning] %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Erreur !</strong><h4><%= flash[:warning] %></h4>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+</div>
