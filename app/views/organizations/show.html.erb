@@ -1,5 +1,5 @@
 <body>
-<%= render "associations/banner_show"%>
+<%= render "organizations/banner_show"%>
 
   <section class="position-relative bg-light">
     <div class="container ">
@@ -96,8 +96,8 @@
     <% end %>
   </div>
   <article>
-    <%= label_tag(:amount, 'Donation Amount:') %>
-    <%= number_field_tag(:amount) %>
+    <%= label_tag(:amount, 'Montant de votre donation:') %>
+    <%= number_field_tag(:amount, "", class: 'form-control', placeholder: "Indiquer le montant") %>
   </article>
   <article>
     <%= hidden_field_tag(:stripeToken) %>
@@ -108,7 +108,7 @@
     <%= hidden_field_tag(:id_petsitter, current_petsitter.id) %>
     <%end%>
   </article>
-  <button id='donateButton'>Donate</button>
+  <button id='donateButton' class="btn btn-lg btn-grad">Donate</button>
 <% end %>
 
     <script src="https://checkout.stripe.com/checkout.js"></script>
