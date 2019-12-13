@@ -1,0 +1,10 @@
+$(document).ready(function() {
+  $('html, body').animate({scrollTop : 0}, 600)
+  <% if @contacted.nil? == true %>
+    <% flash.now[:success] = "Votre réservation a bien été prise en compte. Votre Pet sitter va être alerté de votre demande. N'hésitez pas dés maintenant à prendre contact ensemble !" %>
+    $('#flash_position').html("<%= j render 'layouts/flash_success' %>").fadeIn('slow')
+  <% else %>
+    <% flash.now[:alert] = "Vous avez déjà contacté ce Pet sitter, veuillez attendre sa réponse !" %>
+    $('#flash_position').html("<%= j render 'layouts/flash_alert' %>").fadeIn('slow')
+  <% end %>
+})

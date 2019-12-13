@@ -1,17 +1,42 @@
 
 <div class="blog bg-light">
-	<div class="container">
-    <%= render 'layouts/flash_alert' %>
-    <%= render 'layouts/flash_success' %>
-
+	<div class="container" >
 		<div class="row">
-			<div class="col-12 col-lg-10 mx-auto">
+			<div class="col-12 col-lg-10 mx-auto mt-6">
 				<div class="title text-center">
-					<h2>Trouver et réserver le Pet sitters de votre choix. </h2>
-					<p>Mais vous pouvez également visiter son profil avant. ;)</p>
+					<h3>Trouvez et réservez le Pet Sitter de votre choix. </h3>
+				</div>
+			</div>
+		</div><br>
+
+		<br><div class="divider"><i class="ti-info-alt"></i> </div><br><br>
+		<div class="row">
+			<div class="col-md-4 mt-4">
+				<div class="feature-box f-style-4 h-100 icon-grad">
+					<div class="feature-box-icon"><i class="ti-search"></i></div>
+					<h3 class="feature-box-title">Recherchez</h3>
+					<p class="feature-box-desc">Trouvez le Pet Sitter de votre choix dans le quartier le plus proche de chez vous ! N'hésitez pas à consulter leur profil !</p>
+				</div>
+			</div>
+			<div class="col-md-4 mt-4">
+				<div class="feature-box f-style-4 h-100 icon-grad">
+					<div class="feature-box-icon"><i class="ti-comments-smiley"></i></div>
+					<h3 class="feature-box-title">Discutez</h3>
+					<p class="feature-box-desc">Après avoir cliqué sur "Contacter", échangez avec votre pet sitter pour convenir des dates de gardiennages et du prix en contrepartie !</p>
+				</div>
+			</div>
+			<div class="col-md-4 mt-4">
+				<div class="feature-box f-style-4 h-100 icon-grad">
+					<div class="feature-box-icon"><i class="ti-thumb-up"></i></div>
+					<h3 class="feature-box-title">C'est parti !</h3>
+					<p class="feature-box-desc">Votre petite boules de poiles est entre de bonnes mains</p>
 				</div>
 			</div>
 		</div>
+		<br><br><div class="divider mb-5"><i class="ti-search"></i> </div>
+
+
+		<div id="flash_position"></div>
 
 		<!-- NARBAR RECHERCHE PAR QUARTIER -->
 		<div class="form-inline justify ml-3">
