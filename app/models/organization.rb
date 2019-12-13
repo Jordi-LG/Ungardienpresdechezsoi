@@ -1,4 +1,5 @@
 class Organization < ApplicationRecord
+	has_many :donations
 
   validates :name, presence: true
   validates :describe, presence: true, length: { in: 30..2000 }
