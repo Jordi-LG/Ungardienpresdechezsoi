@@ -1,5 +1,6 @@
 ActiveAdmin.register Organization do
   permit_params :name, :describe, :date_of_birth, :email, :facebook_url, :donation_url, :validate_association, :image_tag, :describe_short, :actions, :actions_2
+
 action_item :validate, only: :show do
     link_to "Validate", validate_admin_organization_path(organization), method: :put if organization.validate_association == false
   end
