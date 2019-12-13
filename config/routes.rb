@@ -21,7 +21,6 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
   resources :organizations, only: [:show, :index, :new, :create], :path => "associations"
-  resources :associations, only: [:show, :index, :new, :create]
   resources :petsittings, only: [:new, :create, :show, :update, :destroy]
   resources :contacts, only: [:new, :create]
   resources :comments, only: [:new, :create, :index]
