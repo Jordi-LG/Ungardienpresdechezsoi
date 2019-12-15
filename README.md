@@ -48,7 +48,7 @@ We wanted a site with green theme. And obviously, a lot of photos of cats and do
 
 #### 3.3. Backend
 
-We used `gems` covered in the THP courses : Devise (management of two differents profiles of users), Stripe (payment for supporting associations)...
+We used `gems` covered in the THP courses : Devise (management of two differents profiles of users), Stripe (payment for supporting associations), Active_Admin (Dashboard admin, admin@example.com / password)...
 
 ### Team
 We were 4 members of the 10th session of The Hacking Project in Montpellier to worked on this project :
