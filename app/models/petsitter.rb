@@ -15,8 +15,8 @@ class Petsitter < ApplicationRecord
 
   after_create :account_validate_false, :demand_creation
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name, presence: true, length: { minimum: 3 }
+  validates :last_name, presence: true, length: { minimum: 3 }
   validates :describe, presence: true, length: { in: 20..1000 }
   validates :age, presence: true
   validates :phone_number, presence: true, format: { with: /\A(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})\z/, message: "Entrer un numero de telephone valide" }
