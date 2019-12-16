@@ -17,16 +17,16 @@ class ChargesController < ApplicationController
       begin
     @amount = Float(@amount).round(2)
   rescue
-    flash[:warning] = "Montant non valide, merci d'entrée une valeur en dollar ($)."
-    redirect_to controller: "associations", action: "index"
+    flash[:alert] = "Montant non valide, merci d'entrée une valeur en dollar ($)."
+    redirect_to organization_path(@association)
     return
   end
 
   @amount = (@amount * 100).to_i # Must be an integer!
 
-  if @amount < 100
-    flash[:warning] = 'Montant non valide, la donation doit etre superieur à 1$.'
-    redirect_to controller: "organizations", action: "index"
+  if @amount < 100 || @amount > 9999999
+    flash[:alert] = 'Montant non valide, la donation doit etre superieur à 1$ et inferieur a 1M$.'
+    redirect_to organization_path(@association)
     return
   end
 
@@ -53,8 +53,8 @@ class ChargesController < ApplicationController
 
 
     rescue Stripe::CardError => e
-      flash[:warning] = e.message
-      redirect_to controller: "organizations", action: "index"
+      flash[:alert] = e.message
+      redirect_to organization_path(@association)
   end
 
 end

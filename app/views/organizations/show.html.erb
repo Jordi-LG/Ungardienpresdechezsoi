@@ -144,6 +144,9 @@ var handler = StripeCheckout.configure({
   else if (amount < 5.00) {
     $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
   }
+  else if (amount > 999999.00) {
+    $('#error_explanation').html('<p>Donation amount must be at most $1M.</p>');
+  }
   else {
     amount = amount * 100; // Needs to be an integer!
     handler.open({
