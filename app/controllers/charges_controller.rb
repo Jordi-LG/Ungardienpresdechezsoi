@@ -24,7 +24,7 @@ class ChargesController < ApplicationController
 
   @amount = (@amount * 100).to_i # Must be an integer!
 
-  if @amount < 100 || @amount > 9999999
+  if @amount < 100 || @amount > 99999999
     flash[:alert] = 'Montant non valide, la donation doit etre superieur à 1$ et inferieur a 1M$.'
     redirect_to organization_path(@association)
     return
