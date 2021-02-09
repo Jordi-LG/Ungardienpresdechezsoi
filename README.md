@@ -1,6 +1,4 @@
-# Project Title
-
-Un Gardien Près De Chez Soi
+# Un Gardien Près De Chez Soi
 
 The idea was to facilitate the search for a certified Pet sitter for owners of dogs and cats who go on week-end or holidays.
 
