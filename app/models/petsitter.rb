@@ -13,7 +13,8 @@ class Petsitter < ApplicationRecord
   has_many :petsittings
   has_many :petowners, through: :petsittings
 
-  after_create :account_validate_false, :demand_creation
+  after_create :account_validate_false
+  # :demand_creation
 
   validates :first_name, presence: true, length: { minimum: 3 }
   validates :last_name, presence: true, length: { minimum: 3 }

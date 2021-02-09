@@ -14,7 +14,7 @@ class Petowner < ApplicationRecord
   belongs_to :district
   has_many :comments
 
-  after_create :welcome_send
+  # after_create :welcome_send
 
   validates :first_name, presence: true, length: { minimum: 3 }
   validates :last_name, presence: true, length: { minimum: 3 }
